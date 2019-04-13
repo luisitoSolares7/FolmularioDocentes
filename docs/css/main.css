@@ -1,0 +1,112 @@
+body{
+	background-image: url("../img/fondo.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed
+}
+#fondoContenido{
+	position: relative;
+	width: 70%;
+	height: 1000px;
+	filter:brightness(0.4);
+	margin-top: 8%;
+	margin-left: 15%;
+	opacity: 0.4;
+}
+.imagen{
+	width: 300px;
+	height:300px;		
+}
+.divCarac{
+	height: 30%;
+	display: flex;
+}
+p{
+	color: #F0FFF0;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+h2{
+	color: #F0FFF0;
+}
+#contenido{
+	position: absolute;
+	left:20%;
+	top:20%;
+	padding: 1%;
+}
+header {
+    margin-left: 14.5%;
+    width:74%;
+    position: absolute;
+}
+
+nav {
+    position: absolute;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 900px;
+}
+
+    nav ul {
+        list-style: none;
+    }
+
+    nav > ul {
+        display: table;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        background: #000000;
+    }
+
+        nav > ul li {
+            display: table-cell;
+        }
+
+        nav > ul > li > ul {
+            display: none;
+        }
+
+        nav > ul li a {
+            color: #fff;
+            display: block;
+            line-height: 20px;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: all 3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+        nav > ul > li > ul > li a:hover {
+            background: #5da5a2;
+        }
+
+        nav > ul > li > a span {
+            background: #174459;
+            display: block;
+            height: 100%;
+            width: 110%;
+            left: 0px;
+            position: absolute;
+            top: -55px;
+            -webkit-transition: all 3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+
+            nav > ul > li > a span .icon {
+                display: block;
+                line-height: 60px;
+            }
+
+        nav > ul > li > a:hover > span {
+            top: 0;
+        }
+
