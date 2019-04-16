@@ -126,12 +126,3 @@ return (select * from tblCuenta tblC
 end;
 SET QUOTED_IDENTIFIER ON
 GO
-
-create function [dbo].[p_verificacionUsuarios]
-(@p_usuario int,
-@p_contra varchar(30)
-) returns table
-as
-return (select * from tblUsuario tblU
-    where tblU.usuarioID=@p_usuario and tblU.contrasena=(select [dbo].[p_verificacionLogin](@p_contra)));
-GO
