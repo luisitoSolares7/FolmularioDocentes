@@ -1,111 +1,137 @@
-USE [master]
-GO
+create database Formularios;
+use Formularios;
 
-/****** Object:  Database [FormularioDocente]    Script Date: 13/04/2019 3:39:58 ******/
-CREATE DATABASE [FormularioDocente]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'FormularioDocente', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\FormularioDocente.mdf' , SIZE = 4288KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
- LOG ON 
-( NAME = N'FormularioDocente_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\FormularioDocente_log.ldf' , SIZE = 1072KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
-GO
+create table tblCuenta(
+id int IDENTITY primary key,
+nombreCuenta varchar(45),
+contracena varchar(30),
+estado bit
+);
 
-ALTER DATABASE [FormularioDocente] SET COMPATIBILITY_LEVEL = 120
-GO
+create table tblInvitacion(
+id int IDENTITY primary key,
+token text,
+fechaInvitacion date,
+fechaRespuesta date,
+estado bit,
+fkCuenta int,
+fkPersona int
+);
 
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+create table tblPersona(
+id int IDENTITY primary key,
+nombre varchar(40),
+apellidoP varchar(40),
+apellidoM varchar(40),
+correo varchar(50),
+telefono int,
+);
+
+create table tblFormAccidente(
+id int IDENTITY primary keY,
+descripcion text,
+foto image,
+fecha date
+);
+create table tblFormReprogramacion(
+id int IDENTITY primary keY,
+fecha date,
+);
+
+create table tblFormFotocopia(
+id int IDENTITY primary keY,
+fecha date,
+cantidad int,
+tipoDocuento varchar(45),
+codigo text
+);
+
+create table tblFormClasesFuera(
+id int IDENTITY primary keY,
+fecha date,
+);
+
+create table tblResAccidente(
+id int IDENTITY primary keY,
+fkCuenta int,
+fkAccidente int,
+estado bit,
+fecha date
+);
+create table tblResReprogramacion(
+id int IDENTITY primary keY,
+fkCuenta int,
+fkReprogramacion int,
+estado bit,
+fecha date,
+);
+
+create table tblResFotocopia(
+id int IDENTITY primary keY,
+fkCuenta int,
+fkFotocopia int,
+fecha date,
+estado bit,
+);
+
+create table tblResClasesFuera(
+id int IDENTITY primary keY,
+fkCuenta int,
+fkClaseFuera int,
+fecha date,
+estado bit,
+);
+
+
+ALTER TABLE tblResClasesFuera
+ADD FOREIGN KEY (fkCuenta) REFERENCES tblCuenta(id);
+
+ALTER TABLE tblResFotocopia
+ADD FOREIGN KEY (fkCuenta) REFERENCES tblCuenta(id);
+
+ALTER TABLE tblResReprogramacion
+ADD FOREIGN KEY (fkCuenta) REFERENCES tblCuenta(id);
+
+ALTER TABLE tblResAccidente
+ADD FOREIGN KEY (fkCuenta) REFERENCES tblCuenta(id);
+
+
+ALTER TABLE tblResClasesFuera
+ADD FOREIGN KEY (fkClaseFuera) REFERENCES tblFormClasesFuera(id);
+
+ALTER TABLE tblResFotocopia
+ADD FOREIGN KEY (fkFotocopia) REFERENCES tblFormFotocopia(id);
+
+ALTER TABLE tblResReprogramacion
+ADD FOREIGN KEY (fkReprogramacion) REFERENCES tblFormReprogramacion(id);
+
+ALTER TABLE tblResAccidente
+ADD FOREIGN KEY (fkAccidente) REFERENCES tblFormFotocopia(id);
+
+create function [dbo].[p_verificacionLogin]
+(@p_contra varchar(30)
+) returns varchar(30)
+as
 begin
-EXEC [FormularioDocente].[dbo].[sp_fulltext_database] @action = 'enable'
-end
+ return CONVERT(VARCHAR(30), HashBytes('MD5', @p_contra), 2);
+end;
+
+create function [dbo].[p_verificacionUsuarios]
+(@p_usuario varchar(45),
+@p_contra varchar(30)
+) returns table
+as
+return (select * from tblCuenta tblC
+    where tblC.nombreCuenta=@p_usuario and tblC.contracena=(select [dbo].[p_verificacionLogin](@p_contra)));
+end;
+SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER DATABASE [FormularioDocente] SET ANSI_NULL_DEFAULT OFF 
+create function [dbo].[p_verificacionUsuarios]
+(@p_usuario int,
+@p_contra varchar(30)
+) returns table
+as
+return (select * from tblUsuario tblU
+    where tblU.usuarioID=@p_usuario and tblU.contrasena=(select [dbo].[p_verificacionLogin](@p_contra)));
 GO
-
-ALTER DATABASE [FormularioDocente] SET ANSI_NULLS OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET ANSI_PADDING OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET ANSI_WARNINGS OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET ARITHABORT OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET AUTO_CLOSE ON 
-GO
-
-ALTER DATABASE [FormularioDocente] SET AUTO_SHRINK OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET AUTO_UPDATE_STATISTICS ON 
-GO
-
-ALTER DATABASE [FormularioDocente] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET CURSOR_DEFAULT  GLOBAL 
-GO
-
-ALTER DATABASE [FormularioDocente] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET NUMERIC_ROUNDABORT OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET QUOTED_IDENTIFIER OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET RECURSIVE_TRIGGERS OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET  ENABLE_BROKER 
-GO
-
-ALTER DATABASE [FormularioDocente] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET TRUSTWORTHY OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET PARAMETERIZATION SIMPLE 
-GO
-
-ALTER DATABASE [FormularioDocente] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET HONOR_BROKER_PRIORITY OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET RECOVERY SIMPLE 
-GO
-
-ALTER DATABASE [FormularioDocente] SET  MULTI_USER 
-GO
-
-ALTER DATABASE [FormularioDocente] SET PAGE_VERIFY CHECKSUM  
-GO
-
-ALTER DATABASE [FormularioDocente] SET DB_CHAINING OFF 
-GO
-
-ALTER DATABASE [FormularioDocente] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-
-ALTER DATABASE [FormularioDocente] SET TARGET_RECOVERY_TIME = 0 SECONDS 
-GO
-
-ALTER DATABASE [FormularioDocente] SET DELAYED_DURABILITY = DISABLED 
-GO
-
-ALTER DATABASE [FormularioDocente] SET  READ_WRITE 
-GO
-
