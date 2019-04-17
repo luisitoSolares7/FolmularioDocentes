@@ -5,6 +5,7 @@ create table tblCuenta(
 id int IDENTITY primary key,
 nombreCuenta varchar(45),
 contracena varchar(30),
+ tipo int,
 estado bit
 );
 
