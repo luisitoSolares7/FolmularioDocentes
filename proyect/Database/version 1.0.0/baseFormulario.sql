@@ -124,6 +124,3 @@ create function [dbo].[p_verificacionUsuarios]
 as
 return (select * from tblCuenta tblC
     where tblC.nombreCuenta=@p_usuario and tblC.contracena=(select [dbo].[p_verificacionLogin](@p_contra)));
-end;
-SET QUOTED_IDENTIFIER ON
-GO
