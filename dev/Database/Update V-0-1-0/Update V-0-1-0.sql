@@ -55,8 +55,8 @@ INSERT INTO [dbo].[tblVersion]
            ,[versionMenor]
            ,[patch])
      VALUES
-           (0
-           ,1
+           (1
+           ,0
            ,0)
 GO
 
