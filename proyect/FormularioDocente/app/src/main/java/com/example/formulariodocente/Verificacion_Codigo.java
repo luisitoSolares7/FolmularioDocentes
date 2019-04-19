@@ -9,6 +9,7 @@ import android.widget.Button;
 public class Verificacion_Codigo extends AppCompatActivity {
     private Button btnVerificar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,23 +1,24 @@
 package com.example.formulariodocente.modelos;
 
 public class Cuenta {
-    String id;
+    int id;
     String nombreCuenta;
     String contracena;
 
     public Cuenta() {
     }
 
-    public Cuenta(String nombreCuenta, String contracena) {
+    public Cuenta(int id,String nombreCuenta, String contracena) {
+        this.id=id;
         this.nombreCuenta = nombreCuenta;
         this.contracena = contracena;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
