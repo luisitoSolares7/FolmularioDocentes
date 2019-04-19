@@ -118,7 +118,7 @@ public class Login extends AppCompatActivity {
                 progreso.setVisibility(View.GONE);
                 fab.setAlpha(1f);
                 if (usuarios != null) {
-                    Toast.makeText(Login.this, "Bienvenido"+ usuarios.getNombreCuenta(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Bienvenido"+ usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
                     user.setText("");
                     password.setText("");
                     //finish();
@@ -143,7 +143,7 @@ public class Login extends AppCompatActivity {
         try {
             if (json != null) {
                 JSONObject obje = new JSONObject(json);
-                cuenta = new Cuenta(obje.getInt("id"), obje.getString("nombreCuenta"), obje.getString("contracena"));
+                cuenta = new Cuenta(obje.getInt("cuentaId"), obje.getString("nombreCuenta"), obje.getString("contracena"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
