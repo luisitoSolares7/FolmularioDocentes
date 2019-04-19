@@ -53,6 +53,14 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ((View) findViewById(R.id.olvidoContra)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, Recuperacion_Cuenta.class);
+                startActivity(intent);
+            }
+        });
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
