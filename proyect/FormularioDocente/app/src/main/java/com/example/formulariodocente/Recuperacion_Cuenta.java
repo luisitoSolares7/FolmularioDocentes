@@ -14,7 +14,7 @@ public class Recuperacion_Cuenta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperacion__cuenta);
-        Recuperar=vista.findViewById(R.id.recuperar);
+        Recuperar=findViewById(R.id.recuperar);
         Confirmar=(Button) findViewById(R.id.Confirmar);
         Confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
