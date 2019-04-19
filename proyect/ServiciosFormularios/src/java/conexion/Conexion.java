@@ -13,7 +13,7 @@ import java.sql.DriverManager;
  * @author User
  */
 public class Conexion {
-    private static String url = "jdbc:sqlserver://localhost\\DESKTOP-KBJ9AML:1433;"
+    private static String url = "jdbc:sqlserver://localhost\\DESKTOP-O9IE2P5:1433;"
             + "databaseName=Formularios;user=luis;password=luis;";
     protected static Connection conexion;
 

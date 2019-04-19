@@ -39,7 +39,7 @@
                 android:singleLine="true"
                 android:textColor="@color/grey_10"
                 android:theme="@style/EditText.White"
-                android:id="@+id/recuperar"/>
+                android:id="@+id/contraseña"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:singleLine="true"
                 android:textColor="@color/grey_10"
                 android:theme="@style/EditText.White"
-                android:id="@+id/contraseña"/>
+                android:id="@+id/nuevacontraseña"/>
         </android.support.design.widget.TextInputLayout>
         <View
             android:layout_width="0dp"
