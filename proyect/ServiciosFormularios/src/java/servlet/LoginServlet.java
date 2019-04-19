@@ -8,6 +8,7 @@ package servlet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dao.CuentaDao;
+import dao.InvitacionDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cuenta;
+import modelo.Invitacion;
 
 /**
  *
@@ -45,6 +47,13 @@ public class LoginServlet extends HttpServlet {
                 Gson gson = builder.create();
                 Cuenta docente = new CuentaDao().getAcceso(usuario, contraseña);
                 String json = gson.toJson(docente);
+                out.println(json);
+            }
+            if (accion.equals("Codigo")) {
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                Invitacion invitacion = new InvitacionDao().getRegistro(contraseña);
+                String json = gson.toJson(invitacion);
                 out.println(json);
             }
         }
