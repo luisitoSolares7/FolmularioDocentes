@@ -57,7 +57,13 @@ public class Login extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                hasit();
+
+                if(user.getText()!=null && password!=null){
+                    hasit();
+                }else{
+                    Toast.makeText(null,"ingrese bien los datos",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -113,7 +119,7 @@ public class Login extends AppCompatActivity {
                     password.setText("");
                     //finish();
                 } else {
-                    Toast.makeText(Login.this, "La aplicacion solo sirve para estudiantes", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Ingrese bien los datos", Toast.LENGTH_SHORT).show();
                     user.setText("");
                     password.setText("");
                 }
