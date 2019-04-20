@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         user=vista.findViewById(R.id.usuario);
         password=vista.findViewById(R.id.contrasena);
-        
+
         ((View) findViewById(R.id.tengoCodigo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,7 +116,7 @@ public class Login extends AppCompatActivity {
                 progreso.setVisibility(View.GONE);
                 fab.setAlpha(1f);
                 if (usuarios != null) {
-                    Toast.makeText(Login.this, "Bienvenido"+ usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Bienvenido "+ usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
                     user.setText("");
                     password.setText("");
                     //finish();

@@ -28,7 +28,7 @@
             android:theme="@style/EditText.White.Hint">
 
             <android.support.design.widget.TextInputEditText
-
+                android:id="@+id/invitacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"

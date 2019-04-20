@@ -36,6 +36,7 @@
             android:theme="@style/EditText.White.Hint">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/userCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"
@@ -58,6 +59,7 @@
             android:theme="@style/EditText.White.Hint">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/passCuenta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"
@@ -81,12 +83,13 @@
             android:theme="@style/EditText.White.Hint">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/pass2Contra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"
                 android:layout_marginRight="-4dp"
-                android:hint="Creacion C"
-                android:inputType="text"
+                android:hint="Verificacion Contraceña"
+                android:inputType="textPassword"
                 android:maxLength="50"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -99,7 +102,7 @@
             android:layout_height="@dimen/spacing_mlarge" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCuenta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Guardar" />

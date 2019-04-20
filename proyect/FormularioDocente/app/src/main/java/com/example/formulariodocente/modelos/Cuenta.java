@@ -8,7 +8,11 @@ public class Cuenta {
     public Cuenta() {
     }
 
-    public Cuenta(int id,String nombreCuenta, String contracena) {
+    public Cuenta(String nombreCuenta) {
+        this.nombreCuenta = nombreCuenta;
+    }
+
+    public Cuenta(int id, String nombreCuenta, String contracena) {
         this.id=id;
         this.nombreCuenta = nombreCuenta;
         this.contracena = contracena;

@@ -13,4 +13,6 @@ import modelo.Cuenta;
  */
 public interface  EstructuraCuenta {
     public Cuenta getAcceso(String user,String contraseña);
+    public Cuenta creacionCuenta(String user,String contraseña,String token);
+   
 }

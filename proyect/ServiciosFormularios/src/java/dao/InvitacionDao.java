@@ -23,13 +23,17 @@ public class InvitacionDao extends Conexion implements EstructuraInvitacion {
         Invitacion invitacion = null;
         try {
             Conexion.conectar();
-            String secuencia = "select * from p_verificacionCodigo('"+codigo+"');";
+            String secuencia = "select * from p_verificacionCodigo('" + codigo + "');";
             PreparedStatement st = conexion.prepareStatement(secuencia);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                String usuario = rs.getString("nombre");
-                int id = rs.getInt("invitacion");
-                invitacion = new Invitacion(id,usuario);
+                if (rs.getInt("estado") != 1) {
+                    String usuario = rs.getString("nombre");
+                    String id = rs.getString("invitacion");
+                    invitacion = new Invitacion(id, usuario);
+                } else {
+                    break;
+                }
             }
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
