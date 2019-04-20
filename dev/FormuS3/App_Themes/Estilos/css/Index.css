@@ -1,0 +1,10 @@
+﻿#fondoLogin {
+    position: absolute;
+    display: block;
+    opacity: 0.5;
+    margin-top: -5%;
+    margin-left: 30%;
+    filter: alpha(opacity=50);
+    width: 485px;
+    height: 300px;
+}

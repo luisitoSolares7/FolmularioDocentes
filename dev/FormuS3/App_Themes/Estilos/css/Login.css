@@ -1,0 +1,24 @@
+﻿
+#contenedor {
+    position: relative;
+    display: block;
+    margin-top: 14%;
+    margin-left: 32%;
+}
+#txtContracena{
+    margin-top: 25px;
+}
+#btnRegistrar {
+    margin-top: 20px;
+    margin-left: 40%;
+}
+#fondoLogin {
+    position: absolute;
+    display: block;
+    opacity: 0.5;
+    margin-top:-5%;
+    margin-left:30%;
+    filter: alpha(opacity=50);
+    width:485px;
+    height:300px;
+}

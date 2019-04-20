@@ -12,7 +12,7 @@
         <h1>
             <asp:Literal ID="MsgLabel" runat="server" Text="Error"></asp:Literal>
         </h1>
-        <asp:HyperLink runat="server"NavigateUrl="~/Default.aspx" 
+        <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">Retornar</asp:HyperLink>
     </form>
 </body>
 </html>
