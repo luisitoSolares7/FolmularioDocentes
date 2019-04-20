@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">FormularioDocente</string>
-    <string name="url">"http://192.168.1.11:36848/ServiciosFormularios/Login"</string>
+    <string name="url">"http://192.168.137.177:36848/ServiciosFormularios/Login"</string>
 </resources>
