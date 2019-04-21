@@ -44,7 +44,7 @@ public class Creacion_Cuenta extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((pass.getText().toString()).equals(pass2.getText().toString())) {
+                if ((pass.getText().toString()).equals(pass2.getText().toString()) && (!(user.getText().toString()).equals(""))) {
                     if ((pass.getText().toString().length()) >= 6) {
                         AsyncTask<Void, String, Cuenta> task = new AsyncTask<Void, String, Cuenta>() {
 
@@ -82,6 +82,7 @@ public class Creacion_Cuenta extends AppCompatActivity {
                         task.execute();
 
                     }
+                }else{Toast.makeText(Creacion_Cuenta.this,"Ponga todos los campos correctamente",Toast.LENGTH_SHORT).show();
                 }
             }
         });
