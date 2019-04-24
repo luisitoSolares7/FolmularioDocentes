@@ -35,7 +35,11 @@ public class Verificacion_Codigo extends AppCompatActivity {
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hasit();
+                if (invitacion.getText().toString().equals("")) {
+               Toast.makeText(Verificacion_Codigo.this,"Ponga el codigo",Toast.LENGTH_SHORT).show();
+                } else {
+                    hasit();
+                }
             }
         });
     }
@@ -73,7 +77,7 @@ public class Verificacion_Codigo extends AppCompatActivity {
                     invitacion.setText("");
                     startActivity(downloadIntent);
                 } else {
-                    Toast.makeText(Verificacion_Codigo.this, "El codigo ya fue insertado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Verificacion_Codigo.this, "Error en el codigo", Toast.LENGTH_SHORT).show();
                 }
             }
         };

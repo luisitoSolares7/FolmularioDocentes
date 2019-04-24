@@ -60,7 +60,7 @@ public class Creacion_Cuenta extends AppCompatActivity {
                                 try {
                                     persona = cargar();
                                 } catch (Exception ex) {
-                                    Log.e("", "Error al cargar la lista de carreras", ex);
+                                    Log.e("", "Error....", ex);
                                     persona = null;
                                 }
 
@@ -82,7 +82,10 @@ public class Creacion_Cuenta extends AppCompatActivity {
                         task.execute();
 
                     }
-                }else{Toast.makeText(Creacion_Cuenta.this,"Ponga todos los campos correctamente",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Creacion_Cuenta.this, "Ponga todos los campos correctamente", Toast.LENGTH_SHORT).show();
+                    pass.setText("");
+                    pass2.setText("");
                 }
             }
         });
