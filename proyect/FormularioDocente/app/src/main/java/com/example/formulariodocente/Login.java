@@ -37,8 +37,8 @@ public class Login extends AppCompatActivity {
         vista = findViewById(android.R.id.content);
         progreso = (ProgressBar) findViewById(R.id.progress_bar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        user=vista.findViewById(R.id.usuario);
-        password=vista.findViewById(R.id.contrasena);
+        user = vista.findViewById(R.id.usuario);
+        password = vista.findViewById(R.id.contrasena);
 
         ((View) findViewById(R.id.tengoCodigo)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +60,23 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
 
-                if(user.getText()!=null && password!=null){
-                    hasit();
-                }else{
-                    Toast.makeText(null,"ingrese bien los datos",Toast.LENGTH_SHORT).show();
+                if (user.getText().toString().equals("") && password.getText().toString().equals("")) {
+                    Toast.makeText(Login.this, "Ingrese bien los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (user.getText().toString().equals("")) {
+                        Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (password.getText().toString().equals("")) {
+                            Toast.makeText(Login.this, "Ingrese la contraceña", Toast.LENGTH_SHORT).show();
+                        } else {
+                            hasit();
+                        }
+                    }
                 }
-
             }
-        });
-    }
+
+    });
+}
 
     private void searchAction() {
         progreso.setVisibility(View.VISIBLE);
@@ -116,12 +124,12 @@ public class Login extends AppCompatActivity {
                 progreso.setVisibility(View.GONE);
                 fab.setAlpha(1f);
                 if (usuarios != null) {
-                    Toast.makeText(Login.this, "Bienvenido "+ usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Bienvenido " + usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
                     user.setText("");
                     password.setText("");
                     //finish();
                 } else {
-                    Toast.makeText(Login.this, "Ingrese bien los datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
                     user.setText("");
                     password.setText("");
                 }
@@ -133,11 +141,11 @@ public class Login extends AppCompatActivity {
     public Cuenta cargar() {
         Hashtable<String, String> parametros = new Hashtable<>();
         parametros.put("accion", "Login");
-        parametros.put("usuario", user.getText().toString()+"");
-        parametros.put("contrasena", password.getText().toString()+"");
+        parametros.put("usuario", user.getText().toString() + "");
+        parametros.put("contrasena", password.getText().toString() + "");
         StandarRequestConfiguration config = new StandarRequestConfiguration(getString(R.string.url), MethodType.GET, parametros);
         String json = HttpConnection.sendRequest(config);
-        Cuenta cuenta=null;
+        Cuenta cuenta = null;
         try {
             if (json != null) {
                 JSONObject obje = new JSONObject(json);
@@ -146,8 +154,8 @@ public class Login extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(cuenta==null){
-            Toast.makeText(null,"eroor",Toast.LENGTH_SHORT).show();
+        if (cuenta == null) {
+            Toast.makeText(null, "eroor", Toast.LENGTH_SHORT).show();
         }
 
         return cuenta;
