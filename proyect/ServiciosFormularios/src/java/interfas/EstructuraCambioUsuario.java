@@ -5,14 +5,13 @@
  */
 package interfas;
 
-import modelo.Cuenta;
+import modelo.CambioUsuario;
+
 
 /**
  *
  * @author User
  */
-public interface  EstructuraCuenta {
-    public Cuenta getAcceso(String user,String contraseña);
-    public Cuenta creacionCuenta(String user,String contraseña,String token);
-   
+public interface EstructuraCambioUsuario {
+    public CambioUsuario getRegistro(String nombreusuario);
 }

@@ -10,10 +10,10 @@ package modelo;
  * @author User
  */
 public class Invitacion {
-    int codigoId;
+    String codigoId;
     String nombre;
 
-    public Invitacion(int codigoId, String nombre) {
+    public Invitacion(String codigoId, String nombre) {
         this.codigoId = codigoId;
         this.nombre = nombre;
     }
@@ -21,11 +21,11 @@ public class Invitacion {
     public Invitacion() {
     }
 
-    public int getCodigoId() {
+    public String getCodigoId() {
         return codigoId;
     }
 
-    public void setCodigoId(int codigoId) {
+    public void setCodigoId(String codigoId) {
         this.codigoId = codigoId;
     }
 

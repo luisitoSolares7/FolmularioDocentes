@@ -17,6 +17,6 @@ create function [dbo].[p_verificacionCodigo]
 @p_token text
 ) returns table
 as
-return (select inv.id as invitacion, concat(per.nombre,' ',per.apellidoP) AS nombre, per.correo as correo from tblInvitacion inv  
+return (select inv.id as invitacion, concat(per.nombre,' ',per.apellidoP) AS nombre, per.correo as correo, inv.estado as estado from tblInvitacion inv  
 join tblPersona per on  per.id=inv.fkPersona where inv.token like @p_token);
 

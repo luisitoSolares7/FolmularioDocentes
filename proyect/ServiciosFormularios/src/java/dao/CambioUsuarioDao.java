@@ -6,31 +6,32 @@
 package dao;
 
 import conexion.Conexion;
+import interfas.EstructuraCambioUsuario;
 import interfas.EstructuraInvitacion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import modelo.Cuenta;
+import modelo.CambioUsuario;
 import modelo.Invitacion;
 
 /**
  *
  * @author User
  */
-public class InvitacionDao extends Conexion implements EstructuraInvitacion {
+public class CambioUsuarioDao extends Conexion implements EstructuraCambioUsuario {
 
     @Override
-    public Invitacion getRegistro(String codigo) {
-        Invitacion invitacion = null;
-        try {
+    public CambioUsuario getRegistro(String nombre) {
+         CambioUsuario cambiousuario = null;
+          try {
             Conexion.conectar();
-            String secuencia = "select * from p_verificacionCodigo('" + codigo + "');";
+            String secuencia = "select * from p_RecuperacionContraseña('" + nombre + "');";
             PreparedStatement st = conexion.prepareStatement(secuencia);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 if (rs.getInt("estado") != 1) {
                     String usuario = rs.getString("nombre");
-                    String id = rs.getString("invitacion");
-                    invitacion = new Invitacion(id, usuario);
+                    
+                    cambiousuario = new CambioUsuario(usuario);
                 } else {
                     break;
                 }
@@ -39,8 +40,8 @@ public class InvitacionDao extends Conexion implements EstructuraInvitacion {
             System.out.println("Error " + e.getMessage());
         }
         Conexion.cerrarConexion();
-        return invitacion;
+        return cambiousuario;
 
     }
-
-}
+    }
+    

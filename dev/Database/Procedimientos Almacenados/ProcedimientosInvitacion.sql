@@ -1,4 +1,4 @@
-USE [formularios]
+USE [Formularios]
 GO
 /****** Object:  StoredProcedure [dbo].[buscarInvitacionID]    Script Date: 19/04/2019 18:50:54 ******/
 SET ANSI_NULLS ON

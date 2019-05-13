@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
         String accion = request.getParameter("accion");
         String contraseña = request.getParameter("contrasena");
         String usuario = request.getParameter("usuario");
+        String token = request.getParameter("token");
         try (PrintWriter out = response.getWriter()) {
             if (accion.equals("Login")) {
                 GsonBuilder builder = new GsonBuilder();
@@ -56,6 +57,14 @@ public class LoginServlet extends HttpServlet {
                 String json = gson.toJson(invitacion);
                 out.println(json);
             }
+            if (accion.equals("Cuenta")) {
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                Cuenta cuenta = new CuentaDao().creacionCuenta(usuario,contraseña,token);
+                String json = gson.toJson(cuenta);
+                out.println(json);
+            }
+            
         }
     }
 

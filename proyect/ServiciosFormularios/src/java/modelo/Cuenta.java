@@ -18,6 +18,10 @@ public class Cuenta {
     public Cuenta() {
     }
 
+    public Cuenta(String nombreCuenta) {
+        this.nombreCuenta = nombreCuenta;
+    }
+
     public Cuenta(int cuentaId, String contracena, String nombreCuenta) {
         this.cuentaId = cuentaId;
         this.contracena = contracena;
