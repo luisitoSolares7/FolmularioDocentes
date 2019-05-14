@@ -10,7 +10,7 @@ GO
 -- Create date: 15/04/2019
 -- Description:	Buscar una Invitacion con su ID
 -- =============================================
-ALTER PROCEDURE [dbo].[buscarInvitacionID]
+CREATE PROCEDURE [dbo].[buscarInvitacionID]
 	@idInvitacion int
 AS
 BEGIN
@@ -39,7 +39,7 @@ GO
 -- Create date: 19/04/2019
 -- Description:	Elimina la invitacion que previamente fue invitado
 -- =============================================
-ALTER PROCEDURE [dbo].[eliminarInvitacion]
+CREATE PROCEDURE [dbo].[eliminarInvitacion]
 	@idPersona int
 AS
 BEGIN
@@ -94,7 +94,7 @@ GO
 -- Create date: 19/04/2019
 -- Description:	Elimina la invitacion que previamente fue invitado
 -- =============================================
-ALTER PROCEDURE [dbo].[getPersonaID]
+CREATE PROCEDURE [dbo].[getPersonaID]
 	@idPersona int
 AS
 BEGIN
