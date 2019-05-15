@@ -88,7 +88,7 @@ public class Verificacion_Codigo extends AppCompatActivity {
         Hashtable<String, String> parametros = new Hashtable<>();
         parametros.put("accion", "Codigo");
         parametros.put("contrasena", invitacion.getText().toString());
-        StandarRequestConfiguration config = new StandarRequestConfiguration(getString(R.string.url), MethodType.GET, parametros);
+        StandarRequestConfiguration config = new StandarRequestConfiguration(R.string.url+"/invitacion/getInvitacionCodigo/", MethodType.GET,parametros);
         String json = HttpConnection.sendRequest(config);
         Invitacion invitacion = null;
         try {
