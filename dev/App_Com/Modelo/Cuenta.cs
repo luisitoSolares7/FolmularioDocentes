@@ -28,10 +28,12 @@ public class Cuenta
         this.nombreCuenta = nombreCuenta;
     }
 
-    public Cuenta(int cuentaId, string contracena, string nombreCuenta)
+    public Cuenta(int cuentaId, string contracena, string nombreCuenta,int tipo,Boolean estado)
     {
         this.cuentaId = cuentaId;
         this.contracena = contracena;
+        this.tipo = tipo;
+        this.estado = estado;
         this.nombreCuenta = nombreCuenta;
     }
 

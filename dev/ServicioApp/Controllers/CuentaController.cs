@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace ServicioApp.Controllers
 {
-    [RoutePrefix("api/cuenta")]
+    [RoutePrefix("api")]
     public class CuentaController : ApiController
     {
         [HttpPost]
@@ -27,6 +27,27 @@ namespace ServicioApp.Controllers
             else
             {
                 msg = Request.CreateResponse<Cuenta>(HttpStatusCode.NotFound, null);
+            }
+
+            return msg;
+        }
+        [HttpPost]
+        [Route("creacionCuenta")]
+        public HttpResponseMessage getCuenta([FromBody]Cuenta cuenta)
+        {
+            HttpResponseMessage msg = null;
+            int idtoken = cuenta.cuentaId;
+            string user = cuenta.nombreCuenta;
+            string password = cuenta.contracena;
+            Boolean bandera=CuentaBRL.insertarCuenta(user, password);
+            Boolean bandera2=InvitacionBRL.actualizarInvitacion(idtoken);
+            if (bandera && bandera2)
+            {
+                msg = Request.CreateResponse<Boolean>(HttpStatusCode.OK, true);
+            }
+            else
+            {
+                msg = Request.CreateResponse<Boolean>(HttpStatusCode.NotFound, false);
 
             }
 

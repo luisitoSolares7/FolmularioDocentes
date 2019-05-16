@@ -11,7 +11,9 @@ insert into tblCuenta(nombreCuenta,contracena,tipo,estado) values ('Jose Carlos 
 GO
 insert into tblInvitacion (token,fechaInvitacion,fechaRespuesta,estado,fkCuenta,fkPersona) values ('1234567',GETDATE(),GETDATE(),1,3,1);
 GO
-
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionCodigo]') AND type in (N'P', N'PC'))
+drop Function [dbo].[p_verificacionCodigo];
+go
 create function [dbo].[p_verificacionCodigo]
 (
 @p_token text

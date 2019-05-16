@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ServicioApp.Controllers
         public HttpResponseMessage getVerificacion(string token)
         {
             HttpResponseMessage msg = null;
-            Invitacion invitacion = InvitacionBRL.GetInvitacion(token);           
+            Invitacion invitacion = InvitacionBRL.getInvitacion(token);           
             msg = Request.CreateResponse<Invitacion>(HttpStatusCode.OK, invitacion);
             return msg;
         }

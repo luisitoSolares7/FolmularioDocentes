@@ -112,6 +112,10 @@ GO
 ALTER TABLE tblResAccidente
 ADD FOREIGN KEY (fkAccidente) REFERENCES tblFormFotocopia(id);
 GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionLogin]') AND type in (N'P', N'PC'))
+drop Function [dbo].[p_verificacionLogin];
+GO
 create function [dbo].[p_verificacionLogin]
 (@p_contra varchar(30)
 ) returns varchar(30)
@@ -119,6 +123,9 @@ as
 begin
  return CONVERT(VARCHAR(30), HashBytes('MD5', @p_contra), 2);
 end;
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionUsuarios]') AND type in (N'P', N'PC'))
+drop Function [dbo].[p_verificacionUsuarios];
 GO
 create function [dbo].[p_verificacionUsuarios]
 (@p_usuario varchar(45),

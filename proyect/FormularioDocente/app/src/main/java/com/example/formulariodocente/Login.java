@@ -12,6 +12,16 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.httpclient.HttpConnection;
 import com.example.formulariodocente.httpclient.MethodType;
 import com.example.formulariodocente.httpclient.StandarRequestConfiguration;
@@ -20,7 +30,13 @@ import com.example.formulariodocente.modelos.Cuenta;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
+import java.util.prefs.Preferences;
+
+import okhttp3.internal.Util;
 
 public class Login extends AppCompatActivity {
 
@@ -59,7 +75,6 @@ public class Login extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
                 if (user.getText().toString().equals("") && password.getText().toString().equals("")) {
                     Toast.makeText(Login.this, "Ingrese bien los campos", Toast.LENGTH_SHORT).show();
                 } else {
@@ -67,7 +82,7 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
                     } else {
                         if (password.getText().toString().equals("")) {
-                            Toast.makeText(Login.this, "Ingrese la contraceña", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
                         } else {
                             hasit();
                         }
@@ -75,8 +90,8 @@ public class Login extends AppCompatActivity {
                 }
             }
 
-    });
-}
+        });
+    }
 
     private void searchAction() {
         progreso.setVisibility(View.VISIBLE);
@@ -93,7 +108,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void hasit() {
-
 
         AsyncTask<Void, String, Cuenta> task = new AsyncTask<Void, String, Cuenta>() {
 
@@ -140,10 +154,11 @@ public class Login extends AppCompatActivity {
 
     public Cuenta cargar() {
         Hashtable<String, String> parametros = new Hashtable<>();
-        parametros.put("accion", "Login");
-        parametros.put("usuario", user.getText().toString() + "");
-        parametros.put("contrasena", password.getText().toString() + "");
-        StandarRequestConfiguration config = new StandarRequestConfiguration(getString(R.string.url), MethodType.GET, parametros);
+        parametros.put("nombreCuenta", user.getText().toString() + "");
+        parametros.put("contracena", password.getText().toString() + "");
+
+        String url = this.getString(R.string.url) + "login";
+        StandarRequestConfiguration config = new StandarRequestConfiguration(url, MethodType.POST, parametros);
         String json = HttpConnection.sendRequest(config);
         Cuenta cuenta = null;
         try {
@@ -154,10 +169,6 @@ public class Login extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (cuenta == null) {
-            Toast.makeText(null, "eroor", Toast.LENGTH_SHORT).show();
-        }
-
         return cuenta;
 
     }

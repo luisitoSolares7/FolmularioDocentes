@@ -9,7 +9,7 @@ using App_Com.DAL.InvitacionDSTableAdapters;
 
 public class InvitacionBRL
 {
-    public static Invitacion GetInvitacion(string token)
+    public static Invitacion getInvitacion(string token)
     {
         Invitacion invitacion = null;
         pr_verificacionCodigoTableAdapter adapter = new pr_verificacionCodigoTableAdapter();
@@ -24,6 +24,17 @@ public class InvitacionBRL
         }
         return invitacion;
 
+    }
+    public static Boolean actualizarInvitacion(int idInvitacion)
+    {
+        try {
+            pr_verificacionCodigoTableAdapter adapter = new pr_verificacionCodigoTableAdapter();
+            adapter.Update(idInvitacion);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
     public static Invitacion getInvitacionID(int id)
     {
