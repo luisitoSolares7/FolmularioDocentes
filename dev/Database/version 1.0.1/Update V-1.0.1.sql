@@ -111,3 +111,20 @@ SELECT [id]
   FROM [dbo].[tblPersona]
   where [id]=@idPersona
 END
+GO
+DELETE FROM [dbo].[tblVersion]
+GO
+
+USE [formularios]
+GO
+
+INSERT INTO [dbo].[tblVersion]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,0
+           ,1)
+GO
+

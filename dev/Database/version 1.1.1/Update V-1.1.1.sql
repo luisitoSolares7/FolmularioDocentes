@@ -101,3 +101,19 @@ BEGIN
 	WHERE id = @id_token;
 END
 GO
+DELETE FROM [dbo].[tblVersion]
+GO
+
+USE [formularios]
+GO
+
+INSERT INTO [dbo].[tblVersion]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,1
+           ,1)
+GO
+

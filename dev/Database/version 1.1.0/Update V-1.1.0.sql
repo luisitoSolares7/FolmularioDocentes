@@ -22,3 +22,20 @@ as
 return (select inv.id as invitacion, concat(per.nombre,' ',per.apellidoP) AS nombre, per.correo as correo, inv.estado as estado from tblInvitacion inv  
 join tblPersona per on  per.id=inv.fkPersona where inv.token like @p_token);
 GO
+DELETE FROM [dbo].[tblVersion]
+GO
+
+USE [formularios]
+GO
+
+INSERT INTO [dbo].[tblVersion]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,1
+           ,0)
+GO
+
+
