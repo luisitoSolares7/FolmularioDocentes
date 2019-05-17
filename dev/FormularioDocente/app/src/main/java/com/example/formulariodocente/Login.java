@@ -1,42 +1,30 @@
 package com.example.formulariodocente;
 
+
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.formulariodocente.httpclient.HttpConnection;
-import com.example.formulariodocente.httpclient.MethodType;
-import com.example.formulariodocente.httpclient.StandarRequestConfiguration;
 import com.example.formulariodocente.modelos.Cuenta;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
-import java.util.prefs.Preferences;
-
-import okhttp3.internal.Util;
 
 public class Login extends AppCompatActivity {
 
@@ -44,6 +32,7 @@ public class Login extends AppCompatActivity {
     private FloatingActionButton fab;
     private View vista;
     private TextInputEditText user, password;
+    TextView tengoCodigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +42,26 @@ public class Login extends AppCompatActivity {
         vista = findViewById(android.R.id.content);
         progreso = (ProgressBar) findViewById(R.id.progress_bar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        tengoCodigo = findViewById(R.id.tengoCodigo);
         user = vista.findViewById(R.id.usuario);
         password = vista.findViewById(R.id.contrasena);
-
-        ((View) findViewById(R.id.tengoCodigo)).setOnClickListener(new View.OnClickListener() {
+        tengoCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, Verificacion_Codigo.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                abrir();
             }
         });
+/*        ((View) findViewById(R.id.tengoCodigo)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent intent = new Intent(Login.this, Verificacion_Codigo.class);
+                //startActivity(intent);
+                try {
+                } catch (Exception ex) {
+
+                }
+            }
+        });*/
         ((View) findViewById(R.id.olvidoContra)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,101 +74,75 @@ public class Login extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                if (user.getText().toString().equals("") && password.getText().toString().equals("")) {
-                    Toast.makeText(Login.this, "Ingrese bien los campos", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (user.getText().toString().equals("")) {
-                        Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (password.getText().toString().equals("")) {
-                            Toast.makeText(Login.this, "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
-                        } else {
-                            hasit();
-                        }
-                    }
-                }
+                validadacion(user.getText().toString().trim(), password.getText().toString().trim());
             }
-
         });
     }
 
-    private void searchAction() {
-        progreso.setVisibility(View.VISIBLE);
-        fab.setAlpha(0f);
-
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                progreso.setVisibility(View.GONE);
-                fab.setAlpha(1f);
-            }
-
-            ;
-        }, 1000);
-    }
-
-    public void hasit() {
-
-        AsyncTask<Void, String, Cuenta> task = new AsyncTask<Void, String, Cuenta>() {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                progreso.setVisibility(View.VISIBLE);
-                fab.setAlpha(0f);
-
-            }
-
-            @Override
-            protected Cuenta doInBackground(Void... voids) {
-                Cuenta docente = null;
-                try {
-                    docente = cargar();
-                } catch (Exception ex) {
-                    Log.e("", "Error al cargar la lista de carreras", ex);
-                    docente = null;
-                }
-
-                return docente;
-            }
-
-            @Override
-            protected void onPostExecute(Cuenta usuarios) {
-                super.onPostExecute(usuarios);
-                progreso.setVisibility(View.GONE);
-                fab.setAlpha(1f);
-                if (usuarios != null) {
-                    Toast.makeText(Login.this, "Bienvenido " + usuarios.getNombreCuenta().toString(), Toast.LENGTH_SHORT).show();
-                    user.setText("");
-                    password.setText("");
-                    //finish();
+    public void validadacion(String nombre, String password) {
+        if (nombre.equals("") && password.equals("")) {
+            Toast.makeText(Login.this, "Ingrese bien los campos", Toast.LENGTH_SHORT).show();
+        } else {
+            if (nombre.equals("")) {
+                Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
+            } else {
+                if (password.equals("")) {
+                    Toast.makeText(Login.this, "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Login.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
-                    user.setText("");
-                    password.setText("");
+                    progreso.setVisibility(View.VISIBLE);
+                    fab.setAlpha(0f);
+                    vollyAc(nombre, password);
                 }
             }
-        };
-        task.execute();
+        }
     }
 
-    public Cuenta cargar() {
-        Hashtable<String, String> parametros = new Hashtable<>();
-        parametros.put("nombreCuenta", user.getText().toString() + "");
-        parametros.put("contracena", password.getText().toString() + "");
+    public void vollyAc(final String usuario, final String pass) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String urlM = getString(R.string.url) + "login";
 
-        String url = this.getString(R.string.url) + "login";
-        StandarRequestConfiguration config = new StandarRequestConfiguration(url, MethodType.POST, parametros);
-        String json = HttpConnection.sendRequest(config);
-        Cuenta cuenta = null;
-        try {
-            if (json != null) {
-                JSONObject obje = new JSONObject(json);
-                cuenta = new Cuenta(obje.getInt("cuentaId"), obje.getString("nombreCuenta"), obje.getString("contracena"));
+        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, urlM,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progreso.setVisibility(View.GONE);
+                        fab.setAlpha(1f);
+
+                        Cuenta cuenta = null;
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            if (response != null) {
+                                cuenta = new Cuenta(json.getInt("cuentaId"), json.getString("nombreCuenta"), json.getString("contracena"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(Login.this, cuenta.getNombreCuenta(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ERROR", error.getMessage());
+                progreso.setVisibility(View.GONE);
+                fab.setAlpha(1f);
+                Toast.makeText(Login.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return cuenta;
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("nombreCuenta", usuario);
+                params.put("contracena", pass);
+                return params;
+            }
 
+        };
+        queue.add(jsonObjectRequest);
+    }
+
+    public void abrir() {
+        Toast.makeText(Login.this, "abrio", Toast.LENGTH_SHORT).show();
+        //DialogoToken dialog = new DialogoToken(this);
     }
 }
