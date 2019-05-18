@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.formulariodocente.menu.MenuDrawerDocente;
 import com.example.formulariodocente.modelos.Cuenta;
 
 import org.json.JSONException;
@@ -71,19 +72,28 @@ public class Login extends AppCompatActivity {
     public void validadacion(String nombre, String password) {
         if (nombre.equals("") && password.equals("")) {
             Toast.makeText(Login.this, "Ingrese bien los campos", Toast.LENGTH_SHORT).show();
-        } else {
-            if (nombre.equals("")) {
-                Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
-            } else {
-                if (password.equals("")) {
-                    Toast.makeText(Login.this, "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
-                } else {
-                    progreso.setVisibility(View.VISIBLE);
-                    fab.setAlpha(0f);
-                    vollyAc(nombre, password);
-                }
-            }
+            return;
         }
+        if (nombre.equals("")) {
+            Toast.makeText(Login.this, "Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show();
+            vaciar();
+            return;
+        }
+        if (password.equals("")) {
+            Toast.makeText(Login.this, "Ingrese la contraseña", Toast.LENGTH_SHORT).show();
+            vaciar();
+            return;
+        }
+        if (password.length()<7) {
+            Toast.makeText(Login.this, "la contraseña no puede ser menor a 7 digitos", Toast.LENGTH_SHORT).show();
+            vaciar();
+            return;
+        }
+
+        progreso.setVisibility(View.VISIBLE);
+        fab.setAlpha(0f);
+        vollyAc(nombre, password);
+
     }
 
     public void vollyAc(final String usuario, final String pass) {
@@ -101,10 +111,15 @@ public class Login extends AppCompatActivity {
                         try {
                             JSONObject json = new JSONObject(response);
                             if (response != null) {
-                                cuenta = new Cuenta(json.getInt("cuentaId"), json.getString("nombreCuenta"), json.getString("contracena"));
+                                cuenta = new Cuenta(json.getInt("cuentaId"), json.getString("nombreCuenta"), json.getString("contracena"), json.getInt("tipo"), json.getBoolean("estado"));
                             }
+                            vaciar();
+                            Intent intent = new Intent(Login.this, MenuDrawerDocente.class);
+                            startActivity(intent);
+
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                          //  e.printStackTrace();
+
                         }
 
                         Toast.makeText(Login.this, cuenta.getNombreCuenta(), Toast.LENGTH_SHORT).show();
@@ -112,10 +127,11 @@ public class Login extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR", error.getMessage());
+                //Log.e("ERROR", error.getMessage());
+                vaciar();
                 progreso.setVisibility(View.GONE);
                 fab.setAlpha(1f);
-                Toast.makeText(Login.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "no existe usuario", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -133,5 +149,9 @@ public class Login extends AppCompatActivity {
     public void abrir() {
         Toast.makeText(Login.this, "abrio", Toast.LENGTH_SHORT).show();
         DialogoToken dialog = new DialogoToken(this);
+    }
+    public void vaciar(){
+        this.user.setText("");
+        this.password.setText("");
     }
 }

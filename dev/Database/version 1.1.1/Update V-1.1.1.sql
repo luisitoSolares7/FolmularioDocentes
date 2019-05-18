@@ -37,9 +37,8 @@ BEGIN
 
     -- Insert statements for procedure here
 select inv.id as invitacion, concat(per.nombre,' ',per.apellidoP) AS nombre, per.correo as correo, inv.estado as estado 
-from tblInvitacion inv  
-join tblPersona per on  per.id=inv.fkPersona 
-where inv.token like @p_token;
+from tblInvitacion inv join tblPersona per on per.id=inv.fkPersona
+where inv.token like @p_token and inv.estado=0;
 END  
 
 GO

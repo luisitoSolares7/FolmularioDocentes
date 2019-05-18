@@ -36,7 +36,8 @@ public class DialogoToken {
         init();
         dialogo.show();
     }
-    public void init(){
+
+    public void init() {
 
         invitacionEd = dialogo.findViewById(R.id.invitacion);
         btnVerificar = dialogo.findViewById(R.id.btnVerificar);
@@ -51,10 +52,10 @@ public class DialogoToken {
             }
         });
     }
-    public void VolleyGet(String codigo) {
 
+    public void VolleyGet(String codigo) {
         RequestQueue queue = Volley.newRequestQueue(dialogo.getContext());
-        final String url = dialogo.getContext().getString(R.string.url) + "invitacion/verify/"+codigo;
+        final String url = dialogo.getContext().getString(R.string.url) + "invitacion/verify/" + codigo;
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -64,15 +65,18 @@ public class DialogoToken {
                         try {
                             Invitacion invitacion = null;
                             if (response != null) {
-                                invitacion = new Invitacion(response.getString("codigoId"), response.getString("nombre"));
+                                invitacion = new Invitacion(response.getString("id"), response.getString("nombre"));
                                 Intent downloadIntent = new Intent(dialogo.getContext(), Creacion_Cuenta.class);
                                 downloadIntent.putExtra("token", invitacion.getId() + "");
                                 downloadIntent.putExtra("nombre", invitacion.getToken() + "");
                                 invitacionEd.setText("");
                                 dialogo.getContext().startActivity(downloadIntent);
+                            } else {
+                                Toast.makeText(dialogo.getContext(), "Error token no valido", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(dialogo.getContext(), "Error en el codigo", Toast.LENGTH_SHORT).show();
+                            invitacionEd.setText("");
                         }
                     }
                 },
@@ -80,7 +84,7 @@ public class DialogoToken {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(dialogo.getContext(), "Error en el codigo", Toast.LENGTH_SHORT).show();
-
+                        invitacionEd.setText("");
                     }
                 }
         );

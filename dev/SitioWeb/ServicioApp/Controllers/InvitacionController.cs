@@ -17,8 +17,14 @@ namespace ServicioApp.Controllers
         public HttpResponseMessage getVerificacion(string token)
         {
             HttpResponseMessage msg = null;
-            Invitacion invitacion = InvitacionBRL.getInvitacion(token);           
-            msg = Request.CreateResponse<Invitacion>(HttpStatusCode.OK, invitacion);
+            Invitacion invitacion = InvitacionBRL.getInvitacion(token);
+            if (invitacion != null)
+            {
+                msg = Request.CreateResponse<Invitacion>(HttpStatusCode.OK, invitacion);
+            }
+            else {
+                msg = Request.CreateResponse<Invitacion>(HttpStatusCode.NotFound, null);
+            }
             return msg;
         }
     }

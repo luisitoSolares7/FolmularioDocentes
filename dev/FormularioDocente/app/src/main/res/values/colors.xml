@@ -317,4 +317,8 @@
     <color name="grey_800">#424242</color>
     <color name="grey_900">#212121</color>
     <color name="grey_1000">#1a1a1a</color>
+    
+    <color name="list_item_title">#AAAAAA</color>
+    <color name="list_group_title">#808080</color>
+    <color name="dividerColor">#80CBC4</color>
 </resources>

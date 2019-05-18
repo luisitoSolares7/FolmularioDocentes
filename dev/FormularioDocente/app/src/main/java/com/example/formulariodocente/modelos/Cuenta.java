@@ -1,9 +1,11 @@
 package com.example.formulariodocente.modelos;
 
 public class Cuenta {
-    int id;
-    String nombreCuenta;
-    String contracena;
+    private int id;
+    private String nombreCuenta;
+    private String contracena;
+    private int tipo;
+    private boolean estado;
 
     public Cuenta() {
     }
@@ -12,8 +14,16 @@ public class Cuenta {
         this.nombreCuenta = nombreCuenta;
     }
 
+    public Cuenta(int id, String nombreCuenta, String contracena, int tipo, boolean estado) {
+        this.id = id;
+        this.nombreCuenta = nombreCuenta;
+        this.contracena = contracena;
+        this.tipo = tipo;
+        this.estado = estado;
+    }
+
     public Cuenta(int id, String nombreCuenta, String contracena) {
-        this.id=id;
+        this.id = id;
         this.nombreCuenta = nombreCuenta;
         this.contracena = contracena;
     }

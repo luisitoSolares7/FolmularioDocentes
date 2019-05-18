@@ -63,7 +63,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE [dbo].[getPersona]
+CREATE PROCEDURE [dbo].[getPersona]
 
 AS
 BEGIN
