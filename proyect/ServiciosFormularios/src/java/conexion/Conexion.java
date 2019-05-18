@@ -13,8 +13,8 @@ import java.sql.DriverManager;
  * @author User
  */
 public class Conexion {
-    private static String url = "jdbc:sqlserver://localhost\\DESKTOP-O9IE2P5:1433;"
-            + "databaseName=Formularios;user=luis;password=luis;";
+    private static String url = "jdbc:sqlserver://DESKTOP-KBJ9AML\\SQLEXPRESS:1433;"
+            + "databaseName=Formularios; user=luis; password=luis;";
     protected static Connection conexion;
 
     public static void conectar() {

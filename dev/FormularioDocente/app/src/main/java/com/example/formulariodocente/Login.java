@@ -51,18 +51,7 @@ public class Login extends AppCompatActivity {
                 abrir();
             }
         });
-/*        ((View) findViewById(R.id.tengoCodigo)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Intent intent = new Intent(Login.this, Verificacion_Codigo.class);
-                //startActivity(intent);
-                try {
-                } catch (Exception ex) {
-
-                }
-            }
-        });*/
-        ((View) findViewById(R.id.olvidoContra)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.olvidoContra)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, Recuperacion_Cuenta.class);
@@ -143,6 +132,6 @@ public class Login extends AppCompatActivity {
 
     public void abrir() {
         Toast.makeText(Login.this, "abrio", Toast.LENGTH_SHORT).show();
-        //DialogoToken dialog = new DialogoToken(this);
+        DialogoToken dialog = new DialogoToken(this);
     }
 }

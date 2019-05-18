@@ -27,41 +27,6 @@ public class Verificacion_Codigo extends AppCompatActivity {
     private ProgressDialog dialog;
     private TextInputEditText invitacionEd;
 
-    public void VolleyGet(String codigo) {
-
-        RequestQueue queue = Volley.newRequestQueue(Verificacion_Codigo.this);
-        final String url = getString(R.string.url) + "invitacion/verify/"+codigo;
-
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            Invitacion invitacion = null;
-                            if (response != null) {
-                                invitacion = new Invitacion(response.getString("codigoId"), response.getString("nombre"));
-                                Intent downloadIntent = new Intent(Verificacion_Codigo.this, Creacion_Cuenta.class);
-                                downloadIntent.putExtra("token", invitacion.getId() + "");
-                                downloadIntent.putExtra("nombre", invitacion.getToken() + "");
-                                invitacionEd.setText("");
-                                startActivity(downloadIntent);
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(Verificacion_Codigo.this, "Error en el codigo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Verificacion_Codigo.this, "Error en el codigo", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
-        queue.add(getRequest);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +40,7 @@ public class Verificacion_Codigo extends AppCompatActivity {
                 if (invitacionEd.getText().toString().equals("")) {
                     Toast.makeText(Verificacion_Codigo.this, "Ponga el codigo", Toast.LENGTH_SHORT).show();
                 } else {
-                    VolleyGet(invitacionEd.getText().toString());
+                    //VolleyGet(invitacionEd.getText().toString());
                 }
             }
         });
