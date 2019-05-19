@@ -115,6 +115,7 @@ public class Login extends AppCompatActivity {
                             }
                             vaciar();
                             Intent intent = new Intent(Login.this, MenuDrawerDocente.class);
+                            intent.putExtra("idCuenta",cuenta.getId());
                             startActivity(intent);
 
                         } catch (JSONException e) {

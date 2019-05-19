@@ -33,4 +33,35 @@ public class CuentaBRL
         }
 
     }
+    public static Cuenta verificacionCuenta(int id, string password) {
+        Cuenta cuenta=null;
+        try
+        {
+            pr_verificacionUsuariosTableAdapter adapter = new pr_verificacionUsuariosTableAdapter();
+            CuentaDS.pr_verificacionUsuariosDataTable tabla = adapter.getVerficacionCuenta(id, password);
+            
+            if (tabla != null && tabla.Rows.Count > 0)
+            {
+                CuentaDS.pr_verificacionUsuariosRow fila = tabla[0];
+                cuenta = new Cuenta(fila.id, fila.contracena, fila.nombreCuenta, fila.tipo, fila.estado);
+
+            }
+        }
+        catch (Exception e) {
+        }
+        return cuenta;
+    }
+    public static Boolean actualizacionCuentaPassword(int id,string password) {
+        Cuenta cuenta = null;
+        try
+        {
+            pr_verificacionUsuariosTableAdapter adapter = new pr_verificacionUsuariosTableAdapter();
+            adapter.getActualizacionContraCuenta(id, password);
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
 }

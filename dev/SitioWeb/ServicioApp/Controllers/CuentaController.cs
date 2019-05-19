@@ -53,5 +53,30 @@ namespace ServicioApp.Controllers
 
             return msg;
         }
+        [HttpPost]
+        [Route("actualizar")]
+        public HttpResponseMessage getActualizarCuentaPassword([FromBody]Cuenta cuenta)
+        {
+            HttpResponseMessage msg = null;
+            int id = cuenta.cuentaId;
+            string password = cuenta.contracena;
+            string newPassword = cuenta.newContracena;
+            Cuenta cuentaPer = CuentaBRL.verificacionCuenta(id, password);
+            if (cuentaPer != null)
+            {
+                if (CuentaBRL.actualizacionCuentaPassword(id, newPassword))
+                {
+                    msg = Request.CreateResponse<Cuenta>(HttpStatusCode.OK, cuentaPer);
+                    return msg;
+                }
+                
+            }
+            else
+            {
+                msg = Request.CreateResponse<Cuenta>(HttpStatusCode.NotFound, cuentaPer);
+            }
+
+            return msg;
+        }
     }
 }

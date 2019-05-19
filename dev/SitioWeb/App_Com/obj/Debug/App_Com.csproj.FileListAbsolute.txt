@@ -5,3 +5,10 @@ D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\bin\Debug\App_Com.dll
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\bin\Debug\App_Com.pdb
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\obj\Debug\App_Com.dll
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\obj\Debug\App_Com.pdb
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll.config
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.pdb
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.csprojAssemblyReference.cache
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.csproj.CoreCompileInputs.cache
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.dll
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.pdb

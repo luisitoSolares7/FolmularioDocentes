@@ -13,6 +13,7 @@ public class Cuenta
     public String contracena { get; set; }
     public int tipo { get; set; }
     public Boolean estado { get; set; }
+    public string newContracena { get; set; }
 
     public Cuenta()
     {

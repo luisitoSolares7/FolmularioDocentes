@@ -16,6 +16,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.example.formulariodocente.Cambiar_Contra;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
 
@@ -26,6 +27,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
 
     private ActionBar actionBar;
     private Toolbar toolbar;
+    private int idCuenta;
     //
 
 
@@ -33,10 +35,17 @@ public class MenuDrawerDocente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_docente);
-        initToolbar();
-        initNavigationMenu();
+        this.init();
+        this.initToolbar();
+        this.initNavigationMenu();
     }
 
+    public void init() {
+        Bundle parametros = this.getIntent().getExtras();
+        if (parametros != null) {
+           idCuenta=parametros.getInt("idCuenta");
+        }
+    }
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -63,22 +72,33 @@ public class MenuDrawerDocente extends AppCompatActivity {
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(final MenuItem item) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                if (item.getItemId() == R.id.nav_home) {
-                    //  fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentCatalogo()).commit();
-                    Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
-                }
-                if (item.getItemId() == R.id.nav_trending) {
-                    //fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentPedido()).commit();
-                    Toast.makeText(MenuDrawerDocente.this, "treeding", Toast.LENGTH_SHORT).show();
-                }
-                actionBar.setTitle(item.getTitle());
+                acciones(item);
                 drawer.closeDrawers();
-
                 return true;
             }
         });
 
-        drawer.openDrawer(GravityCompat.START);
+        //drawer.openDrawer(GravityCompat.START);
+    }
+
+    public void acciones(MenuItem item) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        int valor = item.getItemId();
+        if (valor == R.id.nav_home) {
+            //  fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentCatalogo()).commit();
+            Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
+        }
+        if (valor == R.id.nav_trending) {
+            //fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentPedido()).commit();
+            Toast.makeText(MenuDrawerDocente.this, "treeding", Toast.LENGTH_SHORT).show();
+        }
+        if (valor == R.id.nav_salir) {
+            finish();
+        }
+        if (valor == R.id.nav_cambio) {
+            new Cambiar_Contra(MenuDrawerDocente.this, idCuenta);
+            return;
+        }
+        actionBar.setTitle(item.getTitle());
     }
 }

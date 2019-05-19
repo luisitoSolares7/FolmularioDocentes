@@ -17,18 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.formulariodocente.httpclient.HttpConnection;
-import com.example.formulariodocente.httpclient.MethodType;
-import com.example.formulariodocente.httpclient.StandarRequestConfiguration;
-import com.example.formulariodocente.menu.MenuDrawerDocente;
-import com.example.formulariodocente.modelos.Cuenta;
-import com.example.formulariodocente.modelos.Invitacion;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class Creacion_Cuenta extends AppCompatActivity {

@@ -44,7 +44,7 @@ public class DialogoToken {
         btnVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (invitacionEd.getText().toString().equals("")) {
+                if (invitacionEd.getText().toString().trim().equals("")) {
                     Toast.makeText(dialogo.getContext(), "Ponga el codigo", Toast.LENGTH_SHORT).show();
                 } else {
                     VolleyGet(invitacionEd.getText().toString());

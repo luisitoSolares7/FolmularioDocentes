@@ -16,21 +16,17 @@
             android:id="@+id/nav_latest"
             android:icon="@drawable/ic_schedule"
             android:title="Latest" />
-        <item
-            android:id="@+id/nav_highlight"
-            android:icon="@drawable/ic_highlight"
-            android:title="Highlight" />
     </group>
     <group
         android:id="@+id/grp_2"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/nav_settings"
+            android:id="@+id/nav_cambio"
             android:icon="@drawable/ic_settings"
-            android:title="Settings" />
+            android:title="Cambiar Contraseña" />
         <item
-            android:id="@+id/nav_help"
-            android:icon="@drawable/ic_help"
-            android:title="Help"></item>
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/go_out"
+            android:title="Salir"></item>
     </group>
 </menu>
