@@ -114,6 +114,10 @@ public class Login extends AppCompatActivity {
                                 cuenta = new Cuenta(json.getInt("cuentaId"), json.getString("nombreCuenta"), json.getString("contracena"), json.getInt("tipo"), json.getBoolean("estado"));
                             }
                             vaciar();
+                            if(!cuenta.isEstado()){
+                                Toast.makeText(Login.this, "la Cuenta no es habilitada..", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             Intent intent = new Intent(Login.this, MenuDrawerDocente.class);
                             intent.putExtra("idCuenta",cuenta.getId());
                             startActivity(intent);

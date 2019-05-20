@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"
                 android:layout_marginRight="-4dp"
-                android:hint="Ingrese su usuario"
+                android:hint="Ingrese su correo"
                 android:inputType="text"
                 android:maxLength="50"
                 android:maxLines="1"
@@ -50,6 +50,6 @@
             android:id="@+id/Confirmar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Confirmar Contraseña" />
+            android:text="Confirmar" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

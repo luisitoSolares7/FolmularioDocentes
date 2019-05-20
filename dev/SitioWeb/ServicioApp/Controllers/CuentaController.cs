@@ -78,5 +78,24 @@ namespace ServicioApp.Controllers
 
             return msg;
         }
+        [HttpPost]
+        [Route("recuperacionCuenta")]
+        public HttpResponseMessage getRecuperacionCuenta([FromBody]Cuenta cuenta)
+        {
+            HttpResponseMessage msg = null;
+
+            try
+            {
+                int id = cuenta.cuentaId;
+                string password = cuenta.contracena;
+                string nombreCuenta = cuenta.nombreCuenta;
+                InvitacionBRL.actualizacionCorreoInvitacion(id, nombreCuenta, password);
+                msg = Request.CreateResponse<Cuenta>(HttpStatusCode.OK,cuenta);
+            }
+            catch (Exception e) {
+                msg = Request.CreateResponse<Cuenta>(HttpStatusCode.NotFound, null);
+            }
+            return msg;
+        }
     }
 }

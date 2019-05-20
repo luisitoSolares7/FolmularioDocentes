@@ -26,6 +26,7 @@ public class Creacion_Cuenta extends AppCompatActivity {
     private Button btn;
     private ProgressDialog dialog;
     private String token;
+    private int fkCuenta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,10 @@ public class Creacion_Cuenta extends AppCompatActivity {
         this.btn = findViewById(R.id.btnCuenta);
         Bundle parametros = this.getIntent().getExtras();
         if (parametros != null) {
-            user.setText(parametros.getString("nombre") + "");
+            user.setText(parametros.getString("nombre"));
             token = parametros.getString("token");
+            fkCuenta = parametros.getInt("idCuenta");
+
         }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +73,11 @@ public class Creacion_Cuenta extends AppCompatActivity {
             this.pass.setText("");
             return;
         }
-        voleyGet(pass1, user, token);
+        if (fkCuenta != -1) {
+            voley(pass1, user, fkCuenta);
+        } else {
+            voleyGet(pass1, user, token);
+        }
     }
 
     private void voleyGet(final String pass, final String user, final String token) {
@@ -107,4 +114,37 @@ public class Creacion_Cuenta extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    private void voley(final String pass, final String user, final int idCuenta) {
+        dialog = ProgressDialog.show(Creacion_Cuenta.this, "Cargando datos", "Por favor espere...");
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String urlM = getString(R.string.url) + "recuperacionCuenta";
+
+        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, urlM,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        dialog.dismiss();
+                        Toast.makeText(Creacion_Cuenta.this, "Se actualizo la Cuenta... ", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dialog.dismiss();
+                Log.e("ERROR", error.getMessage());
+                Toast.makeText(Creacion_Cuenta.this, "No se pudo Actualizar la Cuenta", Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("contracena", pass);
+                params.put("nombreCuenta", user);
+                params.put("cuentaId", idCuenta + "");
+                return params;
+            }
+
+        };
+        queue.add(jsonObjectRequest);
+    }
 }

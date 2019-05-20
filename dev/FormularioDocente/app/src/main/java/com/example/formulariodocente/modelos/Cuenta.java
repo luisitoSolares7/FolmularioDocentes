@@ -51,4 +51,20 @@ public class Cuenta {
     public void setContracena(String contracena) {
         this.contracena = contracena;
     }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }
