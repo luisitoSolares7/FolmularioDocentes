@@ -3,10 +3,9 @@ use [Formularios]
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionCodigo]') AND type in (N'P', N'PC'))
 drop Function [dbo].[p_verificacionCodigo];
-go
+GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionUsuarios]') AND type in (N'P', N'PC'))
 drop Function [dbo].[p_verificacionUsuarios];
-go
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[pr_verificacionCodigo]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[pr_verificacionCodigo]
