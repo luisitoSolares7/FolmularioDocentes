@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FormularioDocente</string>
 
-    <string name="url">"http://192.168.43.89/soft/api/"</string>
+    <string name="url">"http://192.168.1.3/soft/api/"</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
