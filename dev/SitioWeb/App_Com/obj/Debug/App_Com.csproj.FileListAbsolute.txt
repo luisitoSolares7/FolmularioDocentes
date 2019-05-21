@@ -5,9 +5,19 @@ D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\bin\Debug\App_Com.dll
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\bin\Debug\App_Com.pdb
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\obj\Debug\App_Com.dll
 D:\materia\7mo semestre\Software 3 Proyect\dev\App_Com\obj\Debug\App_Com.pdb
+<<<<<<< HEAD
 D:\software\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll.config
 D:\software\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll
 D:\software\dev\SitioWeb\App_Com\bin\Debug\App_Com.pdb
 D:\software\dev\SitioWeb\App_Com\obj\Debug\App_Com.csprojResolveAssemblyReference.cache
 D:\software\dev\SitioWeb\App_Com\obj\Debug\App_Com.dll
 D:\software\dev\SitioWeb\App_Com\obj\Debug\App_Com.pdb
+=======
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll.config
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.dll
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\bin\Debug\App_Com.pdb
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.csprojAssemblyReference.cache
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.csproj.CoreCompileInputs.cache
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.dll
+D:\materia\7mo semestre\Software 3 Proyect\dev\SitioWeb\App_Com\obj\Debug\App_Com.pdb
+>>>>>>> a603054ee8d222c907053b2750d367dec0c473e7

@@ -9,28 +9,20 @@
     tools:context=".Verificacion_Codigo">
 
     <LinearLayout
-        android:layout_width="322dp"
-        android:layout_height="247dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="116dp"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781">
+        app:layout_constraintVertical_bias="0.542">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/lock" />
-
-        <view
-            android:layout_width="match_parent"
-            android:layout_height="0dp"></view>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -62,4 +54,5 @@
             android:layout_height="wrap_content"
             android:text="Confirmar" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

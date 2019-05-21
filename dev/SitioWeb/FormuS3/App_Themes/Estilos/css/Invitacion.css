@@ -1,11 +1,38 @@
 ﻿
-h1{
-   color: white;
-   margin-left: 38%;
+h1 {
+    color: white;
 }
-#titulo{
-    margin-top: 1%;
+
+#titulo {
+    margin-top: -9%;
 }
-#tabla{
-    margin-left:25%;
+.contenedor{
+    margin-top:50px;
+    position:relative;
+    display:grid;
+    text-align:center;
+}
+#tabla {
+    margin: auto;
+    height:450px;
+    width:800px;
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }

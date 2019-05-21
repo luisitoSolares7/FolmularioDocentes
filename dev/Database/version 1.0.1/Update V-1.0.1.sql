@@ -63,7 +63,11 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+<<<<<<< HEAD
  CREATE PROCEDURE [dbo].[getPersona]
+=======
+CREATE PROCEDURE [dbo].[getPersona]
+>>>>>>> a603054ee8d222c907053b2750d367dec0c473e7
 
 AS
 BEGIN

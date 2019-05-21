@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme">
+        <activity android:name=".menu.MenuDrawerDocente"></activity>
         <activity android:name=".Cambiar_Contra"></activity>
         <activity android:name=".Recuperacion_Cuenta" />
-        <activity android:name=".Verificacion_Codigo" />
         <activity android:name=".Creacion_Cuenta" />
         <activity android:name=".Login">
             <intent-filter>
