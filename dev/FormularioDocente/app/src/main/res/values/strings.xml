@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FormularioDocente</string>
+    <string name="url">"http://192.168.43.89/soft/api/"</string>
+</resources>
