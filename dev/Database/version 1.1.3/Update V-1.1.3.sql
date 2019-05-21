@@ -33,7 +33,8 @@ CREATE PROCEDURE pr_verificacionCorreo
 as
 begin
 select inv.fkCuenta as cuenta from tblInvitacion inv  join tblPersona  per on inv.fkPersona=per.id
-where per.correo=@p_correo and inv.estado=1;
+join tblCuenta Cue on inv.fkCuenta=Cue.id
+where per.correo=@p_correo and inv.estado=1 and Cue.tipo=2;
 end;
 GO
 -- =============================================
