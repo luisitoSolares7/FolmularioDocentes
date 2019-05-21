@@ -18,9 +18,7 @@
                 <asp:TextBox CssClass="form-control" ID="txtContracena" TextMode="Password" placeholder="Contraceña"  runat="server" required></asp:TextBox>
                 
             </div>
-            
            <asp:Button id="btnRegistrar" CssClass="btn btn-primary" type="submit"  runat="server" Text="Registrar"/>
- 
     </form>
  </div>
 

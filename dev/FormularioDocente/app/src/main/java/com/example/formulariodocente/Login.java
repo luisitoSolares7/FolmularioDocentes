@@ -115,19 +115,21 @@ public class Login extends AppCompatActivity {
                             }
                             vaciar();
                             if(!cuenta.isEstado()){
-                                Toast.makeText(Login.this, "la Cuenta no es habilitada..", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "la Cuenta no se encuentra habilitada..", Toast.LENGTH_SHORT).show();
                                 return;
                             }
+                            if(cuenta.getTipo()==2){
                             Intent intent = new Intent(Login.this, MenuDrawerDocente.class);
                             intent.putExtra("idCuenta",cuenta.getId());
                             startActivity(intent);
-
+                            }
+                            if(cuenta.getTipo()==3){
+                                Toast.makeText(Login.this,"Fotocopia..",Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                           //  e.printStackTrace();
 
                         }
-
-                        Toast.makeText(Login.this, cuenta.getNombreCuenta(), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
