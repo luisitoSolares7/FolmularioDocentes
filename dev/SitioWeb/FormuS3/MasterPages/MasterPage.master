@@ -4,20 +4,40 @@
 
 <html>
 <head runat="server">
-    <link href="../App_Themes/Default/css/Estilo.css" rel="stylesheet" />
+    <link href="../App_Themes/Estilos/css/Index.css" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
 
+    <form id="formulario" class="needs-validation" runat="server" novalidate>
+    <div>
+        <div id="cabezera">
+          <header>
+		<nav>
+			<ul>
+                <li><a href="#"><span class="primero"><i class="icon icon-house"></i></span>Historial de Pedidos</a>
+				</li>
+                <li><a href="#"><span class="segundo"><i class="icon icon-house"></i></span>Lista de Pedidos</a>
+				</li>
+				<li><a href="Invitacion.aspx"><span class="tercero"><i class="icon icon-tag"></i></span>Invitar Docente</a>
+				</li>
+                <li><a href="Default.aspx"><span class="cuarto"><i class="icon icon-tag"></i></span>Pagina Principal</a>
+				</li>
+				<li><a href="#"><span class="quinto"><i class="icon icon-suitcase"></i></span>Logout</a></li>
+				
+			</ul>
+		</nav>
+	</header>
+    </div>
+        <img id="fondo" src="../App_Themes/Default/img/fondoLogin.png" />
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
     </form>
+
 </body>
 </html>

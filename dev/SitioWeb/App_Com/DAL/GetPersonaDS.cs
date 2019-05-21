@@ -2,9 +2,25 @@
 {
 }
 
-namespace App_Com.GetPersonaDSTableAdapters {
+namespace App_Com.DAL.GetPersonaDSTableAdapters
+{
+
+
+    public partial class PersonaTableAdapter
+    {
+    }
+}
+namespace App_Com.DAL
+{
+
+
+    public partial class GetPersonaDS
+    {
+    }
+}
+namespace App_Com.DAL {
     
     
-    public partial class PersonaTableAdapter {
+    public partial class GetPersonaDS {
     }
 }

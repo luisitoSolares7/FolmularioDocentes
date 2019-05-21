@@ -1,0 +1,43 @@
+﻿<div id="myModal" class="modal fade formularios" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar Docente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="display:none" ">
+                    <lb>ID</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtID" runat="server"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <lb>Nombre</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server" required></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <lb>Apellido Paterno</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtApellidoP" runat="server" required></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <lb>Apellido Materno</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtApellidoM" runat="server" required></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <lb>Correo</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtCorreo" type="email" aria-describedby="emailHelp" runat="server" required></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <lb>Telefono</lb>
+                    <asp:TextBox CssClass="form-control" ID="txtTelefono" type="number" aria-describedby="emailHelp" runat="server" required></asp:TextBox>
+                </div>
+                
+
+            </div>
+            <div class="modal-footer">
+                <asp:Button id="btnRegistrar" CssClass="btn btn-primary" type="submit" runat="server" onclick="" Text="Registrar" />
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
