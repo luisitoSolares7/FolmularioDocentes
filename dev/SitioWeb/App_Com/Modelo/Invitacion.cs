@@ -19,9 +19,15 @@ public class Invitacion
         // TODO: Agregar aquí la lógica del constructor
         //
     }
+    public Invitacion(int codigoID) {
+        this.fkCuenta = codigoID;
+    }
 
-    
-    
+    public Invitacion(int codigoId, string nombre, int cuenta) {
+        this.id = codigoId;
+        this.nombre = nombre;
+        this.fkCuenta = cuenta;
+    }
     public Invitacion(int codigoId, string nombre)
     {
         this.id = codigoId;

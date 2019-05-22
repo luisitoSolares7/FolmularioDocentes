@@ -9,6 +9,27 @@ using App_Com.DAL.InvitacionDSTableAdapters;
 
 public class InvitacionBRL
 {
+    public static Invitacion verificacionCorreo(string correo) {
+        Invitacion invitacion = null;
+        pr_verificacionCorreoTableAdapter adapter = new pr_verificacionCorreoTableAdapter();
+        InvitacionDS.pr_verificacionCorreoDataTable tabla = adapter.getVerificacionCorreo(correo);
+        if (tabla != null && tabla.Rows.Count > 0)
+        {
+            InvitacionDS.pr_verificacionCorreoRow fila = tabla[0];
+            invitacion = new Invitacion(fila.cuenta);
+            
+        }
+        return invitacion;
+
+    }
+    public static void actualizacionCorreoInvitacion(int idCuenta, string nombreCuenta, string contrasena) {
+        pr_verificacionCorreoTableAdapter adapter = new pr_verificacionCorreoTableAdapter();
+        adapter.pr_actualizacionCorreoInvitacion(idCuenta, nombreCuenta, contrasena);
+    }
+    public static void desactivarEstado(int idCuenta,string token) {
+        pr_verificacionCorreoTableAdapter adapter = new pr_verificacionCorreoTableAdapter();
+        adapter.pr_desactivacionInvitacion(idCuenta,token);
+    }
     public static Invitacion getInvitacion(string token)
     {
         Invitacion invitacion = null;
@@ -19,7 +40,7 @@ public class InvitacionBRL
             InvitacionDS.pr_verificacionCodigoRow fila = tabla[0];
             if (fila.estado != true)
             {
-                invitacion = new Invitacion(fila.invitacion, fila.nombre);
+                invitacion = new Invitacion(fila.invitacion, fila.nombre,fila.cuenta);
             }
         }
         return invitacion;

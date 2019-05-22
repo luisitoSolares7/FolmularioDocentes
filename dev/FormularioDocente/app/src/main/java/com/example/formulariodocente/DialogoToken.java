@@ -45,6 +45,7 @@ public class DialogoToken {
             @Override
             public void onClick(View v) {
                 if (invitacionEd.getText().toString().trim().equals("")) {
+                    invitacionEd.setText("");
                     Toast.makeText(dialogo.getContext(), "Ponga el codigo", Toast.LENGTH_SHORT).show();
                 } else {
                     VolleyGet(invitacionEd.getText().toString());
@@ -65,10 +66,16 @@ public class DialogoToken {
                         try {
                             Invitacion invitacion = null;
                             if (response != null) {
-                                invitacion = new Invitacion(response.getString("id"), response.getString("nombre"));
+                                invitacion = new Invitacion(response.getString("id"), response.getString("nombre"),response.getInt("fkCuenta"));
                                 Intent downloadIntent = new Intent(dialogo.getContext(), Creacion_Cuenta.class);
                                 downloadIntent.putExtra("token", invitacion.getId() + "");
                                 downloadIntent.putExtra("nombre", invitacion.getToken() + "");
+                               try{
+                                   downloadIntent.putExtra("idCuenta", invitacion.getFkCuenta());
+                               }catch (Exception e){
+                                   downloadIntent.putExtra("idCuenta", -1);
+                               }
+
                                 invitacionEd.setText("");
                                 dialogo.getContext().startActivity(downloadIntent);
                             } else {
