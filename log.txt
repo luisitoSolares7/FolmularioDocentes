@@ -1,0 +1,373 @@
+commit 41f5417686ae49293dd709b241c76bf672a6e5e7
+Merge: 7dcd012 a603054
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Tue May 21 14:54:00 2019 -0400
+
+    restablecer
+
+commit 7dcd012e63864bab7c409a9868474f57f94975e0
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Tue May 21 14:19:49 2019 -0400
+
+    guardar
+
+commit a603054ee8d222c907053b2750d367dec0c473e7
+Author: Jose Elmer <joseelgp@gmail.com>
+Date:   Tue May 21 00:22:46 2019 -0400
+
+    re arreglo el conflicto que tenia Web.Config y se añadieron las vistas de Docente
+
+commit c98054064db7f8fd770aa06a9407b629975d1c22
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 21:53:22 2019 -0400
+
+    corrigiendo algunos problemas
+
+commit 8eab59e3a8698b6d3d5185b718a78a1b3a44ad7c
+Merge: f7974f4 cfd54c2
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 21:49:11 2019 -0400
+
+    Merge branch 'master' of https://github.com/luisitoSolares7/FolmularioDocentes
+
+commit f7974f45e2d217deb255d09ac9ad5f77a98719fa
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 21:48:48 2019 -0400
+
+    creacion de PR. para recuperacion de cuenta
+
+commit cfd54c2bf258ba24c6060fa52f42387c581d5399
+Author: luisitoSolares7 <48972186+luisitoSolares7@users.noreply.github.com>
+Date:   Mon May 20 19:41:04 2019 -0400
+
+    Update Web.config
+
+commit 89fe5ab2b557bf7132c3b83416011f27d9c0549c
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 19:32:53 2019 -0400
+
+    Cambio de cuenta App y creacion de servicio en web
+
+commit 05ec73a717769432e1f74f4eae7c3cbafedc683d
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 19:18:52 2019 -0400
+
+    creacion de Pr. para recuperacion de cuenta
+
+commit e0f0843311117cbf652c1bc357cf28794ca79511
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 20 19:12:55 2019 -0400
+
+    Creacion de Pr para recuperacion de Cuenta y modificacion de los Pr
+
+commit 5c280986dcd32369e01abf1427ebd89309078873
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sat May 18 22:02:13 2019 -0400
+
+    cambio de contraseña App
+
+commit 7d40c39eff5c12150ebb34e2fa52d5effbc345bc
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sat May 18 22:00:07 2019 -0400
+
+    se añadio Pr. para cambio de contraseña
+
+commit 564a40e360196e68193bbbc532df6f24415fff4b
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sat May 18 17:42:12 2019 -0400
+
+    Creacion de cuenta y algunas validaciones en la App
+
+commit 7027399404b44c669bf46e8badb8584cfb691199
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sat May 18 11:03:02 2019 -0400
+
+    corrigiendo
+
+commit 312e8e1a861e94811ddbaf7943400c791a781c57
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Fri May 17 18:45:17 2019 -0400
+
+    login y verificacion de codigo App
+
+commit 9814273d30b457bcf70596d66fb58f7703679a3e
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Thu May 16 12:04:58 2019 -0400
+
+    restructurado repositorio
+
+commit 4a6abdc858ac1ecde5b8d95fb6fa532c1c1f442f
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Thu May 16 09:18:11 2019 -0400
+
+    actualizando la base de datos creando nuevos procedimientos
+
+commit e38c3d32411ec083406a865b8610fc923bda7825
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Wed May 15 13:05:50 2019 -0400
+
+    Cambios en la WEB y Creacion de serviciosApp
+
+commit f4af0322d5cfb3d075221da99a2bdddd35870d07
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Mon May 13 20:31:37 2019 -0400
+
+    Arreglando estructura de la BD
+
+commit c69dda38b4c900ffddd19ee72e9a21efd86f2234
+Merge: 35a9ec2 d65ee1a
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Mon May 13 18:59:06 2019 -0400
+
+    Merge branch 'master' of github.com:luisitoSolares7/FolmularioDocentes
+
+commit 35a9ec243a9a211a79c3ae60dd474bedca571afc
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Mon May 13 18:55:07 2019 -0400
+
+    web
+
+commit ed5932dcc5e5bd6232fa0dbca98e0a1227db9357
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Mon May 13 17:49:51 2019 -0400
+
+    ---
+
+commit d65ee1a9476ea48854a2ecd1c28c1cf3e6704f93
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Tue May 7 22:05:44 2019 -0400
+
+    Agregando archivos faltantes
+
+commit 534588e32ea667996a197d7fa5de8ba356c6056c
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Tue Apr 23 23:19:38 2019 -0400
+
+    modificaciones
+
+commit a8a16099901274b550b8fcc5f479977488c7d62d
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Tue Apr 23 23:07:18 2019 -0400
+
+    modificacion en la App
+
+commit 81511a9f8dcdef08952ccba6f2d456b829fd6908
+Merge: e4c05d1 7f9b83a
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sun Apr 21 18:19:33 2019 -0400
+
+    Merge branch 'master' of https://github.com/luisitoSolares7/FolmularioDocentes
+
+commit e4c05d1f785877de4c819c40ab2b9ff33f109747
+Author: luisitoSolares <luisitosolares7@gmail.com>
+Date:   Sun Apr 21 18:19:22 2019 -0400
+
+    modificaciones y validaciones al momento de crear una cuenta
+
+commit 7f9b83a049f0a9b2c74cb76f045ee7163bdd6932
+Author: luisitoSolares7 <48972186+luisitoSolares7@users.noreply.github.com>
+Date:   Sun Apr 21 15:32:18 2019 -0400
+
+    Update ProcedimientosInvitacion.sql
+
+commit 6ede0e202eb6d1b7b32d2bbf1041cd28f792879b
+Author: luisitoSolares7 <48972186+luisitoSolares7@users.noreply.github.com>
+Date:   Sun Apr 21 15:31:49 2019 -0400
+
+    Update Update V-0-1-0.sql
+
+commit f61ab6cdf08d70ffda00943aa9401e2b58cc03dd
+Author: Carlos Cardozo <carlitosv37@hotmail.com>
+Date:   Sat Apr 20 11:31:52 2019 -0400
+
+    cambios de la app
+
+commit cf57e51ba4f76eee4ed88ca5c8398c1bd4ee3c1a
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 21:59:52 2019 -0400
+
+    indice
+
+commit e334f27bf199841d3d519c17a013168cd578773d
+Merge: 8a66c4e c38397a
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 21:38:42 2019 -0400
+
+    Merge branch 'master' of https://github.com/luisitoSolares7/FolmularioDocentes
+
+commit 8a66c4e526d8f0dd356bad38f4761ca30cac51be
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 21:38:13 2019 -0400
+
+    Actualizacion del Proyecto
+
+commit c38397a82cc29e99205ffa4bcc59a71e7df7292b
+Merge: cb32b87 984c4e1
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Fri Apr 19 19:19:44 2019 -0400
+
+    Merge remote-tracking branch 'origen/master'
+
+commit cb32b87e8e9456ed8f0620235f26ab2eaedce3bd
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Fri Apr 19 19:19:22 2019 -0400
+
+    Procedimientos Almacenados que usa la aplicacion web para invitar Usuarios
+
+commit 3a3381a67455c749298b2e543bcd431cf08f47f4
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Fri Apr 19 19:17:37 2019 -0400
+
+    se creo un WebServices vacio
+
+commit eb7a487d0fd9eacd64b538b79a4921a77f145965
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Fri Apr 19 19:12:40 2019 -0400
+
+    Se Añadio la funcionalidad de Invitar Docentes por un Mensaje de Correo Electronico para la creacion de Cuenta.
+
+commit 984c4e166fa311ca91b0f455999e8b6fbee0ac50
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 19:04:27 2019 -0400
+
+    guardar
+
+commit 7306c79d79733ff753fa032fbf2d0b8c4fc5486d
+Merge: fe6aa03 1016735
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 19:02:25 2019 -0400
+
+    guardar
+
+commit fe6aa03ddda6e309ad9ba420f0d58b89dc316361
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 18:51:56 2019 -0400
+
+    cambios guardar
+
+commit 10167354a8491a53dd01fbf72808786a1abd03bf
+Author: Carlos Cardozo <carlitosv37@hotmail.com>
+Date:   Fri Apr 19 18:46:08 2019 -0400
+
+    subir cambios
+
+commit b40f45fffda7f18e14a813c229799709b856ce3f
+Author: Carlos Cardozo <carlitosv37@hotmail.com>
+Date:   Fri Apr 19 18:32:10 2019 -0400
+
+    hola
+
+commit 67039c15933ee98ace0254383852e264715605d2
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 17:56:55 2019 -0400
+
+    Primera parte
+
+commit 9e0c66a85c253eaa6363adc32b18c363efb7b0a6
+Merge: cdd0645 a217f7f
+Author: Carlos Cardozo <carlitosv37@hotmail.com>
+Date:   Fri Apr 19 17:33:08 2019 -0400
+
+    Merge branch 'master' of https://github.com/luisitoSolares7/FolmularioDocentes
+
+commit cdd0645d54747ebf4a954a238182646fac4c6d44
+Author: Carlos Cardozo <carlitosv37@hotmail.com>
+Date:   Fri Apr 19 17:32:35 2019 -0400
+
+    Modifiacion de la APP
+
+commit a217f7f94c264ecf7def6bb4a1b4930c96afdea3
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 17:21:30 2019 -0400
+
+    Actualizacion de la App
+
+commit 3cdd0f18a6de9024ef34457c3fd597fcf6c07b5c
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 17:19:50 2019 -0400
+
+    Servicios para la App
+
+commit e0fbf58525faf3bb3960dd584189b072572fa312
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 17:05:38 2019 -0400
+
+    Se actualizo BD, se creo un procedimiento y se insertaron Datos
+
+commit 861094ebbdf4e622dc60d6e6b808ad5fb782dcff
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 15:25:35 2019 -0400
+
+    App
+
+commit 4bbdfa2e5f37026b2583f278ccbc38a2f46aae68
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Fri Apr 19 15:04:21 2019 -0400
+
+    modificacionde la App
+
+commit 1c86a70faf6e470340558f50dc3473e91f85dad3
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Thu Apr 18 19:51:33 2019 -0400
+
+    modificaciones en la App
+
+commit 250c00c6c06180f17909b7fd4da9741700917abc
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Thu Apr 18 16:04:21 2019 -0400
+
+    App
+
+commit 1cee970b2869b0185ebaa24f40e8edb79fbb33f8
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Thu Apr 18 02:33:42 2019 -0400
+
+    Nueva Version
+
+commit 5d886da5202c2632a8eb7a0d81d50b248143028f
+Author: Elmer Guzman <joseelgp@gmail.com>
+Date:   Thu Apr 18 02:31:14 2019 -0400
+
+    Version Inicial Validacion de Versiones de Base de Datos y APP
+
+commit 285c362c2c0d64997f02f259969d14b8381e3901
+Author: CardozoCarlos <49082909+CardozoCarlos@users.noreply.github.com>
+Date:   Tue Apr 16 21:30:59 2019 -0400
+
+    Update baseFormulario.sql
+
+commit ea63b84225d4464a0336cd041cde479c0f4add4a
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Tue Apr 16 21:01:46 2019 -0400
+
+    Corrigiendo script de bd y proyecto
+
+commit b8d717492530a8ed59d9d1fc8fa85d2d7379d6a7
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Tue Apr 16 19:50:09 2019 -0400
+
+    Corregido
+
+commit e2f7381cf766776b6eae686bba510d39a85fcece
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Tue Apr 16 19:39:26 2019 -0400
+
+    Corregidos
+
+commit 47f43778f2dbe1c6c1387c0b425be9933818ee7c
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Sat Apr 13 19:30:38 2019 -0400
+
+    App
+
+commit a636d17277fefafff7f410681fc3f9a90bd0a9ac
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Sat Apr 13 19:14:43 2019 -0400
+
+    BD del proyecto
+
+commit e51092ac962a89c3d0b0f7b9a165d642743cb72a
+Author: luisSolares <luisitosolares7@gmail.com>
+Date:   Sat Apr 13 18:42:27 2019 -0400
+
+    primer commit

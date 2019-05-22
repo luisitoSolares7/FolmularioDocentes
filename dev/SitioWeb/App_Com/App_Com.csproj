@@ -98,7 +98,9 @@
     <Content Include="DAL\CuentaDS.xsc">
       <DependentUpon>CuentaDS.xsd</DependentUpon>
     </Content>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DAL\CuentaDS.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CuentaDS.Designer.cs</LastGenOutput>

@@ -115,3 +115,4 @@ INSERT INTO [dbo].[tblVersion]
            ,1)
 GO
 
+select * from tblPersona
