@@ -1,10 +1,10 @@
 USE [Formularios]
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[pr_verificacionCuenta]') AND type in (N'P', N'PC'))
-drop Function [dbo].[p_verificacionUsuarios];
+drop Function [dbo].[pr_verificacionCuenta];
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[pr_remplazoContraCuenta]') AND type in (N'P', N'PC'))
-drop Function [dbo].[p_verificacionUsuarios];
+drop Function [dbo].[pr_remplazoContraCuenta];
 GO
 -- =============================================
 -- Author:luis Solares

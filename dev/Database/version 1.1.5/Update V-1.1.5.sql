@@ -35,5 +35,5 @@ INSERT INTO [dbo].[tblVersion]
      VALUES
            (1
            ,1
-           ,4)
+           ,5)
 GO

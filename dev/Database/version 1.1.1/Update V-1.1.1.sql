@@ -1,10 +1,10 @@
 GO
 use [Formularios]
-GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionCodigo]') AND type in (N'P', N'PC'))
+go
+if object_id('[dbo].[p_verificacionCodigo]') is not null
 drop Function [dbo].[p_verificacionCodigo];
-GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionUsuarios]') AND type in (N'P', N'PC'))
+go
+if object_id('[dbo].[p_verificacionUsuarios]') is not null
 drop Function [dbo].[p_verificacionUsuarios];
 GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[pr_verificacionCodigo]') AND type in (N'P', N'PC'))
@@ -46,7 +46,7 @@ GO
 -- Create date: 15/05/2019
 -- Description:	creacion PR de verficacion de Cuenta
 -- =============================================
-CREATE PROCEDURE [dbo].[pr_verificacionUsuarios]
+create PROCEDURE [dbo].[pr_verificacionUsuarios]
 	-- Add the parameters for the stored procedure here
 	@p_usuario varchar (45),
 	@p_contra varchar (30)
@@ -58,7 +58,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	select * from tblCuenta tblC
-    where tblC.nombreCuenta=@p_usuario and tblC.contracena =(select [dbo].[p_verificacionLogin](@p_contra)) and tipo=2 or tipo=3;
+    where tblC.nombreCuenta=@p_usuario and tblC.contracena =(select [dbo].[p_verificacionLogin](@p_contra)) and (tipo=2 or tipo=3);
 END
 GO
 -- =============================================
@@ -114,5 +114,3 @@ INSERT INTO [dbo].[tblVersion]
            ,1
            ,1)
 GO
-
-select * from tblPersona

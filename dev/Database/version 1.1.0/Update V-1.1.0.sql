@@ -9,13 +9,12 @@ INSERT INTO tblPersona (nombre,apellidoP,apellidoM,correo,telefono) VALUES('Clau
 GO
 insert into tblCuenta(nombreCuenta,contracena,tipo,estado) values ('Jose Carlos Gutierrez',(select [dbo].[p_verificacionLogin]('1234567')),2,1);
 GO
-insert into tblInvitacion (token,fechaInvitacion,fechaRespuesta,estado,fkCuenta,fkPersona) values ('1234567',GETDATE(),GETDATE(),1,3,1);
-GO
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[p_verificacionCodigo]') AND type in (N'P', N'PC'))
+insert into tblInvitacion (token,fechaInvitacion,fechaRespuesta,estado,fkCuenta,fkPersona) values ('1234567',GETDATE(),GETDATE(),1,1,1);
+go
+if object_id('[p_verificacionCodigo]') is not null
 drop Function [dbo].[p_verificacionCodigo];
 go
-create function [dbo].[p_verificacionCodigo]
-(
+create function [dbo].[p_verificacionCodigo](
 @p_token text
 ) returns table
 as

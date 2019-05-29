@@ -6,7 +6,7 @@ create table tblCuenta(
 id int IDENTITY primary key,
 nombreCuenta varchar(45),
 contracena varchar(30),
- tipo int,
+tipo int,
 estado bit
 );
 GO
@@ -16,8 +16,8 @@ token text,
 fechaInvitacion date,
 fechaRespuesta date,
 estado bit,
-fkCuenta int,
-fkPersona int
+fkCuenta int null,
+fkPersona int null
 );
 GO
 create table tblPersona(
@@ -110,7 +110,15 @@ ALTER TABLE tblResReprogramacion
 ADD FOREIGN KEY (fkReprogramacion) REFERENCES tblFormReprogramacion(id);
 GO
 ALTER TABLE tblResAccidente
-ADD FOREIGN KEY (fkAccidente) REFERENCES tblFormFotocopia(id);
+ADD FOREIGN KEY (fkAccidente) REFERENCES tblFormAccidente(id);
+GO
+
+ALTER TABLE tblInvitacion
+ADD FOREIGN KEY (fkPersona) REFERENCES tblPersona(id);
+GO
+
+ALTER TABLE tblInvitacion
+ADD FOREIGN KEY (fkCuenta) REFERENCES tblCuenta(id);
 GO
 
 GO

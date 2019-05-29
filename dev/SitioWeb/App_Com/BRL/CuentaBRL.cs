@@ -17,7 +17,6 @@ public class CuentaBRL
         {
             CuentaDS.pr_verificacionUsuariosRow fila = tabla[0];
             persona = new Cuenta(fila.id, fila.contracena, fila.nombreCuenta, fila.tipo, fila.estado);
-
         }
         return persona;
     }

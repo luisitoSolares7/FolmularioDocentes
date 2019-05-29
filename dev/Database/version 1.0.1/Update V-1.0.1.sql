@@ -10,6 +10,9 @@ GO
 -- Create date: 15/04/2019
 -- Description:	Buscar una Invitacion con su ID
 -- =============================================
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[buscarInvitacionID]') AND type in (N'P', N'PC'))
+drop procedure [dbo].[buscarInvitacionID];
+GO
 CREATE PROCEDURE [dbo].[buscarInvitacionID]
 	@idInvitacion int
 AS
@@ -39,6 +42,9 @@ GO
 -- Create date: 19/04/2019
 -- Description:	Elimina la invitacion que previamente fue invitado
 -- =============================================
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[eliminarInvitacion]') AND type in (N'P', N'PC'))
+drop procedure [dbo].[eliminarInvitacion];
+GO
 CREATE PROCEDURE [dbo].[eliminarInvitacion]
 	@idPersona int
 AS
@@ -63,12 +69,10 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-<<<<<<< HEAD
- CREATE PROCEDURE [dbo].[getPersona]
-=======
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[getPersona]') AND type in (N'P', N'PC'))
+drop procedure [dbo].[getPersona];
+GO
 CREATE PROCEDURE [dbo].[getPersona]
->>>>>>> a603054ee8d222c907053b2750d367dec0c473e7
-
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -98,6 +102,9 @@ GO
 -- Create date: 19/04/2019
 -- Description:	Elimina la invitacion que previamente fue invitado
 -- =============================================
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[getPersonaID]') AND type in (N'P', N'PC'))
+drop procedure [dbo].[getPersonaID];
+GO
 CREATE PROCEDURE [dbo].[getPersonaID]
 	@idPersona int
 AS

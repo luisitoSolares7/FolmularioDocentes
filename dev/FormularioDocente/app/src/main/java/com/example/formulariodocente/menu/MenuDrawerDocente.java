@@ -1,5 +1,6 @@
 package com.example.formulariodocente.menu;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +10,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.CursorTreeAdapter;
 import android.widget.ExpandableListAdapter;
@@ -20,6 +23,7 @@ import com.example.formulariodocente.Cambiar_Contra;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
 
+import java.security.acl.Group;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +33,8 @@ public class MenuDrawerDocente extends AppCompatActivity {
     private Toolbar toolbar;
     private int idCuenta;
     //
-
+    NavigationView nav_view;
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
     public void init() {
         Bundle parametros = this.getIntent().getExtras();
         if (parametros != null) {
-           idCuenta=parametros.getInt("idCuenta");
+            idCuenta = parametros.getInt("idCuenta");
         }
     }
 
@@ -57,8 +62,8 @@ public class MenuDrawerDocente extends AppCompatActivity {
     }
 
     private void initNavigationMenu() {
-        NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        nav_view = (NavigationView) findViewById(R.id.nav_view);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -73,7 +78,6 @@ public class MenuDrawerDocente extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(final MenuItem item) {
                 acciones(item);
-                drawer.closeDrawers();
                 return true;
             }
         });
@@ -87,18 +91,46 @@ public class MenuDrawerDocente extends AppCompatActivity {
         if (valor == R.id.nav_home) {
             //  fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentCatalogo()).commit();
             Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
+            cambio();
         }
-        if (valor == R.id.nav_trending) {
-            //fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentPedido()).commit();
-            Toast.makeText(MenuDrawerDocente.this, "treeding", Toast.LENGTH_SHORT).show();
+        if (valor == R.id.Redes) {
+            MenuItem d = nav_view.getMenu().findItem(R.id.caja);
+            item.setVisible(false);
+            d.setVisible(true);
+            return;
+        }
+        if (valor == R.id.caja) {
+            MenuItem d = nav_view.getMenu().findItem(R.id.Redes);
+            item.setVisible(false);
+            d.setVisible(true);
+        }
+        if (valor == R.id.doc1) {
+            cambio();
+        }
+        if (valor == R.id.doc2) {
+            cambio();
+        }
+        if (valor == R.id.doc3) {
+            cambio();
+        }
+        if (valor == R.id.doc4) {
+            cambio();
         }
         if (valor == R.id.nav_salir) {
             finish();
         }
         if (valor == R.id.nav_cambio) {
+            cambio();
             new Cambiar_Contra(MenuDrawerDocente.this, idCuenta);
             return;
         }
         actionBar.setTitle(item.getTitle());
+        drawer.closeDrawers();
+    }
+    private void cambio(){
+        MenuItem master = nav_view.getMenu().findItem(R.id.Redes);
+        MenuItem caja = nav_view.getMenu().findItem(R.id.caja);
+        caja.setVisible(false);
+        master.setVisible(true);
     }
 }
