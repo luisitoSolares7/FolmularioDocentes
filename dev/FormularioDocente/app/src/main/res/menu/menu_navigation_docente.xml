@@ -19,25 +19,25 @@
 
     <item
         android:id="@+id/Redes"
-        android:title="Documentos"
+        android:title="Formularios"
         android:icon="@drawable/doc"
         android:checkableBehavior="single"
         ></item>
     <item
         android:id="@+id/caja"
-        android:title="Documentos"
+        android:title="Formularios"
         android:icon="@drawable/doc"
         android:visible="false"
         android:checkableBehavior="single">
         <menu>
             <item
                 android:id="@+id/doc1"
-                android:title="Doc1"
+                android:title="Incidentes"
                 android:icon="@drawable/doc"
                 ></item>
             <item
                 android:id="@+id/doc2"
-                android:title="Doc2"
+                android:title="Fuera de Clases"
                 android:icon="@drawable/doc"
                 ></item>
             <item

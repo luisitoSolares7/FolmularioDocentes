@@ -21,7 +21,9 @@ import android.widget.Toast;
 
 import com.example.formulariodocente.Cambiar_Contra;
 import com.example.formulariodocente.R;
+import com.example.formulariodocente.fragment.Fragment_Historial;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
+import com.example.formulariodocente.fragment.Fragment_form_fuera_clases;
 
 import java.security.acl.Group;
 import java.util.List;
@@ -89,7 +91,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         int valor = item.getItemId();
         if (valor == R.id.nav_home) {
-            //  fragmentManager.beginTransaction().replace(R.id.main_content, new FragmentCatalogo()).commit();
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
             Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
             cambio();
         }
@@ -104,10 +106,15 @@ public class MenuDrawerDocente extends AppCompatActivity {
             item.setVisible(false);
             d.setVisible(true);
         }
+        if(valor==R.id.nav_historial){
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Historial(idCuenta)).commit();
+            cambio();
+        }
         if (valor == R.id.doc1) {
             cambio();
         }
         if (valor == R.id.doc2) {
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_form_fuera_clases(idCuenta)).commit();
             cambio();
         }
         if (valor == R.id.doc3) {
