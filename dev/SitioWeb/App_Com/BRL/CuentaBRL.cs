@@ -34,8 +34,7 @@ public class CuentaBRL
     }
     public static Cuenta verificacionCuenta(int id, string password) {
         Cuenta cuenta=null;
-        try
-        {
+        
             pr_verificacionUsuariosTableAdapter adapter = new pr_verificacionUsuariosTableAdapter();
             CuentaDS.pr_verificacionUsuariosDataTable tabla = adapter.getVerficacionCuenta(id, password);
             
@@ -45,13 +44,10 @@ public class CuentaBRL
                 cuenta = new Cuenta(fila.id, fila.contracena, fila.nombreCuenta, fila.tipo, fila.estado);
 
             }
-        }
-        catch (Exception e) {
-        }
+        
         return cuenta;
     }
     public static Boolean actualizacionCuentaPassword(int id,string password) {
-        Cuenta cuenta = null;
         try
         {
             pr_verificacionUsuariosTableAdapter adapter = new pr_verificacionUsuariosTableAdapter();
