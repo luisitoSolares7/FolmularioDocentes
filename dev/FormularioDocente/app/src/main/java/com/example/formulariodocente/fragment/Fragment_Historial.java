@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.formulariodocente.DialogoFrmFueraClases;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.adapter.ListadoAdapter;
 import com.example.formulariodocente.adapter.ListadoClick;
@@ -44,7 +46,7 @@ public class Fragment_Historial extends Fragment implements ListadoClick {
 
     public Fragment_Historial(int id) {
         this.idCuenta = id;
-        this.formularios=new ArrayList<>();
+        this.formularios = new ArrayList<>();
     }
 
     @Override
@@ -52,7 +54,7 @@ public class Fragment_Historial extends Fragment implements ListadoClick {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_historial, container, false);
-        recyclerView=vista.findViewById(R.id.recyclerHistorial);
+        recyclerView = vista.findViewById(R.id.recyclerHistorial);
         this.vollyAc();
         return vista;
     }
@@ -67,14 +69,14 @@ public class Fragment_Historial extends Fragment implements ListadoClick {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArray=new JSONArray(response);
+                            JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 String g;
-                                Listado user=new Listado(jsonObject.getInt("id"),jsonObject.getInt("fkCuenta"),jsonObject.getInt("fkTbl"),jsonObject.getBoolean("estado"),jsonObject.getString("nombre"),jsonObject.getInt("tipo"));
+                                Listado user = new Listado(jsonObject.getInt("id"), jsonObject.getInt("fkCuenta"), jsonObject.getInt("fkTbl"), jsonObject.getBoolean("estado"), jsonObject.getString("nombre"), jsonObject.getInt("tipo"));
                                 formularios.add(user);
                             }
-                        }catch (Exception e){
+                        } catch (Exception e) {
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -87,20 +89,26 @@ public class Fragment_Historial extends Fragment implements ListadoClick {
             public void onErrorResponse(VolleyError error) {
                 //Log.e("ERROR", error.getMessage());
                 dialog.dismiss();
-                Toast.makeText(vista.getContext(),"Ocurrio un error al cargar los DATOS!!!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(vista.getContext(), "Ocurrio un error al cargar los DATOS!!!", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id", idCuenta+"");
+                params.put("id", idCuenta + "");
                 return params;
             }
         };
         queue.add(jsonObjectRequest);
     }
+
     @Override
     public void actionListener(Listado obj, View view) {
-        Toast.makeText(vista.getContext(),obj.getFkTbl()+" "+obj.getTipo(),Toast.LENGTH_SHORT).show();
+        // Toast.makeText(vista.getContext(),obj.getFkTbl()+" "+obj.getTipo(),Toast.LENGTH_SHORT).show();
+        if (obj.getTipo() == 1) {
+            new DialogoFrmFueraClases(vista.getContext(),obj.getFkTbl());
+        }
+
+
     }
 }

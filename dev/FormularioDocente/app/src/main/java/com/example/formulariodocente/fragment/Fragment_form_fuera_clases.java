@@ -137,7 +137,7 @@ public class Fragment_form_fuera_clases extends Fragment {
             this.materia.setText("");
             return;
         }
-        if (grupo.equals("") || grupo.length() > 3) {
+        if (grupo.equals("") || grupo.length() > 2) {
             Toast.makeText(vista.getContext(), "ponga BIEN el nombre del grupo", Toast.LENGTH_SHORT).show();
            this.grupo.setText("");
             return;
