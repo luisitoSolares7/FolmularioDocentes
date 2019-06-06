@@ -8,5 +8,17 @@
     android:background="?attr/colorPrimary"
     app:contentInsetStartWithNavigation="0dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    <ImageView
+        android:src="@drawable/logo_nur"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <TextView
+        android:id="@+id/title"
+        android:paddingLeft= "10dp"
+        android:text="hlaaaaa"
+        android:textSize="20dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.v7.widget.Toolbar>

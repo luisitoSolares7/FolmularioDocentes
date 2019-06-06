@@ -1,25 +1,20 @@
 package com.example.formulariodocente.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -29,14 +24,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.formulariodocente.Login;
 import com.example.formulariodocente.R;
-import com.example.formulariodocente.menu.MenuDrawerDocente;
-import com.example.formulariodocente.modelos.Cuenta;
+import com.example.formulariodocente.gpsUbicacion;
 import com.example.formulariodocente.modelos.Frm_fueraClases;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -58,10 +48,14 @@ public class Fragment_form_fuera_clases extends Fragment {
     private ProgressDialog dialog;
     private int cuentaID;
     private int hora, minutos;
+    private ImageView imgGps;
+    private int reques_code = 1;
+
+    public Fragment_form_fuera_clases() {
+    }
 
     public Fragment_form_fuera_clases(int idCuenta) {
         this.cuentaID = idCuenta;
-
     }
 
     @Override
@@ -85,6 +79,7 @@ public class Fragment_form_fuera_clases extends Fragment {
         descActividad = vista.findViewById(R.id.descripActividad);
         lugActividad = vista.findViewById(R.id.lugarActividad);
         objActividad = vista.findViewById(R.id.objActividad);
+        imgGps = vista.findViewById(R.id.gpsFormFueraC);
     }
 
     private void initComponent() {
@@ -112,13 +107,23 @@ public class Fragment_form_fuera_clases extends Fragment {
                 mostrarHora(2);
             }
         });
-
+        imgGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirGps();
+            }
+        });
         btnFueraClases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validar();
             }
         });
+    }
+
+    private void abrirGps() {
+        Intent intent = new Intent(getActivity(), gpsUbicacion.class);
+        startActivityForResult(intent, 1);
     }
 
     public void validar() {
@@ -137,9 +142,9 @@ public class Fragment_form_fuera_clases extends Fragment {
             this.materia.setText("");
             return;
         }
-        if (grupo.equals("") || grupo.length() > 2) {
-            Toast.makeText(vista.getContext(), "ponga BIEN el nombre del grupo", Toast.LENGTH_SHORT).show();
-           this.grupo.setText("");
+        if (grupo.equals("") || grupo.length() > 3) {
+            Toast.makeText(vista.getContext(), "debe de contener 3 caractares", Toast.LENGTH_SHORT).show();
+            this.grupo.setText("");
             return;
         }
         if (fecha.equals("")) {
@@ -266,4 +271,10 @@ public class Fragment_form_fuera_clases extends Fragment {
         timePickerDialog.show();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+         if ((requestCode == reques_code) && (resultCode == Activity.RESULT_OK)) {
+           lugActividad.setText(data.getStringExtra("lugar"));
+        }
+    }
 }

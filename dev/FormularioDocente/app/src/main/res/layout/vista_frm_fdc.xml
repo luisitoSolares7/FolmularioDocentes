@@ -188,7 +188,7 @@
             android:id="@+id/lugarActividad"
             style="@style/EditText.Flat.Grey"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/spacing_xmlarge"
+            android:layout_height="50dp"
             android:layout_marginTop="@dimen/spacing_mlarge"
             android:background="@drawable/edit_text_round_bg_overlay_white"
             android:hint="lugar de la Actividad"

@@ -193,18 +193,37 @@
                 android:paddingRight="@dimen/spacing_middle"
                 android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/lugarActividad"
-                style="@style/EditText.Flat.Grey"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_xmlarge"
-                android:layout_marginTop="@dimen/spacing_mlarge"
-                android:background="@drawable/edit_text_round_bg_overlay_white"
-                android:hint="lugar de la Actividad"
-                android:minHeight="@dimen/spacing_xmlarge"
-                android:paddingLeft="@dimen/spacing_middle"
-                android:paddingRight="@dimen/spacing_middle"
-                android:textColor="@android:color/white" />
+                android:layout_height="72dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/lugarActividad"
+                    style="@style/EditText.Flat.Grey"
+                    android:layout_width="287dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="@dimen/spacing_mlarge"
+                    android:background="@drawable/edit_text_round_bg_overlay_white"
+                    android:hint="lugar de la Actividad"
+                    android:minHeight="@dimen/spacing_xmlarge"
+                    android:paddingLeft="@dimen/spacing_middle"
+                    android:paddingRight="@dimen/spacing_middle"
+                    android:textColor="@android:color/white" />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="0dp" />
+
+                <ImageView
+                    android:id="@+id/gpsFormFueraC"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/gps" />
+
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/bt_Fuera_clases"

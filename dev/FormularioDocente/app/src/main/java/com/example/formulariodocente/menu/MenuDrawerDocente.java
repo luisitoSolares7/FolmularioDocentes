@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.CursorTreeAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.formulariodocente.Cambiar_Contra;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.fragment.Fragment_Historial;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
+import com.example.formulariodocente.fragment.Fragment_form_Incidentes;
 import com.example.formulariodocente.fragment.Fragment_form_fuera_clases;
 
 import java.security.acl.Group;
@@ -37,7 +39,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
     //
     NavigationView nav_view;
     DrawerLayout drawer;
-
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +59,12 @@ public class MenuDrawerDocente extends AppCompatActivity {
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        title=toolbar.findViewById(R.id.title);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Inicio");
+        title.setText("INICIO");
+        actionBar.setTitle("");
     }
 
     private void initNavigationMenu() {
@@ -111,6 +115,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
             cambio();
         }
         if (valor == R.id.doc1) {
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_form_Incidentes(idCuenta)).commit();
             cambio();
         }
         if (valor == R.id.doc2) {
@@ -131,7 +136,8 @@ public class MenuDrawerDocente extends AppCompatActivity {
             new Cambiar_Contra(MenuDrawerDocente.this, idCuenta);
             return;
         }
-        actionBar.setTitle(item.getTitle());
+        //actionBar.setTitle(item.getTitle());
+        title.setText(item.getTitle());
         drawer.closeDrawers();
     }
     private void cambio(){

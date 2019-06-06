@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.DialogoFrmFueraClases;
+import com.example.formulariodocente.DialogoFrmIncidentes;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.adapter.ListadoAdapter;
 import com.example.formulariodocente.adapter.ListadoClick;
@@ -105,6 +106,9 @@ public class Fragment_Historial extends Fragment implements ListadoClick {
     @Override
     public void actionListener(Listado obj, View view) {
         // Toast.makeText(vista.getContext(),obj.getFkTbl()+" "+obj.getTipo(),Toast.LENGTH_SHORT).show();
+        if(obj.getTipo()==0){
+            new DialogoFrmIncidentes(vista.getContext(),obj.getFkTbl());
+        }
         if (obj.getTipo() == 1) {
             new DialogoFrmFueraClases(vista.getContext(),obj.getFkTbl());
         }

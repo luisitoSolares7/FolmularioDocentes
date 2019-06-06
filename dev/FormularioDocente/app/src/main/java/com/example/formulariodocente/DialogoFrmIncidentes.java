@@ -12,30 +12,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DialogoFrmFueraClases {
+public class DialogoFrmIncidentes {
     final Dialog dialogo;
     private Context context1;
     private EditText fecha;
     private EditText horario;
-    private EditText fechaActividad;
-    private EditText horaActividad;
-    private EditText materia;
-    private EditText grupo;
-    private EditText objActividad;
     private EditText descActividad;
-    private EditText lugActividad;
     private ProgressDialog dialog;
     private int cuentaID;
 
-    public DialogoFrmFueraClases(final Context context, int CuentaId) {
+    public DialogoFrmIncidentes(final Context context, int CuentaId) {
         context1 = context;
         dialogo = new Dialog(context);
-        dialogo.setContentView(R.layout.vista_frm_fdc);
+        dialogo.setContentView(R.layout.vista_frm_incidente);
         dialogo.setCancelable(true);
         cuentaID = CuentaId;
         init();
@@ -44,30 +39,18 @@ public class DialogoFrmFueraClases {
     }
 
     private void init() {
-        fecha = dialogo.findViewById(R.id.fechaFueraClases);
-        horario = dialogo.findViewById(R.id.HoraFueraClases);
-        fechaActividad = dialogo.findViewById(R.id.fechaFueraClasesActivid);
-        horaActividad = dialogo.findViewById(R.id.HoraFueraClasesActivid);
-        materia = dialogo.findViewById(R.id.materiaFueraClases);
-        grupo = dialogo.findViewById(R.id.grupoFueraClases);
-        descActividad = dialogo.findViewById(R.id.descripActividad);
-        lugActividad = dialogo.findViewById(R.id.lugarActividad);
-        objActividad = dialogo.findViewById(R.id.objActividad);
+        fecha = dialogo.findViewById(R.id.fechaIncidente);
+        horario = dialogo.findViewById(R.id.horaIncidente);
+        descActividad = dialogo.findViewById(R.id.descripIncidente);
 
         fecha.setEnabled(false);
-        materia.setEnabled(false);
         horario.setEnabled(false);
-        fechaActividad.setEnabled(false);
-        horaActividad.setEnabled(false);
-        grupo.setEnabled(false);
         descActividad.setEnabled(false);
-        lugActividad.setEnabled(false);
-        objActividad.setEnabled(false);
     }
 
     public void volley() {
         RequestQueue queue = Volley.newRequestQueue(dialogo.getContext());
-        String urlM = dialogo.getContext().getString(R.string.url) + "Formularios/getFueraClases";
+        String urlM = dialogo.getContext().getString(R.string.url) + "Formularios/getIncidente";
         dialog = ProgressDialog.show(dialogo.getContext(), "Cargando datos", "Por favor espere...");
 
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, urlM,
@@ -77,18 +60,10 @@ public class DialogoFrmFueraClases {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject != null) {
-                                materia.setText(jsonObject.getString("materia"));
-                                grupo.setText(jsonObject.getString("grupo"));
-                                objActividad.setText(jsonObject.getString("motivoActividad"));
-                                descActividad.setText(jsonObject.getString("descripActividad"));
-                                lugActividad.setText(jsonObject.getString("lugarActividad"));
+                                descActividad.setText(jsonObject.getString("descripcion"));
                                 String[] fechaO = jsonObject.getString("fecha").split("T");
-
                                 fecha.setText(fechaO[0]);
                                 horario.setText(fechaO[1]);
-                                fechaO = jsonObject.getString("fecha").split("T");
-                                fechaActividad.setText(fechaO[0]);
-                                horaActividad.setText(fechaO[1]);
 
                             }
                         } catch (Exception e) {
@@ -114,3 +89,4 @@ public class DialogoFrmFueraClases {
         queue.add(jsonObjectRequest);
     }
 }
+
