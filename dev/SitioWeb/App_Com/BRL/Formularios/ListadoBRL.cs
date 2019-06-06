@@ -18,8 +18,7 @@ public class ListadoBRL
             Listado listado=null;
             try {
                 listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.estado, row.fecha, row.autorizador, row.nombre, row.tipo);
-            }
-            catch (Exception e) {
+            }catch (Exception e) {
                 listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.estado, row.nombre, row.tipo);
             }
           
