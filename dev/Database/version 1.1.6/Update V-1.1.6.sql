@@ -40,6 +40,39 @@ ALTER TABLE [dbo].[tblResReprogramacion] ADD fecha DateTime null;
 GO
 ALTER TABLE [dbo].[tblResReprogramacion] ADD autorizador int null;
 GO
+ALTER TABLE [dbo].[tblFormReprogramacion] DROP COLUMN fecha;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD carrera  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD fecha  Date null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD materia  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD grupo  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD modalidad  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD horaI  Time null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD horaF  Time null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD dias  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD motivoSolicitud  text null;
+GO
+ALTER TABLE [dbo].[tblFormReprogramacion] ADD fechaActividad  Date null;
+GO
+create table vistaFormularios(
+id int IDENTITY primary key,
+fkCuenta int,
+fkTbl int,
+estado bit,
+fecha datetime,
+autorizador int,
+nombre text,
+tipo int
+);
+GO
 if object_id('[dbo].[pr_insertarFormClasesF]') is not null
   drop procedure [dbo].[pr_insertarFormClasesF];
 GO
@@ -56,20 +89,10 @@ create procedure [dbo].[pr_insertarFormClasesF]
  BEGIN
  insert into [dbo].[tblFormClasesFuera] (fecha,materia,grupo,motivoActividad,fechaActividad,descripActividad,lugarActividad)
  values (@fecha,@materia,@grupo,@motivoActividad,@fechaActividad,@descripActividad,@lugarActividad);
- insert into [dbo].[tblResClasesFuera](fkCuenta,fkClaseFuera,estado)
- values(@idCuenta,(select MAX(id) from tblFormClasesFuera),0);
+insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormClasesFuera),0,1,'Form. Fuera de Clases');
  END;
 GO
-if object_id('[dbo].[vistaFormularios]') is not null
-  drop view [dbo].[vistaFormularios];
-GO
-create view vistaFormularios as
-select id,fkCuenta,fkAccidente as fkTbl,estado,fecha,autorizador, 'Formulario Accidente' as nombre,0 as tipo from tblResAccidente
-union
-select id,fkCuenta,fkClaseFuera as fkTbl,estado,fecha,autorizador, 'Formulario Fuera de Clases' as nombre,1 as tipo from tblResClasesFuera
-union
-select id,fkCuenta,fkReprogramacion as fkTbl,estado,fecha,autorizador,'Formulario Reprogramacion' as nombre,2 as tipo from tblResReprogramacion
-Go
 if object_id('[dbo].[pr_getVistaFormularios]') is not null
   drop procedure [dbo].[pr_getVistaFormularios];
 GO
@@ -88,6 +111,65 @@ create procedure [dbo].[pr_getFormularioFueraC]
  as
  BEGIN
 	SELECT * FROM [dbo].[tblFormClasesFuera] where id=@id;
+ END;
+GO
+GO
+IF object_id('[dbo].[pr_insertarFormAccidente]') is not null
+  drop procedure [dbo].[pr_insertarFormAccidente];
+GO
+create procedure [dbo].[pr_insertarFormAccidente]
+@idCuenta int,
+@fecha DateTime,
+@descripActividad text
+ as
+ BEGIN
+ insert into [dbo].[tblFormAccidente] (descripcion,fecha)
+ values (@descripActividad,@fecha);
+insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormAccidente),0,0,'Form. de Incidente');
+ END;
+GO
+if object_id('[dbo].[pr_getFormularioAccidente]') is not null
+  drop procedure [dbo].[pr_getFormularioAccidente];
+GO
+create procedure [dbo].[pr_getFormularioAccidente]
+@id int
+ as
+ BEGIN
+	SELECT * FROM [dbo].[tblFormAccidente] where id=@id;
+ END;
+GO
+if object_id('[dbo].[pr_getFormularioReprogramacion]') is not null
+  drop procedure [dbo].[pr_getFormularioReprogramacion];
+GO
+create procedure [dbo].[pr_getFormularioReprogramacion]
+@id int
+ as
+ BEGIN
+	SELECT * FROM [dbo].[tblFormReprogramacion] where id=@id;
+ END;
+GO
+IF object_id('[dbo].[pr_insertarFormReprogramacion]') is not null
+  drop procedure [dbo].[pr_insertarFormReprogramacion];
+GO
+create procedure [dbo].[pr_insertarFormReprogramacion]
+@idCuenta int,
+@carrera text,
+@materia text,
+@grupo text,
+@modalidad text,
+@horaI Time,
+@horaF Time,
+@dias text,
+@motivoSolicitud text,
+@fecha date,
+@fechaSolicitud date
+ as
+ BEGIN
+ insert into [dbo].[tblFormReprogramacion] (carrera,materia,grupo,modalidad,horaI,horaF,dias,motivoSolicitud,fechaActividad,fecha)
+ values (@carrera,@materia,@grupo,@modalidad,@horaI,@horaF,@dias,@motivoSolicitud,@fechaSolicitud,@fecha);
+ insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormReprogramacion),0,2,'Form. de Reprogramacion');
  END;
 GO
 DELETE FROM [dbo].[tblVersion]
