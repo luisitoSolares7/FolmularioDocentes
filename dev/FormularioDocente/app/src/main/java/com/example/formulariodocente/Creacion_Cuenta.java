@@ -53,10 +53,16 @@ public class Creacion_Cuenta extends AppCompatActivity {
     }
 
     public void validacion(String pass1, String pass2, String user) {
+
         if (pass1.equals("") || pass2.equals("") || user.equals("")) {
             Toast.makeText(Creacion_Cuenta.this, "debe de llenar todos los campos ", Toast.LENGTH_SHORT).show();
             this.pass.setText("");
             this.pass2.setText("");
+            this.user.setText("");
+            return;
+        }
+        if (user.contains(" ")) {
+            Toast.makeText(Creacion_Cuenta.this, "El nombre de usuario no puede contener espacio", Toast.LENGTH_SHORT).show();
             this.user.setText("");
             return;
         }

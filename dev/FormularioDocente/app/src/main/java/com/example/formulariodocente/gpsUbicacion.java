@@ -10,9 +10,11 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.example.formulariodocente.R;
@@ -31,6 +33,7 @@ import java.util.Locale;
 
 public class gpsUbicacion extends FragmentActivity implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener, OnMapReadyCallback, GoogleMap.OnMapClickListener {
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 23;
     private GoogleMap mMap;
 
     @Override
@@ -65,6 +68,7 @@ public class gpsUbicacion extends FragmentActivity implements GoogleMap.OnMyLoca
 
         UiSettings settings = mMap.getUiSettings();
         settings.setZoomControlsEnabled(true);
+        settings.setMyLocationButtonEnabled(true);
         // Add a marker in Sydney and move the camera
         /*LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -75,9 +79,39 @@ public class gpsUbicacion extends FragmentActivity implements GoogleMap.OnMyLoca
         mMap.setOnMyLocationClickListener(this);
        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+
+           ActivityCompat.requestPermissions(this,
+                   new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                   MY_PERMISSIONS_REQUEST_LOCATION);
+           return;
         }
         mMap.setMyLocationEnabled(true);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == MY_PERMISSIONS_REQUEST_LOCATION){
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                // permission was granted, yay! Do the
+                // location-related task you need to do.
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+
+                    //Request location updates:
+                    mMap.setMyLocationEnabled(true);
+                }
+
+            } else {
+
+                // permission denied, boo! Disable the
+                // functionality that depends on this permission.
+
+            }
+        }
     }
 
     public String setLocation(Location loc) {

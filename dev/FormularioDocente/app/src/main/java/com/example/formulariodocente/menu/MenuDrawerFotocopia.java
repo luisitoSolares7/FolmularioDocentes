@@ -31,19 +31,22 @@ import java.security.acl.Group;
 import java.util.List;
 import java.util.Map;
 
-public class MenuDrawerDocente extends AppCompatActivity {
+public class MenuDrawerFotocopia extends AppCompatActivity {
 
     private ActionBar actionBar;
     private Toolbar toolbar;
     private int idCuenta;
-    boolean bandera=true;
+    boolean bandera = true;
+
+    //
     NavigationView nav_view;
     DrawerLayout drawer;
     TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_docente);
+        setContentView(R.layout.activity_menu_fotocopia);
         this.init();
         this.initToolbar();
         this.initNavigationMenu();
@@ -59,7 +62,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        title=toolbar.findViewById(R.id.title);
+        title = toolbar.findViewById(R.id.title);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
@@ -96,70 +99,29 @@ public class MenuDrawerDocente extends AppCompatActivity {
         int valor = item.getItemId();
         if (valor == R.id.nav_home) {
             fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
-            Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
-            bandera=true;
-            cambio();
+            bandera = true;
+            Toast.makeText(MenuDrawerFotocopia.this, "home", Toast.LENGTH_SHORT).show();
         }
-        if (valor == R.id.Redes) {
-            MenuItem d = nav_view.getMenu().findItem(R.id.caja);
-            item.setVisible(false);
-            d.setVisible(true);
-            bandera=true;
-            invalidateOptionsMenu();
-            return;
-        }
-        if (valor == R.id.caja) {
-            MenuItem d = nav_view.getMenu().findItem(R.id.Redes);
-            item.setVisible(false);
-            d.setVisible(true);
-            bandera=true;
-        }
-        if(valor==R.id.nav_historial){
+
+        if (valor == R.id.nav_historial) {
             fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Historial(idCuenta)).commit();
             bandera=false;
-            cambio();
         }
-        if (valor == R.id.doc1) {
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_form_Incidentes(idCuenta)).commit();
-            bandera=true;
-            cambio();
-        }
-        if (valor == R.id.doc2) {
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_form_fuera_clases(idCuenta)).commit();
-            bandera=true;
-            cambio();
-        }
-        if (valor == R.id.doc3) {
-            bandera=true;
-            cambio();
-        }
-        if (valor == R.id.doc4) {
-            bandera=true;
-            cambio();
+        if(valor== R.id.QR){
+            bandera=false;
         }
         if (valor == R.id.nav_salir) {
-            bandera=true;
             finish();
-        }
-        if (valor == R.id.nav_cambio) {
-            cambio();
-            new Cambiar_Contra(MenuDrawerDocente.this, idCuenta);
-            return;
         }
         //actionBar.setTitle(item.getTitle());
         invalidateOptionsMenu();
         title.setText(item.getTitle());
         drawer.closeDrawers();
     }
-    private void cambio(){
-        MenuItem master = nav_view.getMenu().findItem(R.id.Redes);
-        MenuItem caja = nav_view.getMenu().findItem(R.id.caja);
-        caja.setVisible(false);
-        master.setVisible(true);
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-// Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
         if (bandera) {
             menu.clear();
         } else {
@@ -167,13 +129,11 @@ public class MenuDrawerDocente extends AppCompatActivity {
         }
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Historial(idCuenta)).commit();
-            cambio();
             return true;
         }
         return super.onOptionsItemSelected(item);

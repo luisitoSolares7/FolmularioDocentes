@@ -38,6 +38,7 @@
             android:name=".gpsUbicacion"
             android:label="@string/title_activity_gps_ubicacion"></activity>
         <activity android:name=".menu.MenuDrawerDocente" />
+        <activity android:name=".menu.MenuDrawerFotocopia" />
         <activity android:name=".Recuperacion_Cuenta" />
         <activity android:name=".Creacion_Cuenta" />
         <activity android:name=".Login">

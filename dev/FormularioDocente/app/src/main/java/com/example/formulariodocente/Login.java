@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.menu.MenuDrawerDocente;
+import com.example.formulariodocente.menu.MenuDrawerFotocopia;
 import com.example.formulariodocente.modelos.Cuenta;
 
 import org.json.JSONException;
@@ -124,10 +124,14 @@ public class Login extends AppCompatActivity {
                             startActivity(intent);
                             }
                             if(cuenta.getTipo()==3){
-                                Toast.makeText(Login.this,"Fotocopia..",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Login.this,"Fotocopia..",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Login.this, MenuDrawerFotocopia.class);
+                                intent.putExtra("idCuenta", cuenta.getId());
+                                startActivity(intent);
                             }
                         } catch (JSONException e) {
                           //  e.printStackTrace();
+                            Toast.makeText(Login.this, "no existe usuario", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
