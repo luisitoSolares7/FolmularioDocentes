@@ -87,6 +87,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\Formularios\FueraClasesController.cs" />
+    <Compile Include="Controllers\Formularios\IncidentesController.cs" />
     <Compile Include="Controllers\Formularios\ListadoController.cs" />
     <Compile Include="Controllers\InvitacionController.cs" />
     <Compile Include="Global.asax.cs">
