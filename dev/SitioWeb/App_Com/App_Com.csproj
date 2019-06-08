@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BRL\CuentaBRL.cs" />
+    <Compile Include="BRL\Formularios\FueraClasesBRL.cs" />
+    <Compile Include="BRL\Formularios\IncidentesBRL.cs" />
+    <Compile Include="BRL\Formularios\ListadoBRL.cs" />
     <Compile Include="BRL\InvitacionBRL.cs" />
     <Compile Include="BRL\PersonaBRL.cs" />
     <Compile Include="BRL\Version\VersionBRL.cs" />
@@ -52,6 +55,21 @@
       <DependentUpon>CuentaDS.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DAL\Formularios\FueraClasesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FueraClasesDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Formularios\IncidentesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentesDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Formularios\ListadoDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListadoDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\GetInvitacionDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +102,9 @@
     </Compile>
     <Compile Include="Modelo\Correo.cs" />
     <Compile Include="Modelo\Cuenta.cs" />
+    <Compile Include="Modelo\Formularios\FueraClases.cs" />
+    <Compile Include="Modelo\Formularios\Incidentes.cs" />
+    <Compile Include="Modelo\Formularios\Listado.cs" />
     <Compile Include="Modelo\Invitacion.cs" />
     <Compile Include="Modelo\Persona.cs" />
     <Compile Include="Modelo\Version.cs" />
@@ -112,6 +133,39 @@
     <Content Include="DAL\InvitacionDS.xsc">
       <DependentUpon>InvitacionDS.xsd</DependentUpon>
     </Content>
+    <None Include="DAL\Formularios\FueraClasesDS.xsc">
+      <DependentUpon>FueraClasesDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\FueraClasesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FueraClasesDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Formularios\FueraClasesDS.xss">
+      <DependentUpon>FueraClasesDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\IncidentesDS.xsc">
+      <DependentUpon>IncidentesDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\IncidentesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IncidentesDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Formularios\IncidentesDS.xss">
+      <DependentUpon>IncidentesDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\ListadoDS.xsc">
+      <DependentUpon>ListadoDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\ListadoDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ListadoDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Formularios\ListadoDS.xss">
+      <DependentUpon>ListadoDS.xsd</DependentUpon>
+    </None>
     <None Include="DAL\GetInvitacionDS.xsc">
       <DependentUpon>GetInvitacionDS.xsd</DependentUpon>
     </None>
