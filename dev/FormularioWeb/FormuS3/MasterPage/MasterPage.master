@@ -7,12 +7,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="../App_Themes/Default/JS/jquery-3.3.1.js"></script>
     <script src="../App_Themes/Default/JS/bootstrap.bundle.js"></script>
+    <link href="../App_Themes/Estilo/EstiloMaster.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+        <header>
+		<nav>
+			<ul>
+                <li id="primero"><a href="Index.aspx">INICIO</a></li>
+                <li id="segundo"><a href="#">HISTORIAL</a></li>
+                <li id="tercero"><a href="../ListaPeticiones.aspx">PETICIONES</a></li>
+                <li id="cuarto"><a href="../Invitar.aspx">REGISTRO DOCENTE</a></li>
+                <li id="quinto"><a href="#"></a> REGISTRO ADMIN.</li>
+			</ul>
+		</nav>
+	</header>
     <div id="contenedor">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
