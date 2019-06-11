@@ -144,8 +144,6 @@ create PROCEDURE [dbo].[fkInvitacionCuenta]
 	@fkCuenta int
 	AS
 BEGIN
-
-
 SELECT [id]
       ,[token]
       ,[fechaInvitacion]
@@ -156,18 +154,15 @@ SELECT [id]
   FROM [dbo].[tblInvitacion]
   where @fkCuenta=[fkCuenta]
 END
-
 go
 if object_id('[dbo].[fkInvitacionAdmin]') is not null
 	drop procedure [dbo].[fkInvitacionAdmin];
 go
 
-ALTER PROCEDURE [dbo].[fkInvitacionAdmin]
+Create PROCEDURE [dbo].[fkInvitacionAdmin]
 	@fkPersona int
 	AS
 BEGIN
-
-
 SELECT [id]
       ,[token]
       ,[fechaInvitacion]
@@ -403,7 +398,7 @@ go
 if object_id('[dbo].[borrarCuenta]') is not null
 	drop procedure [dbo].[borrarCuenta];
 go
-ALTER PROCEDURE [dbo].[borrarCuenta] 
+create PROCEDURE [dbo].[borrarCuenta] 
 	@id int
 AS
 BEGIN
@@ -639,8 +634,8 @@ SELECT [id]
 
 END
 go
-if object_id('[dbo].[GetPeticionesFotocopiaP]') is not null
-	drop procedure [dbo].[GetPeticionesFotocopiaP];
+if object_id('[dbo].[GetPeticionesClasesFueraP]') is not null
+	drop procedure [dbo].[GetPeticionesClasesFueraP];
 go
 create PROCEDURE [dbo].[GetPeticionesClasesFueraP]
 AS
@@ -690,7 +685,7 @@ go
 if object_id('[dbo].[GetFormularioID]') is not null
 	drop procedure [dbo].[GetFormularioID];
 go
-ALTER PROCEDURE [dbo].[GetFormularioID]
+create PROCEDURE [dbo].[GetFormularioID]
 @id int
 as
 BEGIN
@@ -706,7 +701,7 @@ go
 if object_id('[dbo].[eliminarInvitacion]') is not null
 	drop procedure [dbo].[eliminarInvitacion];
 go
-ALTER PROCEDURE [dbo].[eliminarInvitacion]
+create PROCEDURE [dbo].[eliminarInvitacion]
 	@idPersona int
 AS
 BEGIN
@@ -722,7 +717,7 @@ go
 if object_id('[dbo].[loginPersonaAdmin]') is not null
 	drop procedure [dbo].[loginPersonaAdmin];
 go
-ALTER PROCEDURE [dbo].[loginPersonaAdmin]
+create PROCEDURE [dbo].[loginPersonaAdmin]
 		@nombreCuenta varchar(40)    
 AS
 BEGIN
@@ -739,5 +734,17 @@ SELECT [id]
   FROM [dbo].[tblCuenta]
   where @nombreCuenta = [nombreCuenta]
 END
+go
+DELETE FROM [dbo].[tblVersion]
+GO
+INSERT INTO [dbo].[tblVersion]
+           ([versionMayor]
+           ,[versionMenor]
+           ,[patch])
+     VALUES
+           (1
+           ,1
+           ,7)
+GO
 
 
