@@ -162,7 +162,7 @@ if object_id('[dbo].[fkInvitacionAdmin]') is not null
 	drop procedure [dbo].[fkInvitacionAdmin];
 go
 
-ALTER PROCEDURE [dbo].[fkInvitacionAdmin]
+create PROCEDURE [dbo].[fkInvitacionAdmin]
 	@fkPersona int
 	AS
 BEGIN
@@ -403,7 +403,7 @@ go
 if object_id('[dbo].[borrarCuenta]') is not null
 	drop procedure [dbo].[borrarCuenta];
 go
-ALTER PROCEDURE [dbo].[borrarCuenta] 
+create PROCEDURE [dbo].[borrarCuenta] 
 	@id int
 AS
 BEGIN
@@ -690,7 +690,7 @@ go
 if object_id('[dbo].[GetFormularioID]') is not null
 	drop procedure [dbo].[GetFormularioID];
 go
-ALTER PROCEDURE [dbo].[GetFormularioID]
+create PROCEDURE [dbo].[GetFormularioID]
 @id int
 as
 BEGIN
@@ -706,7 +706,7 @@ go
 if object_id('[dbo].[eliminarInvitacion]') is not null
 	drop procedure [dbo].[eliminarInvitacion];
 go
-ALTER PROCEDURE [dbo].[eliminarInvitacion]
+create PROCEDURE [dbo].[eliminarInvitacion]
 	@idPersona int
 AS
 BEGIN
@@ -722,7 +722,7 @@ go
 if object_id('[dbo].[loginPersonaAdmin]') is not null
 	drop procedure [dbo].[loginPersonaAdmin];
 go
-ALTER PROCEDURE [dbo].[loginPersonaAdmin]
+create PROCEDURE [dbo].[loginPersonaAdmin]
 		@nombreCuenta varchar(40)    
 AS
 BEGIN
