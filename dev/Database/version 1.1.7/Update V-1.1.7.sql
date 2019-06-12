@@ -1,5 +1,45 @@
 use Formularios;
 go
+if object_id('[dbo].[AceptarPeticion]') is not null
+	drop procedure [dbo].[AceptarPeticion];
+go
+create PROCEDURE [dbo].[AceptarPeticion] 
+@id int,
+@fecha Datetime,
+@fkAdmin int
+AS
+BEGIN
+
+
+UPDATE [dbo].[vistaFormularios]
+   SET 
+      [estado] = 0
+      ,[fecha] = @fecha
+      ,[autorizador] = @fkAdmin
+ WHERE [id]=@id
+ end
+go
+if object_id('[dbo].[BuscarFormularioVista]') is not null
+	drop procedure [dbo].[BuscarFormularioVista];
+go
+create  PROCEDURE [dbo].[BuscarFormularioVista] 
+@fkFormulario int
+AS
+BEGIN
+
+SELECT [id]
+      ,[fkCuenta]
+      ,[fkTbl]
+      ,[estado]
+      ,[fecha]
+      ,[autorizador]
+      ,[nombre]
+      ,[tipo]
+  FROM [dbo].[vistaFormularios]
+  where [fkTbl]=@fkFormulario
+END
+
+go
 if object_id('[dbo].[PersonaCuentaAdmin]') is not null
 	drop procedure [dbo].[PersonaCuentaAdmin];
 go
@@ -159,7 +199,7 @@ if object_id('[dbo].[fkInvitacionAdmin]') is not null
 	drop procedure [dbo].[fkInvitacionAdmin];
 go
 
-Create PROCEDURE [dbo].[fkInvitacionAdmin]
+create PROCEDURE [dbo].[fkInvitacionAdmin]
 	@fkPersona int
 	AS
 BEGIN
