@@ -3,7 +3,9 @@
     <!-- Base application theme. -->
 
     <style name="AppTheme" parent="BaseTheme" />
-    
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:textColor">@color/light_blue_A100</item>
+    </style>
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
