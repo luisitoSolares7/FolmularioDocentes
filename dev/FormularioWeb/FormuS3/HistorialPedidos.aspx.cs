@@ -14,6 +14,7 @@ public partial class Historial : System.Web.UI.Page
         RecargarTablaHistorial();
         RecargarTablaHistorialClasesFuera();
         RecargarTablaReprogramacion();
+        RecargarTablaHistorialFotocopias();
     }
 
     private void RecargarTablaHistorial()
@@ -27,6 +28,13 @@ public partial class Historial : System.Web.UI.Page
         List<HistorialPedidosClasesFuera> historialClasesFuera = HistorialClasesFueraBRL.GetHistorialClasesFuera();
         tblFormClasesFuera.DataSource = historialClasesFuera;
         tblFormClasesFuera.DataBind();
+    }
+
+    private void RecargarTablaHistorialFotocopias()
+    {
+        List<HistorialPedidosFotocopia> historialFotocopias = HistorialFotocopiasBRL.GetHistorialFotocopias();
+        tblFormFotocopia.DataSource = historialFotocopias;
+        tblFormFotocopia.DataBind();
     }
     private void RecargarTablaReprogramacion()
     {
