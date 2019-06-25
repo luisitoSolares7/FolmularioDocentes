@@ -89,8 +89,8 @@ create procedure [dbo].[pr_insertarFormClasesF]
  BEGIN
  insert into [dbo].[tblFormClasesFuera] (fecha,materia,grupo,motivoActividad,fechaActividad,descripActividad,lugarActividad)
  values (@fecha,@materia,@grupo,@motivoActividad,@fechaActividad,@descripActividad,@lugarActividad);
-insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
- values(@idCuenta,(select MAX(id) from tblFormClasesFuera),0,1,'Form. Fuera de Clases');
+insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormClasesFuera),1,'Form. Fuera de Clases');
  END;
 GO
 if object_id('[dbo].[pr_getVistaFormularios]') is not null
@@ -125,8 +125,8 @@ create procedure [dbo].[pr_insertarFormAccidente]
  BEGIN
  insert into [dbo].[tblFormAccidente] (descripcion,fecha)
  values (@descripActividad,@fecha);
-insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
- values(@idCuenta,(select MAX(id) from tblFormAccidente),0,0,'Form. de Incidente');
+insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormAccidente),0,'Form. de Incidente');
  END;
 GO
 if object_id('[dbo].[pr_getFormularioAccidente]') is not null
@@ -168,8 +168,8 @@ create procedure [dbo].[pr_insertarFormReprogramacion]
  BEGIN
  insert into [dbo].[tblFormReprogramacion] (carrera,materia,grupo,modalidad,horaI,horaF,dias,motivoSolicitud,fechaActividad,fecha)
  values (@carrera,@materia,@grupo,@modalidad,@horaI,@horaF,@dias,@motivoSolicitud,@fechaSolicitud,@fecha);
- insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,estado,tipo,nombre)
- values(@idCuenta,(select MAX(id) from tblFormReprogramacion),0,2,'Form. de Reprogramacion');
+ insert into [dbo].[vistaFormularios](fkCuenta,fkTbl,tipo,nombre)
+ values(@idCuenta,(select MAX(id) from tblFormReprogramacion),2,'Form. de Reprogramacion');
  END;
 GO
 DELETE FROM [dbo].[tblVersion]
