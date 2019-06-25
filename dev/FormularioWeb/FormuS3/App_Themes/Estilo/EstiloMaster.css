@@ -1,7 +1,11 @@
 ﻿body {
+   padding-top:20PX;
 }
 header {
     display: block;
+}
+a{
+    color:white !important;
 }
 nav {
     margin-left: auto;
@@ -9,9 +13,11 @@ nav {
     color: #fff;
     width: 80%;
     height: 56px;
-    line-height: 56px;
+    line-height: 35px;
 }
-
+h1{
+    text-align:center;
+}
 ul {
     display: flex;
     text-align: center;
@@ -19,12 +25,14 @@ ul {
     padding-left: 0;
     list-style-type: none;
     justify-content: space-evenly;
+    flex-direction: ROW !important;
 }
 
 li {
     background-color: #313131;
     list-style-type: none;
     width: -webkit-fill-available;
+    HEIGHT: -webkit-fill-available;
 }
 
     li:hover {
@@ -37,6 +45,7 @@ a {
 #contenedor {
     background-color: rgb(0,0,0,0.5);
     width: 80%;
+    height: 800px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -106,5 +115,25 @@ footer {
     position: fixed;
 }
 #contenedor{
-    background-color:rgb(0,0,0,0.5);
+    background-color:rgb(0,0,0,0.7);
+    padding:20PX;
 }
+.list-group {
+    display: flex;
+    flex-direction: row !important;
+    // No need to set list-style: none;
+    since .list-group-item is block level padding-left: 0;
+    // reset padding because ul and ol margin-bottom: 0;
+}
+.list-group-item {
+    border-radius:0px !important;
+    height:100%;
+    color:black !important;
+}
+    .list-group-item.active {
+        color: #fff !important;
+ 
+    }
+    h1{
+        color:white;
+    }
