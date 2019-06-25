@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BRL\CuentaBRL.cs" />
+    <Compile Include="BRL\Formularios\FotocopiasBRL.cs" />
     <Compile Include="BRL\Formularios\FueraClasesBRL.cs" />
     <Compile Include="BRL\Formularios\IncidentesBRL.cs" />
     <Compile Include="BRL\Formularios\ListadoBRL.cs" />
+    <Compile Include="BRL\Formularios\ReprogramacionBRL.cs" />
     <Compile Include="BRL\InvitacionBRL.cs" />
     <Compile Include="BRL\PersonaBRL.cs" />
     <Compile Include="BRL\Version\VersionBRL.cs" />
@@ -55,6 +57,11 @@
       <DependentUpon>CuentaDS.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DAL\Formularios\FotocopiasDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FotocopiasDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\Formularios\FueraClasesDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -70,6 +77,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ListadoDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Formularios\ReprogramacionDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReprogramacionDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAL\GetInvitacionDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -102,9 +114,11 @@
     </Compile>
     <Compile Include="Modelo\Correo.cs" />
     <Compile Include="Modelo\Cuenta.cs" />
+    <Compile Include="Modelo\Formularios\Fotocopias.cs" />
     <Compile Include="Modelo\Formularios\FueraClases.cs" />
     <Compile Include="Modelo\Formularios\Incidentes.cs" />
     <Compile Include="Modelo\Formularios\Listado.cs" />
+    <Compile Include="Modelo\Formularios\Reprogramacion.cs" />
     <Compile Include="Modelo\Invitacion.cs" />
     <Compile Include="Modelo\Persona.cs" />
     <Compile Include="Modelo\Version.cs" />
@@ -133,6 +147,17 @@
     <Content Include="DAL\InvitacionDS.xsc">
       <DependentUpon>InvitacionDS.xsd</DependentUpon>
     </Content>
+    <None Include="DAL\Formularios\FotocopiasDS.xsc">
+      <DependentUpon>FotocopiasDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\FotocopiasDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FotocopiasDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Formularios\FotocopiasDS.xss">
+      <DependentUpon>FotocopiasDS.xsd</DependentUpon>
+    </None>
     <None Include="DAL\Formularios\FueraClasesDS.xsc">
       <DependentUpon>FueraClasesDS.xsd</DependentUpon>
     </None>
@@ -165,6 +190,17 @@
     </None>
     <None Include="DAL\Formularios\ListadoDS.xss">
       <DependentUpon>ListadoDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\ReprogramacionDS.xsc">
+      <DependentUpon>ReprogramacionDS.xsd</DependentUpon>
+    </None>
+    <None Include="DAL\Formularios\ReprogramacionDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReprogramacionDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\Formularios\ReprogramacionDS.xss">
+      <DependentUpon>ReprogramacionDS.xsd</DependentUpon>
     </None>
     <None Include="DAL\GetInvitacionDS.xsc">
       <DependentUpon>GetInvitacionDS.xsd</DependentUpon>
