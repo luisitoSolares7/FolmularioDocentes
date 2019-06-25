@@ -32,7 +32,6 @@ namespace App_Com.BRL.Formularios
                 fotocopia.fecha = fila.fecha;
                 fotocopia.materia = fila.materia;
                 fotocopia.tipoDocuento = fila.tipoDocuento;
-                fotocopia.Imagen = fila.Imagen;
 
             }
             return fotocopia;
