@@ -19,9 +19,7 @@ public class HistorialReprogramacionBRL
             foreach (var row in table)
             {
                 list.Add(new HistorialPedidosReprogramacion()
-                {
-                    id = row.id,
-
+                { 
                     nombre = row.nombre,
                     fecha = row.fecha,
                     FechaVistaFormulario = row.FechaVistaFormulario,

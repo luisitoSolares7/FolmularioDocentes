@@ -19,7 +19,6 @@ public class HistorialClasesFueraBRL
         {
             list.Add(new HistorialPedidosClasesFuera()
             {
-                id = row.id,
 
                
                 fecha = row.fecha,

@@ -19,20 +19,13 @@ public class HistorialBRL
         {
             list.Add(new HistorialPedidos()
             {
-                id = row.id,
                 descripcion = row.descripcion,
                 fecha = row.Fecha,
                 fechaVista = row.FechaVistaFormulario,
                 nombre = row.nombre,
                 NombreDePersona = row.Nombre_de_la_persona,
                 apellidoP = row.apellidoP,
-                apellidoM = row.apellidoM,
-                correo = row.correo,
-                telefono = row.telefono
-
-
-
-
+                apellidoM = row.apellidoM
 
             });
         }
@@ -53,16 +46,13 @@ public class HistorialBRL
             HistoriaDS.HistorialPeticionesRow row = table[0];
             obj = new HistorialPedidos()
             {
-                id = row.id,
                 descripcion = row.descripcion,
                 fecha = row.Fecha,
                 fechaVista = row.FechaVistaFormulario,
                 nombre = row.nombre,
                 NombreDePersona = row.Nombre_de_la_persona,
                 apellidoP = row.apellidoP,
-                apellidoM = row.apellidoM,
-                correo = row.correo,
-         
+                apellidoM = row.apellidoM         
 
             };
         }

@@ -12,7 +12,6 @@ public class HistorialPedidos
     public HistorialPedidos()
     {
     }
-    public int id { get; set; }
     public String descripcion { get; set; }
     public DateTime fecha { get; set; }
    public DateTime fechaVista { get; set; }
@@ -28,8 +27,6 @@ public class HistorialPedidos
     public String nombre { get; set; }
     public String apellidoP { get; set; }
     public String apellidoM { get; set; }
-    public String correo { get; set; }
-    public int telefono { get; set; }
 
     public int idDePersona { get; set; }
 

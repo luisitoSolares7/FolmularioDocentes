@@ -12,38 +12,28 @@
               <DbSource ConnectionRef="FormulariosConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetHistorialFotocopias" GetMethodModifier="Public" GetMethodName="GetHistorialFotocopias" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetHistorialFotocopias" UserSourceName="GetHistorialFotocopias">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT      tblFormFotocopia.id,tblFormFotocopia.fecha,tblFormFotocopia.cantidad,tblFormFotocopia.tipoDocuento,tblFormFotocopia.materia,vistaFormularios.id AS idvistaformulario, vistaFormularios.fkCuenta, vistaFormularios.fkTbl, vistaFormularios.estado, 
-                         vistaFormularios.fecha AS FechaVistaFormulario, vistaFormularios.autorizador, vistaFormularios.nombre, vistaFormularios.tipo, tblPersona.id AS idDePersona, tblPersona.nombre AS [Nombre de la persona], 
-                         tblPersona.apellidoP, tblPersona.apellidoM, tblPersona.correo, tblPersona.telefono
-FROM           tblFormFotocopia INNER JOIN
-                         vistaFormularios ON  tblFormFotocopia .id = vistaFormularios.id INNER JOIN
-                         tblPersona ON vistaFormularios.estado = 0
-</CommandText>
+                    <CommandText>SELECT        tbF.nombre, tbF.fecha AS FechaVistaFormulario, tbA.fecha, tbA.materia, tbA.cantidad, tbA.tipoDocuento, tbP.nombre AS [Nombre de la persona], tbP.apellidoP, tbP.apellidoM
+FROM            vistaFormularios AS tbF INNER JOIN
+                         tblFormFotocopia AS tbA ON tbA.id = tbF.fkTbl INNER JOIN
+                         tblCuenta AS tbC ON tbC.id = tbF.fkCuenta INNER JOIN
+                         tblInvitacion AS tbI ON tbI.fkCuenta = tbC.id INNER JOIN
+                         tblPersona AS tbP ON tbP.id = tbI.fkPersona
+WHERE        (tbF.tipo = 3) AND (tbF.estado = 1)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="id" DataSetColumn="id" />
               <Mapping SourceColumn="fecha" DataSetColumn="fecha" />
               <Mapping SourceColumn="cantidad" DataSetColumn="cantidad" />
               <Mapping SourceColumn="tipoDocuento" DataSetColumn="tipoDocuento" />
               <Mapping SourceColumn="materia" DataSetColumn="materia" />
-              <Mapping SourceColumn="idvistaformulario" DataSetColumn="idvistaformulario" />
-              <Mapping SourceColumn="fkCuenta" DataSetColumn="fkCuenta" />
-              <Mapping SourceColumn="fkTbl" DataSetColumn="fkTbl" />
-              <Mapping SourceColumn="estado" DataSetColumn="estado" />
               <Mapping SourceColumn="FechaVistaFormulario" DataSetColumn="FechaVistaFormulario" />
-              <Mapping SourceColumn="autorizador" DataSetColumn="autorizador" />
               <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
-              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
-              <Mapping SourceColumn="idDePersona" DataSetColumn="idDePersona" />
               <Mapping SourceColumn="Nombre de la persona" DataSetColumn="Nombre de la persona" />
               <Mapping SourceColumn="apellidoP" DataSetColumn="apellidoP" />
               <Mapping SourceColumn="apellidoM" DataSetColumn="apellidoM" />
-              <Mapping SourceColumn="correo" DataSetColumn="correo" />
-              <Mapping SourceColumn="telefono" DataSetColumn="telefono" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="FormulariosConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetHistorialFotocopiasE" GetMethodModifier="Public" GetMethodName="GetHistorialFotocopiasE" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetHistorialFotocopiasE" UserSourceName="GetHistorialFotocopiasE">
@@ -69,10 +59,9 @@ FROM            tblFormFotocopia INNER JOIN
   <xs:element name="HistorialFotocopias" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="HistorialFotocopias" msprop:Generator_UserDSName="HistorialFotocopias">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="HistorialPeticionesFotocopias" msprop:Generator_TableClassName="HistorialPeticionesFotocopiasDataTable" msprop:Generator_TableVarName="tableHistorialPeticionesFotocopias" msprop:Generator_RowChangedName="HistorialPeticionesFotocopiasRowChanged" msprop:Generator_TablePropName="HistorialPeticionesFotocopias" msprop:Generator_RowDeletingName="HistorialPeticionesFotocopiasRowDeleting" msprop:Generator_RowChangingName="HistorialPeticionesFotocopiasRowChanging" msprop:Generator_RowEvHandlerName="HistorialPeticionesFotocopiasRowChangeEventHandler" msprop:Generator_RowDeletedName="HistorialPeticionesFotocopiasRowDeleted" msprop:Generator_RowClassName="HistorialPeticionesFotocopiasRow" msprop:Generator_UserTableName="HistorialPeticionesFotocopias" msprop:Generator_RowEvArgName="HistorialPeticionesFotocopiasRowChangeEvent">
+        <xs:element name="HistorialPeticionesFotocopias" msprop:Generator_TableClassName="HistorialPeticionesFotocopiasDataTable" msprop:Generator_TableVarName="tableHistorialPeticionesFotocopias" msprop:Generator_TablePropName="HistorialPeticionesFotocopias" msprop:Generator_RowDeletingName="HistorialPeticionesFotocopiasRowDeleting" msprop:Generator_RowChangingName="HistorialPeticionesFotocopiasRowChanging" msprop:Generator_RowEvHandlerName="HistorialPeticionesFotocopiasRowChangeEventHandler" msprop:Generator_RowDeletedName="HistorialPeticionesFotocopiasRowDeleted" msprop:Generator_UserTableName="HistorialPeticionesFotocopias" msprop:Generator_RowChangedName="HistorialPeticionesFotocopiasRowChanged" msprop:Generator_RowEvArgName="HistorialPeticionesFotocopiasRowChangeEvent" msprop:Generator_RowClassName="HistorialPeticionesFotocopiasRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
               <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
               <xs:element name="cantidad" msprop:Generator_ColumnVarNameInTable="columncantidad" msprop:Generator_ColumnPropNameInRow="cantidad" msprop:Generator_ColumnPropNameInTable="cantidadColumn" msprop:Generator_UserColumnName="cantidad" type="xs:int" minOccurs="0" />
               <xs:element name="tipoDocuento" msprop:Generator_ColumnVarNameInTable="columntipoDocuento" msprop:Generator_ColumnPropNameInRow="tipoDocuento" msprop:Generator_ColumnPropNameInTable="tipoDocuentoColumn" msprop:Generator_UserColumnName="tipoDocuento" minOccurs="0">
@@ -89,12 +78,7 @@ FROM            tblFormFotocopia INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="idvistaformulario" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidvistaformulario" msprop:Generator_ColumnPropNameInRow="idvistaformulario" msprop:Generator_ColumnPropNameInTable="idvistaformularioColumn" msprop:Generator_UserColumnName="idvistaformulario" type="xs:int" />
-              <xs:element name="fkCuenta" msprop:Generator_ColumnVarNameInTable="columnfkCuenta" msprop:Generator_ColumnPropNameInRow="fkCuenta" msprop:Generator_ColumnPropNameInTable="fkCuentaColumn" msprop:Generator_UserColumnName="fkCuenta" type="xs:int" minOccurs="0" />
-              <xs:element name="fkTbl" msprop:Generator_ColumnVarNameInTable="columnfkTbl" msprop:Generator_ColumnPropNameInRow="fkTbl" msprop:Generator_ColumnPropNameInTable="fkTblColumn" msprop:Generator_UserColumnName="fkTbl" type="xs:int" minOccurs="0" />
-              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:boolean" minOccurs="0" />
               <xs:element name="FechaVistaFormulario" msprop:Generator_ColumnVarNameInTable="columnFechaVistaFormulario" msprop:Generator_ColumnPropNameInRow="FechaVistaFormulario" msprop:Generator_ColumnPropNameInTable="FechaVistaFormularioColumn" msprop:Generator_UserColumnName="FechaVistaFormulario" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="autorizador" msprop:Generator_ColumnVarNameInTable="columnautorizador" msprop:Generator_ColumnPropNameInRow="autorizador" msprop:Generator_ColumnPropNameInTable="autorizadorColumn" msprop:Generator_UserColumnName="autorizador" type="xs:int" minOccurs="0" />
               <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -102,8 +86,6 @@ FROM            tblFormFotocopia INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:int" minOccurs="0" />
-              <xs:element name="idDePersona" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidDePersona" msprop:Generator_ColumnPropNameInRow="idDePersona" msprop:Generator_ColumnPropNameInTable="idDePersonaColumn" msprop:Generator_UserColumnName="idDePersona" type="xs:int" />
               <xs:element name="Nombre_x0020_de_x0020_la_x0020_persona" msprop:Generator_ColumnVarNameInTable="columnNombre_de_la_persona" msprop:Generator_ColumnPropNameInRow="Nombre_de_la_persona" msprop:Generator_ColumnPropNameInTable="Nombre_de_la_personaColumn" msprop:Generator_UserColumnName="Nombre de la persona" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -125,24 +107,10 @@ FROM            tblFormFotocopia INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="correo" msprop:Generator_ColumnVarNameInTable="columncorreo" msprop:Generator_ColumnPropNameInRow="correo" msprop:Generator_ColumnPropNameInTable="correoColumn" msprop:Generator_UserColumnName="correo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="telefono" msprop:Generator_ColumnVarNameInTable="columntelefono" msprop:Generator_ColumnPropNameInRow="telefono" msprop:Generator_ColumnPropNameInTable="telefonoColumn" msprop:Generator_UserColumnName="telefono" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:HistorialPeticionesFotocopias" />
-      <xs:field xpath="mstns:id" />
-      <xs:field xpath="mstns:idvistaformulario" />
-      <xs:field xpath="mstns:idDePersona" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

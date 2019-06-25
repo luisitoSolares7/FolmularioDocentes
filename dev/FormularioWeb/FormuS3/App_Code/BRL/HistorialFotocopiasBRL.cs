@@ -20,7 +20,7 @@ public class HistorialFotocopiasBRL
             {
                 list.Add(new HistorialPedidosFotocopia()
                 {
-                    id = row.id,
+              
 
 
                     fecha = row.fecha,
