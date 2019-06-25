@@ -62,7 +62,7 @@ public class HistorialBRL
                 apellidoP = row.apellidoP,
                 apellidoM = row.apellidoM,
                 correo = row.correo,
-                telefono = row.telefono
+         
 
             };
         }

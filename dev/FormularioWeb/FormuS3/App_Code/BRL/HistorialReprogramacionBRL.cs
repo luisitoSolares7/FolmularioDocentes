@@ -26,6 +26,18 @@ public class HistorialReprogramacionBRL
                     fecha = row.fecha,
                     FechaVistaFormulario = row.FechaVistaFormulario,
                     NombreDePersona = row.Nombre_de_la_persona,
+                    apellidoP = row.apellidoP,
+                    apellidoM = row.apellidoM,
+                    modalidad = row.modalidad,
+                    materia = row.materia,
+                    grupo = row.grupo,
+                    horaI = row.horaI,
+                    horaF = row.horaF,
+                    dias = row.dias,
+                    fechaActividad = row.fechaActividad,
+                    motivoSolicitud = row.motivoSolicitud,
+                    carrera = row.carrera,
+
 
 
 

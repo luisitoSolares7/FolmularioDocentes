@@ -21,20 +21,27 @@ public class HistorialClasesFueraBRL
             {
                 id = row.id,
 
-                nombre = row.nombre,
+               
                 fecha = row.fecha,
                 FechaVistaFormulario = row.FechaVistaFormulario,
                 materia = row.materia,
                 grupo = row.grupo,
                 motivoActividad = row.motivoActividad,
-                fechaActividad = row.FechaVistaFormulario,
+                fechaActividad = row.fechaActividad,
                 descripActividad = row.descripActividad,
                 lugarActividad = row.lugarActividad,
+                nombre = row.nombre,
+                NombreDePersona = row.Nombre_de_la_persona,
+                apellidoP = row.apellidoP,
+                apellidoM = row.apellidoM,
+            
 
 
 
 
-});
+
+
+            });
         }
         return list;
     }
