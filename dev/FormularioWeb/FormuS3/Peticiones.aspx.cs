@@ -84,7 +84,7 @@ public partial class Peticiones : System.Web.UI.Page
         {
             FotocopiasVacia.Visible = true;
         }
-    }
+    }   
 
     protected void AceptarPeticion(object sender, EventArgs e)
     {
