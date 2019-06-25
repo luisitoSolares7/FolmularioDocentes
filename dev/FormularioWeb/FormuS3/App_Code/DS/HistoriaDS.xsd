@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="HistoriaDS" targetNamespace="http://tempuri.org/HistoriaDS.xsd" xmlns:mstns="http://tempuri.org/HistoriaDS.xsd" xmlns="http://tempuri.org/HistoriaDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="FormulariosConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="FormulariosConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.FormulariosConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HistorialTableAdapter" GeneratorDataComponentClassName="HistorialTableAdapter" Name="HistorialPeticiones" UserDataComponentName="HistorialTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FormulariosConnectionString (Web.config)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPeticiones" GetMethodModifier="Public" GetMethodName="GetPeticiones" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPeticiones" UserSourceName="GetPeticiones">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tblFormAccidente.id, tblFormAccidente.descripcion, tblFormAccidente.fecha, vistaFormularios.id AS idvistaformulario, vistaFormularios.fkCuenta, vistaFormularios.fkTbl, vistaFormularios.estado, 
+                         vistaFormularios.fecha AS FechaVistaFormulario, vistaFormularios.autorizador, vistaFormularios.nombre, vistaFormularios.tipo, tblPersona.id AS idDePersona, tblPersona.nombre AS [Nombre de la persona], 
+                         tblPersona.apellidoP, tblPersona.apellidoM, tblPersona.correo, tblPersona.telefono
+FROM            tblFormAccidente INNER JOIN
+                         vistaFormularios ON tblFormAccidente.id = vistaFormularios.id INNER JOIN
+                         tblPersona ON vistaFormularios.estado = 0</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="idvistaformulario" DataSetColumn="idvistaformulario" />
+              <Mapping SourceColumn="fkCuenta" DataSetColumn="fkCuenta" />
+              <Mapping SourceColumn="fkTbl" DataSetColumn="fkTbl" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+              <Mapping SourceColumn="FechaVistaFormulario" DataSetColumn="FechaVistaFormulario" />
+              <Mapping SourceColumn="autorizador" DataSetColumn="autorizador" />
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+              <Mapping SourceColumn="idDePersona" DataSetColumn="idDePersona" />
+              <Mapping SourceColumn="Nombre de la persona" DataSetColumn="Nombre de la persona" />
+              <Mapping SourceColumn="apellidoP" DataSetColumn="apellidoP" />
+              <Mapping SourceColumn="apellidoM" DataSetColumn="apellidoM" />
+              <Mapping SourceColumn="correo" DataSetColumn="correo" />
+              <Mapping SourceColumn="telefono" DataSetColumn="telefono" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="FormulariosConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetPeticionesE" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetPeticionesE" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPeticionesE" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        tblFormAccidente.id, tblFormAccidente.descripcion, tblFormAccidente.fecha, vistaFormularios.id AS idvistaformulario, vistaFormularios.fkCuenta, vistaFormularios.fkTbl, vistaFormularios.estado, 
+                         vistaFormularios.fecha AS FechaVistaFormulario, vistaFormularios.autorizador, vistaFormularios.nombre, vistaFormularios.tipo, tblPersona.id AS idDePersona, tblPersona.nombre AS [Nombre de la persona], 
+                         tblPersona.apellidoP, tblPersona.apellidoM, tblPersona.correo, tblPersona.telefono
+FROM            tblFormAccidente INNER JOIN
+                         vistaFormularios ON tblFormAccidente.id = vistaFormularios.id INNER JOIN
+                         tblPersona ON vistaFormularios.estado = 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="FormulariosConnectionString (Web.config)" DbObjectName="Formularios.dbo.pr_VerHistorialIncidente" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="VerHistorialIncidente" Modifier="Public" Name="VerHistorialIncidente" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="VerHistorialIncidente">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.pr_VerHistorialIncidente</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idCuenta" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@vardescripcion" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@datefecha" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@datefechavista" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@varnombrePersona" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@varapellidoP" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@varapellidoM" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@varcorreo" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@inttelefono" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="HistoriaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="HistoriaDS" msprop:Generator_UserDSName="HistoriaDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HistorialPeticiones" msprop:Generator_TableClassName="HistorialPeticionesDataTable" msprop:Generator_TableVarName="tableHistorialPeticiones" msprop:Generator_RowChangedName="HistorialPeticionesRowChanged" msprop:Generator_TablePropName="HistorialPeticiones" msprop:Generator_RowDeletingName="HistorialPeticionesRowDeleting" msprop:Generator_RowChangingName="HistorialPeticionesRowChanging" msprop:Generator_RowEvHandlerName="HistorialPeticionesRowChangeEventHandler" msprop:Generator_RowDeletedName="HistorialPeticionesRowDeleted" msprop:Generator_RowClassName="HistorialPeticionesRow" msprop:Generator_UserTableName="HistorialPeticiones" msprop:Generator_RowEvArgName="HistorialPeticionesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="idvistaformulario" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidvistaformulario" msprop:Generator_ColumnPropNameInRow="idvistaformulario" msprop:Generator_ColumnPropNameInTable="idvistaformularioColumn" msprop:Generator_UserColumnName="idvistaformulario" type="xs:int" />
+              <xs:element name="fkCuenta" msprop:Generator_ColumnVarNameInTable="columnfkCuenta" msprop:Generator_ColumnPropNameInRow="fkCuenta" msprop:Generator_ColumnPropNameInTable="fkCuentaColumn" msprop:Generator_UserColumnName="fkCuenta" type="xs:int" minOccurs="0" />
+              <xs:element name="fkTbl" msprop:Generator_ColumnVarNameInTable="columnfkTbl" msprop:Generator_ColumnPropNameInRow="fkTbl" msprop:Generator_ColumnPropNameInTable="fkTblColumn" msprop:Generator_UserColumnName="fkTbl" type="xs:int" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FechaVistaFormulario" msprop:Generator_ColumnVarNameInTable="columnFechaVistaFormulario" msprop:Generator_ColumnPropNameInRow="FechaVistaFormulario" msprop:Generator_ColumnPropNameInTable="FechaVistaFormularioColumn" msprop:Generator_UserColumnName="FechaVistaFormulario" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="autorizador" msprop:Generator_ColumnVarNameInTable="columnautorizador" msprop:Generator_ColumnPropNameInRow="autorizador" msprop:Generator_ColumnPropNameInTable="autorizadorColumn" msprop:Generator_UserColumnName="autorizador" type="xs:int" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_UserColumnName="tipo" type="xs:int" minOccurs="0" />
+              <xs:element name="idDePersona" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidDePersona" msprop:Generator_ColumnPropNameInRow="idDePersona" msprop:Generator_ColumnPropNameInTable="idDePersonaColumn" msprop:Generator_UserColumnName="idDePersona" type="xs:int" />
+              <xs:element name="Nombre_x0020_de_x0020_la_x0020_persona" msprop:Generator_ColumnVarNameInTable="columnNombre_de_la_persona" msprop:Generator_ColumnPropNameInRow="Nombre_de_la_persona" msprop:Generator_ColumnPropNameInTable="Nombre_de_la_personaColumn" msprop:Generator_UserColumnName="Nombre de la persona" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="apellidoP" msprop:Generator_ColumnVarNameInTable="columnapellidoP" msprop:Generator_ColumnPropNameInRow="apellidoP" msprop:Generator_ColumnPropNameInTable="apellidoPColumn" msprop:Generator_UserColumnName="apellidoP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="apellidoM" msprop:Generator_ColumnVarNameInTable="columnapellidoM" msprop:Generator_ColumnPropNameInRow="apellidoM" msprop:Generator_ColumnPropNameInTable="apellidoMColumn" msprop:Generator_UserColumnName="apellidoM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="correo" msprop:Generator_ColumnVarNameInTable="columncorreo" msprop:Generator_ColumnPropNameInRow="correo" msprop:Generator_ColumnPropNameInTable="correoColumn" msprop:Generator_UserColumnName="correo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono" msprop:Generator_ColumnVarNameInTable="columntelefono" msprop:Generator_ColumnPropNameInRow="telefono" msprop:Generator_ColumnPropNameInTable="telefonoColumn" msprop:Generator_UserColumnName="telefono" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HistorialPeticiones" />
+      <xs:field xpath="mstns:id" />
+      <xs:field xpath="mstns:idvistaformulario" />
+      <xs:field xpath="mstns:idDePersona" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

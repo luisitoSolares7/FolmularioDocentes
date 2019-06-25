@@ -17,9 +17,10 @@ public class Invitacion
     public DateTime fechaInvitacion { get; set; }
     public DateTime fechaRespuesta { get; set; }
     public Boolean estado { get; set; }
+    public String nombre { get; set; }
     public int fkPersona { get; set; }
     public int fkCuenta { get; set; }
-    public string nombre { get; set; }
+    public string Fecha { get; set; }
 
     
     public Invitacion(int codigoID)
