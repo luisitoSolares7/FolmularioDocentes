@@ -13,5 +13,19 @@ public partial class Login : System.Web.UI.Page
     {
 
     }
-   
+
+
+    protected void btnRegistrar_Click(object sender, EventArgs e)
+    {
+        Cuenta user = CuentaBRL.LoginUSer(txtNombreCuenta.Text,txtContracena.Text);
+        if (user!=null){
+            Session["tipoUsuario"] = user.tipo;
+            Session["IDUsuario"] = user.id;
+            Response.Redirect("~/Indes.aspx");
+        }
+        else{
+            
+        }
+
+    }
 }
