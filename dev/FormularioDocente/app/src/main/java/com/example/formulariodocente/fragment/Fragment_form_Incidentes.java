@@ -24,7 +24,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.modelos.Frm_Incidentes;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,12 +63,9 @@ public class Fragment_form_Incidentes extends Fragment {
     }
 
     private void initAcciones() {
-        fecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarFecha();
-            }
-        });
+
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        this.fecha.setText(date);
         hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +137,6 @@ public class Fragment_form_Incidentes extends Fragment {
 
     private void vaciar() {
         this.hora.setText("");
-        this.fecha.setText("");
         this.descripcion.setText("");
     }
 

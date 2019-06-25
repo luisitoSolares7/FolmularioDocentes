@@ -48,12 +48,16 @@ public class ListadoAdapter extends RecyclerView.Adapter<ListadoAdapter.ListadoV
     public void onBindViewHolder(ListadoViewHolder holder, int position) {
         final Listado obj = ListaSemestre.get(position);
         holder.texto_Nombre.setText(obj.getNombre());
-
-        if (obj.getAutorizacion() == 0 && !obj.isEstado()) {
+        if(obj.getDesicion()==-1){
             holder.imageView.setImageResource(R.drawable.no);
-        }else{
+        }
+        if(obj.getDesicion()== 1){
             holder.imageView.setImageResource(R.drawable.si);
         }
+        if(obj.getDesicion()== 0){
+            holder.imageView.setImageResource(R.drawable.not);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

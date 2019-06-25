@@ -67,22 +67,17 @@ public class Recuperacion_Cuenta extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                            dialog.dismiss();
+                            Toast.makeText(Recuperacion_Cuenta.this, "Se le envio un correo...", Toast.LENGTH_SHORT).show();
+                            Recuperar.setText("");
+                            finish();
 
-                        try {
-                            dialog.dismiss();
-                            JSONObject json = new JSONObject(response);
-                            Toast.makeText(Recuperacion_Cuenta.this, "Se le envio un correo...", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } catch (Exception e) {
-                            dialog.dismiss();
-                            Toast.makeText(Recuperacion_Cuenta.this, "Se le envio un correo...", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Recuperar.setText("");
                         dialog.dismiss();
                         Toast.makeText(Recuperacion_Cuenta.this, "Correo invalido", Toast.LENGTH_SHORT).show();
                     }
@@ -91,7 +86,7 @@ public class Recuperacion_Cuenta extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("correo", correo);
+                params.put("correo", correo+"");
                 return params;
             }
         };

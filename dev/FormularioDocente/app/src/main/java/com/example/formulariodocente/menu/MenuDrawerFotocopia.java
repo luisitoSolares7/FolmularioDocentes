@@ -1,6 +1,7 @@
 package com.example.formulariodocente.menu;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -8,8 +9,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -21,15 +24,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.formulariodocente.Cambiar_Contra;
+import com.example.formulariodocente.LectorQR;
+import com.example.formulariodocente.Login;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.fragment.Fragment_Historial;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
 import com.example.formulariodocente.fragment.Fragment_form_Incidentes;
 import com.example.formulariodocente.fragment.Fragment_form_fuera_clases;
+import com.google.zxing.Result;
 
 import java.security.acl.Group;
 import java.util.List;
 import java.util.Map;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MenuDrawerFotocopia extends AppCompatActivity {
 
@@ -81,7 +89,6 @@ public class MenuDrawerFotocopia extends AppCompatActivity {
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
 
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -97,18 +104,14 @@ public class MenuDrawerFotocopia extends AppCompatActivity {
     public void acciones(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         int valor = item.getItemId();
-        if (valor == R.id.nav_home) {
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
-            bandera = true;
-            Toast.makeText(MenuDrawerFotocopia.this, "home", Toast.LENGTH_SHORT).show();
-        }
-
-        if (valor == R.id.nav_historial) {
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Historial(idCuenta)).commit();
-            bandera=false;
-        }
-        if(valor== R.id.QR){
-            bandera=false;
+        if (valor == R.id.QR) {
+            /*ZXingScannerView scannerView;
+            scannerView=new ZXingScannerView(this);
+            setContentView(scannerView);
+            scannerView.setResultHandler(this);
+            scannerView.startCamera();*/
+            Intent intent = new Intent(MenuDrawerFotocopia.this, LectorQR.class);
+            startActivity(intent);
         }
         if (valor == R.id.nav_salir) {
             finish();
@@ -122,11 +125,7 @@ public class MenuDrawerFotocopia extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        if (bandera) {
-            menu.clear();
-        } else {
-            getMenuInflater().inflate(R.menu.opcione_menu, menu);
-        }
+        menu.clear();
         return true;
     }
 
@@ -138,4 +137,5 @@ public class MenuDrawerFotocopia extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

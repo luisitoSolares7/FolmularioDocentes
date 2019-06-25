@@ -8,6 +8,7 @@ public class Listado {
     String nombre;
     int tipo;
     int autorizacion;
+    int desicion;
 
     public Listado(int id, int fkCuenta, int fkTbl, boolean estado, String nombre, int tipo, int autorizacion) {
         this.id = id;
@@ -25,6 +26,15 @@ public class Listado {
 
     public void setAutorizacion(int autorizacion) {
         this.autorizacion = autorizacion;
+    }
+
+    public Listado(int id, int fkCuenta, int fkTbl, String nombre, int tipo,int desicion) {
+        this.id = id;
+        this.fkCuenta = fkCuenta;
+        this.fkTbl = fkTbl;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.desicion=desicion;
     }
 
     public Listado(int id, int fkCuenta, int fkTbl, boolean estado, String nombre, int tipo) {
@@ -82,5 +92,13 @@ public class Listado {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    public int getDesicion() {
+        return desicion;
+    }
+
+    public void setDesicion(int desicion) {
+        this.desicion = desicion;
     }
 }

@@ -28,7 +28,9 @@ import com.example.formulariodocente.R;
 import com.example.formulariodocente.gpsUbicacion;
 import com.example.formulariodocente.modelos.Frm_fueraClases;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,12 +85,9 @@ public class Fragment_form_fuera_clases extends Fragment {
     }
 
     private void initComponent() {
-        fecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarFecha(1);
-            }
-        });
+
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        fecha.setText(date);
         fechaActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -237,7 +236,6 @@ public class Fragment_form_fuera_clases extends Fragment {
     }
 
     public void vaciar() {
-        fecha.setText("");
         horaActividad.setText("");
         horario.setText("");
         fechaActividad.setText("");

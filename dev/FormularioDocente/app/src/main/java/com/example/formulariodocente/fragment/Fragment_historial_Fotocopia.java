@@ -20,9 +20,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.DialogoFrmFueraClases;
 import com.example.formulariodocente.DialogoFrmIncidentes;
 import com.example.formulariodocente.DialogoFrmReprogramacion;
+import com.example.formulariodocente.DialogoQR;
 import com.example.formulariodocente.R;
+import com.example.formulariodocente.adapter.FotocopiaClick;
 import com.example.formulariodocente.adapter.ListadoAdapter;
-import com.example.formulariodocente.adapter.ListadoClick;
+import com.example.formulariodocente.adapter.Listado_Fotocopia;
+import com.example.formulariodocente.modelos.Frm_fotocopia;
 import com.example.formulariodocente.modelos.Listado;
 
 import org.json.JSONArray;
@@ -33,20 +36,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressLint("ValidFragment")
-public class Fragment_Inicio extends Fragment implements ListadoClick {
-
+public class Fragment_historial_Fotocopia extends Fragment implements FotocopiaClick {
     private RecyclerView recyclerView;
     View vista;
     int idCuenta;
-    private ArrayList<Listado> formularios;
+    private ArrayList<Frm_fotocopia> formularios;
 
     private ProgressDialog dialog;
 
 
-    public Fragment_Inicio() {
+    public Fragment_historial_Fotocopia() {
     }
 
-    public Fragment_Inicio(int id) {
+    public Fragment_historial_Fotocopia(int id) {
         this.idCuenta = id;
         this.formularios = new ArrayList<>();
     }
@@ -55,7 +57,7 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista = inflater.inflate(R.layout.fragment_inicio, container, false);
+        vista = inflater.inflate(R.layout.fragment_historial_fotocopias, container, false);
         recyclerView = vista.findViewById(R.id.recyclerHistorial);
         this.vollyAc();
         return vista;
@@ -63,7 +65,7 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
 
     public void vollyAc() {
         RequestQueue queue = Volley.newRequestQueue(vista.getContext());
-        String urlM = getString(R.string.url) + "listado/getFormularios";
+        String urlM = getString(R.string.url) + "Formularios/getFormularioFotocopia";
         dialog = ProgressDialog.show(vista.getContext(), "Cargando datos", "Por favor espere...");
 
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, urlM,
@@ -74,8 +76,11 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                if(jsonObject.getInt("desicion")==-1) {
-                                    Listado user = new Listado(jsonObject.getInt("id"), jsonObject.getInt("fkCuenta"), jsonObject.getInt("fkTbl"), jsonObject.getString("nombre"), jsonObject.getInt("tipo"),-1);
+                                if (jsonObject.isNull("Imagen")) {
+                                    Frm_fotocopia user = new Frm_fotocopia(jsonObject.getInt("id"), jsonObject.getString("fecha"), jsonObject.getInt("cantidad"), jsonObject.getString("tipoDocuento"), jsonObject.getString("materia"), 0);
+                                    formularios.add(user);
+                                } else {
+                                    Frm_fotocopia user = new Frm_fotocopia(jsonObject.getInt("id"), jsonObject.getString("fecha"), jsonObject.getInt("cantidad"), jsonObject.getString("tipoDocuento"), jsonObject.getString("materia"), jsonObject.getString("Imagen"), 1);
                                     formularios.add(user);
                                 }
                             }
@@ -83,7 +88,7 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                        ListadoAdapter adapter = new ListadoAdapter(formularios, Fragment_Inicio.this);
+                        Listado_Fotocopia adapter = new Listado_Fotocopia(formularios, Fragment_historial_Fotocopia.this);
                         recyclerView.setAdapter(adapter);
                         dialog.dismiss();
                     }
@@ -106,16 +111,13 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
     }
 
     @Override
-    public void actionListener(Listado obj, View view) {
+    public void actionListener(Frm_fotocopia obj, View view) {
         // Toast.makeText(vista.getContext(),obj.getFkTbl()+" "+obj.getTipo(),Toast.LENGTH_SHORT).show();
-        if (obj.getTipo() == 0) {
-            new DialogoFrmIncidentes(vista.getContext(), obj.getFkTbl());
+        if(obj.getDesicion()==1){
+            new DialogoQR(vista.getContext(),obj.getImagenQR());
+        }else{
+            Toast.makeText(vista.getContext(),"no cuenta con un cotigo",Toast.LENGTH_SHORT).show();
         }
-        if (obj.getTipo() == 1) {
-            new DialogoFrmFueraClases(vista.getContext(), obj.getFkTbl());
-        }
-        if (obj.getTipo() == 2) {
-            new DialogoFrmReprogramacion(vista.getContext(), obj.getFkTbl());
-        }
+
     }
 }

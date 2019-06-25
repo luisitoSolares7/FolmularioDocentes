@@ -16,6 +16,14 @@
             android:icon="@drawable/history"
             android:title="Historial" />
     </group>
+    <group
+        android:id="@+id/grp_4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_fotocopia"
+            android:icon="@drawable/history"
+            android:title="Fotocopia" />
+    </group>
 
     <item
         android:id="@+id/Redes"
@@ -47,7 +55,7 @@
                 ></item>
             <item
                 android:id="@+id/doc4"
-                android:title="Doc4"
+                android:title="Fotocopia"
                 android:icon="@drawable/doc"
                 ></item>
         </menu>

@@ -28,7 +28,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.modelos.Frm_fueraClases;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -200,12 +202,8 @@ public class Fragment_form_reprogramacion extends Fragment {
                 initAccion();
             }
         });
-        this.fechaI.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarFecha(0);
-            }
-        });
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        this.fechaI.setText(date);
         this.fechaF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -335,7 +333,6 @@ public class Fragment_form_reprogramacion extends Fragment {
         this.carrera.setText("");
         this.materia.setText("");
         this.fechaF.setText("");
-        this.fechaI.setText("");
         this.grupo.setText("");
         this.hora.setText("");
         this.dias.setText("");
