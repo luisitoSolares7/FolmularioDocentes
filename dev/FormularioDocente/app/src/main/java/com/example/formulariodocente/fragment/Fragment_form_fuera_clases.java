@@ -136,14 +136,28 @@ public class Fragment_form_fuera_clases extends Fragment {
         String descA = this.descActividad.getText().toString().trim();
         String lugA = this.lugActividad.getText().toString().trim();
         String objA = this.objActividad.getText().toString().trim();
-
+        if (materia.equals("") && grupo.equals("") && fecha.equals("") && hora.equals("") && fechaA.equals("") && horaA.equals("") && descA.equals("") && lugA.equals("") && objA.equals("")) {
+            Toast.makeText(vista.getContext(), "rellena todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (materia.equals("") || materia.length() < 5) {
             Toast.makeText(vista.getContext(), "ponga BIEN el nombre de la materia", Toast.LENGTH_SHORT).show();
             this.materia.setText("");
             return;
         }
+        if(materia.contains("0")||materia.contains("1")||materia.contains("2")||materia.contains("3")||materia.contains("4")||materia.contains("5")||materia.contains("6")||materia.contains("7")||materia.contains("8")||materia.contains("9")){
+            Toast.makeText(vista.getContext(), "el campo materia no puede contener numeros", Toast.LENGTH_SHORT).show();
+            this.materia.setText("");
+            return;
+        }
+
         if (grupo.equals("") || grupo.length() > 3) {
             Toast.makeText(vista.getContext(), "debe de contener 3 caractares", Toast.LENGTH_SHORT).show();
+            this.grupo.setText("");
+            return;
+        }
+        if(grupo.contains("0")||grupo.contains("1")||grupo.contains("2")||grupo.contains("3")||grupo.contains("4")||grupo.contains("5")||grupo.contains("6")||grupo.contains("7")||grupo.contains("8")||grupo.contains("9")){
+            Toast.makeText(vista.getContext(), "el campo grupo no puede contener numeros", Toast.LENGTH_SHORT).show();
             this.grupo.setText("");
             return;
         }
@@ -240,9 +254,12 @@ public class Fragment_form_fuera_clases extends Fragment {
         DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                final int mesActual = monthOfYear + 1;
+                String diaFormateado = (dayOfMonth < 10) ? 0 + String.valueOf(dayOfMonth) : String.valueOf(dayOfMonth);
+                String mesFormateado = (mesActual < 10) ? 0 + String.valueOf(mesActual) : String.valueOf(mesActual);
+                String fechaq = String.valueOf(year) + "-" + mesFormateado
+                        + "-" + diaFormateado;
 
-                String fechaq = String.valueOf(year) + "-" + String.valueOf(monthOfYear)
-                        + "-" + String.valueOf(dayOfMonth);
                 if (num == 1) {
                     fecha.setText(fechaq);
                 } else {
@@ -260,7 +277,15 @@ public class Fragment_form_fuera_clases extends Fragment {
         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String laHora = hourOfDay + ":" + minute;
+                String horaFormateada = (hourOfDay < 10) ? 0 + String.valueOf(hourOfDay) : String.valueOf(hourOfDay);
+                String minutoFormateado = (minute < 10) ? 0 + String.valueOf(minute) : String.valueOf(minute);
+                String AM_PM;
+                if (hourOfDay < 12) {
+                    AM_PM = "a.m.";
+                } else {
+                    AM_PM = "p.m.";
+                }
+                String laHora = (horaFormateada + ":" + minutoFormateado);
                 if (num == 1) {
                     horario.setText(laHora);
                 } else {
@@ -273,8 +298,8 @@ public class Fragment_form_fuera_clases extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-         if ((requestCode == reques_code) && (resultCode == Activity.RESULT_OK)) {
-           lugActividad.setText(data.getStringExtra("lugar"));
+        if ((requestCode == reques_code) && (resultCode == Activity.RESULT_OK)) {
+            lugActividad.setText(data.getStringExtra("lugar"));
         }
     }
 }

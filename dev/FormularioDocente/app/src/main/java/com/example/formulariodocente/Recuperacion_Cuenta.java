@@ -46,11 +46,12 @@ public class Recuperacion_Cuenta extends AppCompatActivity {
 
     public void validacion(String correo) {
         if (correo.equals("")) {
+            Toast.makeText(Recuperacion_Cuenta.this, "debe de ingresar un correo", Toast.LENGTH_SHORT).show();
             Recuperar.setText("");
             return;
         }
         if (!correo.contains("@gmail.com")) {
-            Toast.makeText(Recuperacion_Cuenta.this, "el correo debe de ser Gmail", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Recuperacion_Cuenta.this, "el correo debe de ser de Gmail", Toast.LENGTH_SHORT).show();
             Recuperar.setText("");
             return;
         }
@@ -74,8 +75,8 @@ public class Recuperacion_Cuenta extends AppCompatActivity {
                             finish();
                         } catch (Exception e) {
                             dialog.dismiss();
-                            Toast.makeText(Recuperacion_Cuenta.this, "Correo invalido", Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(Recuperacion_Cuenta.this, "Se le envio un correo...", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
                 },

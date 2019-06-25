@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <asp:ScriptManager runat="server" EnablePageMethods="true" ID ="metodos"></asp:ScriptManager>
-    <div id="contenedor">
         <div class="col-12 titulo">
             <h1>Lista Docentes</h1>
             <asp:Button ID="btnRegistrarDocente" runat="server" CssClass="btn btn-primary" Text="Registrar Docente" OnClientClick="return openModal()"/>
@@ -38,7 +37,6 @@
                 </Columns>
             </asp:GridView>
         </div>
-    </div>
 
         <div id="myModal" class="modal fade formularios" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

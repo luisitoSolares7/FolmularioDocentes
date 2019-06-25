@@ -42,7 +42,7 @@
                 ></item>
             <item
                 android:id="@+id/doc3"
-                android:title="Doc3"
+                android:title="Reprogramacion"
                 android:icon="@drawable/doc"
                 ></item>
             <item

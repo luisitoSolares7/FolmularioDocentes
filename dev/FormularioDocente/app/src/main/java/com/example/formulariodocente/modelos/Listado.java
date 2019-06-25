@@ -7,6 +7,25 @@ public class Listado {
     boolean estado;
     String nombre;
     int tipo;
+    int autorizacion;
+
+    public Listado(int id, int fkCuenta, int fkTbl, boolean estado, String nombre, int tipo, int autorizacion) {
+        this.id = id;
+        this.fkCuenta = fkCuenta;
+        this.fkTbl = fkTbl;
+        this.estado = estado;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.autorizacion = autorizacion;
+    }
+
+    public int getAutorizacion() {
+        return autorizacion;
+    }
+
+    public void setAutorizacion(int autorizacion) {
+        this.autorizacion = autorizacion;
+    }
 
     public Listado(int id, int fkCuenta, int fkTbl, boolean estado, String nombre, int tipo) {
         this.id = id;

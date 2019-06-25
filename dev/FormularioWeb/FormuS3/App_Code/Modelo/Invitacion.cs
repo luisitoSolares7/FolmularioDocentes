@@ -10,9 +10,7 @@ public class Invitacion
 {
     public Invitacion()
     {
-        //
-        // TODO: Agregar aquí la lógica del constructor
-        //
+       
     }
     public int id { get; set; }
     public String token { get; set; }

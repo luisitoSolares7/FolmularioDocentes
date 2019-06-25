@@ -148,8 +148,11 @@ public class Fragment_form_Incidentes extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                String fechaq = String.valueOf(year) + "-" + String.valueOf(monthOfYear)
-                        + "-" + String.valueOf(dayOfMonth);
+                final int mesActual = monthOfYear + 1;
+                String diaFormateado = (dayOfMonth < 10) ? 0 + String.valueOf(dayOfMonth) : String.valueOf(dayOfMonth);
+                String mesFormateado = (mesActual < 10) ? 0 + String.valueOf(mesActual) : String.valueOf(mesActual);
+                String fechaq = String.valueOf(year) + "-" + mesFormateado
+                        + "-" + diaFormateado;
                 fecha.setText(fechaq);
 
             }
@@ -164,7 +167,15 @@ public class Fragment_form_Incidentes extends Fragment {
         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String laHora = hourOfDay + ":" + minute;
+                String horaFormateada =  (hourOfDay < 10)?  0 + String.valueOf(hourOfDay) : String.valueOf(hourOfDay);
+                String minutoFormateado = (minute < 10)?  0 + String.valueOf(minute):String.valueOf(minute);
+                String AM_PM;
+                if(hourOfDay < 12) {
+                    AM_PM = "a.m.";
+                } else {
+                    AM_PM = "p.m.";
+                }
+                String laHora=(horaFormateada + ":" + minutoFormateado);
                 hora.setText(laHora);
             }
         }, horas, minuto, true);

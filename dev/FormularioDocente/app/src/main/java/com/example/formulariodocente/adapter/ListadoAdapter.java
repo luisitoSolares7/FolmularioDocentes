@@ -14,27 +14,28 @@ import com.example.formulariodocente.modelos.Listado;
 import java.util.ArrayList;
 
 public class ListadoAdapter extends RecyclerView.Adapter<ListadoAdapter.ListadoViewHolder> {
-        ArrayList<Listado> ListaSemestre;
-        ListadoClick accionListener;
+    ArrayList<Listado> ListaSemestre;
+    ListadoClick accionListener;
 
-public ListadoAdapter(ArrayList<Listado> objGalerias, ListadoClick listener) {
+
+    public ListadoAdapter(ArrayList<Listado> objGalerias, ListadoClick listener) {
         this.accionListener = listener;
         this.ListaSemestre = objGalerias;
 
-        }
-
-public static class ListadoViewHolder extends RecyclerView.ViewHolder {
-
-    TextView texto_Nombre;
-    ImageView imageView;
-
-    public ListadoViewHolder(View itemView) {
-        super(itemView);
-        this.texto_Nombre = itemView.findViewById(R.id.nombre);
-        this.imageView = itemView.findViewById(R.id.imagenItem);
     }
 
-}
+    public static class ListadoViewHolder extends RecyclerView.ViewHolder {
+
+        TextView texto_Nombre;
+        ImageView imageView;
+
+        public ListadoViewHolder(View itemView) {
+            super(itemView);
+            this.texto_Nombre = itemView.findViewById(R.id.nombre);
+            this.imageView = itemView.findViewById(R.id.imagenItem);
+        }
+
+    }
 
     @Override
     public ListadoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,10 +48,11 @@ public static class ListadoViewHolder extends RecyclerView.ViewHolder {
     public void onBindViewHolder(ListadoViewHolder holder, int position) {
         final Listado obj = ListaSemestre.get(position);
         holder.texto_Nombre.setText(obj.getNombre());
-        if(obj.isEstado()){
-            holder.imageView.setImageResource(R.drawable.si);
-        }else{
+
+        if (obj.getAutorizacion() == 0 && !obj.isEstado()) {
             holder.imageView.setImageResource(R.drawable.no);
+        }else{
+            holder.imageView.setImageResource(R.drawable.si);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +61,7 @@ public static class ListadoViewHolder extends RecyclerView.ViewHolder {
                     accionListener.actionListener(obj, view);
             }
         });
+
     }
 
     @Override

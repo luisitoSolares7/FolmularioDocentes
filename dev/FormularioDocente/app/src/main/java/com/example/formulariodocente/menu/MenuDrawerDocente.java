@@ -26,6 +26,7 @@ import com.example.formulariodocente.fragment.Fragment_Historial;
 import com.example.formulariodocente.fragment.Fragment_Inicio;
 import com.example.formulariodocente.fragment.Fragment_form_Incidentes;
 import com.example.formulariodocente.fragment.Fragment_form_fuera_clases;
+import com.example.formulariodocente.fragment.Fragment_form_reprogramacion;
 
 import java.security.acl.Group;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
     private ActionBar actionBar;
     private Toolbar toolbar;
     private int idCuenta;
-    boolean bandera=true;
+    boolean bandera=false;
     NavigationView nav_view;
     DrawerLayout drawer;
     TextView title;
@@ -78,7 +79,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
+        fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio(idCuenta)).commit();
 
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -95,9 +96,8 @@ public class MenuDrawerDocente extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         int valor = item.getItemId();
         if (valor == R.id.nav_home) {
-            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio()).commit();
-            Toast.makeText(MenuDrawerDocente.this, "home", Toast.LENGTH_SHORT).show();
-            bandera=true;
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_Inicio(idCuenta)).commit();
+            bandera=false;
             cambio();
         }
         if (valor == R.id.Redes) {
@@ -130,6 +130,7 @@ public class MenuDrawerDocente extends AppCompatActivity {
             cambio();
         }
         if (valor == R.id.doc3) {
+            fragmentManager.beginTransaction().replace(R.id.main_content, new Fragment_form_reprogramacion(idCuenta)).commit();
             bandera=true;
             cambio();
         }
