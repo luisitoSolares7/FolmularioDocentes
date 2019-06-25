@@ -17,9 +17,9 @@ public class ListadoBRL
         {
             Listado listado=null;
             try {
-                listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.estado, row.fecha, row.autorizador, row.nombre, row.tipo);
+                listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.estado, row.fecha, row.nombre, row.tipo,0);
             }catch (Exception e) {
-                listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.estado, row.nombre, row.tipo);
+                listado = new Listado(row.id, row.fkCuenta, row.fkTbl, row.nombre, row.tipo,-1);
             }
           
             list.Add(listado);
