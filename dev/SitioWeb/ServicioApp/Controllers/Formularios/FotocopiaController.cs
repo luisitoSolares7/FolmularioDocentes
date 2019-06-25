@@ -36,6 +36,7 @@ public class FotocopiaController : ApiController
         if (form != null)
         {
             msg = Request.CreateResponse<Fotocopias>(HttpStatusCode.OK, form);
+            return msg;
 
         }
         else
