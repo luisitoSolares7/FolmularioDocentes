@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.formulariodocente.DialogoFrmFueraClases;
 import com.example.formulariodocente.DialogoFrmIncidentes;
 import com.example.formulariodocente.DialogoFrmReprogramacion;
+import com.example.formulariodocente.Dialogo_Fotocopia;
 import com.example.formulariodocente.R;
 import com.example.formulariodocente.adapter.ListadoAdapter;
 import com.example.formulariodocente.adapter.ListadoClick;
@@ -74,8 +75,8 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                if(jsonObject.getInt("desicion")==-1) {
-                                    Listado user = new Listado(jsonObject.getInt("id"), jsonObject.getInt("fkCuenta"), jsonObject.getInt("fkTbl"), jsonObject.getString("nombre"), jsonObject.getInt("tipo"),-1);
+                                if (jsonObject.getInt("desicion") == -1) {
+                                    Listado user = new Listado(jsonObject.getInt("id"), jsonObject.getInt("fkCuenta"), jsonObject.getInt("fkTbl"), jsonObject.getString("nombre"), jsonObject.getInt("tipo"), -1);
                                     formularios.add(user);
                                 }
                             }
@@ -116,6 +117,9 @@ public class Fragment_Inicio extends Fragment implements ListadoClick {
         }
         if (obj.getTipo() == 2) {
             new DialogoFrmReprogramacion(vista.getContext(), obj.getFkTbl());
+        }
+        if (obj.getTipo() == 3) {
+            new Dialogo_Fotocopia(vista.getContext(), obj.getFkTbl());
         }
     }
 }

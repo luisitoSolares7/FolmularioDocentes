@@ -198,23 +198,23 @@ public class Fragment_form_Fotocopia extends Fragment implements ListadoImagenes
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", id_cuenta + "");
-                params.put("cantidad", cantidad.getText().toString());
+                params.put("cantidad", cantidad.getText().toString()+"");
                 params.put("materia", materia.getText().toString());
                 params.put("fecha", fecha.getText().toString());
-                params.put("tipoDocumento", spinner.getSelectedItem().toString());
+                params.put("tipoDocuento", spinner.getSelectedItem().toString());
 
                 if (la_cantidad == 3) {
-                    params.put("img1", list.get(0).getEncode64());
-                    params.put("img2", list.get(1).getEncode64());
-                    params.put("img3", list.get(2).getEncode64());
+                    params.put("img1", list.get(0).getEncode64()+"");
+                    params.put("img2", list.get(1).getEncode64()+"");
+                    params.put("img3", list.get(2).getEncode64()+"");
                 }
                 if (la_cantidad == 2) {
-                    params.put("img1", list.get(0).getEncode64());
-                    params.put("img2", list.get(1).getEncode64());
+                    params.put("img1", list.get(0).getEncode64()+"");
+                    params.put("img2", list.get(1).getEncode64()+"");
                     params.put("img3", " ");
                 }
                 if (la_cantidad == 1) {
-                    params.put("img1", list.get(0).getEncode64());
+                    params.put("img1", list.get(0).getEncode64()+"");
                     params.put("img2", " ");
                     params.put("img3", " ");
                 }
@@ -280,6 +280,7 @@ public class Fragment_form_Fotocopia extends Fragment implements ListadoImagenes
 
     public void vaciar() {
         this.cantidad.setText("");
+        la_cantidad=0;
         this.materia.setText("");
         spinner.setSelection(0);
         list = new ArrayList<>();
