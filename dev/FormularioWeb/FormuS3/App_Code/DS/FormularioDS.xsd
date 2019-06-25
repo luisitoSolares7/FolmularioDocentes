@@ -33,10 +33,10 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="Formularioç" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Formularioç" msprop:Generator_DataSetName="Formularioç">
+  <xs:element name="Formularioç" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="Formularioç" msprop:Generator_UserDSName="Formularioç">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="GetFormularioID" msprop:Generator_TableClassName="GetFormularioIDDataTable" msprop:Generator_TableVarName="tableGetFormularioID" msprop:Generator_TablePropName="GetFormularioID" msprop:Generator_RowDeletingName="GetFormularioIDRowDeleting" msprop:Generator_RowChangingName="GetFormularioIDRowChanging" msprop:Generator_RowEvHandlerName="GetFormularioIDRowChangeEventHandler" msprop:Generator_RowDeletedName="GetFormularioIDRowDeleted" msprop:Generator_UserTableName="GetFormularioID" msprop:Generator_RowChangedName="GetFormularioIDRowChanged" msprop:Generator_RowEvArgName="GetFormularioIDRowChangeEvent" msprop:Generator_RowClassName="GetFormularioIDRow">
+        <xs:element name="GetFormularioID" msprop:Generator_TableClassName="GetFormularioIDDataTable" msprop:Generator_TableVarName="tableGetFormularioID" msprop:Generator_RowChangedName="GetFormularioIDRowChanged" msprop:Generator_TablePropName="GetFormularioID" msprop:Generator_RowDeletingName="GetFormularioIDRowDeleting" msprop:Generator_RowChangingName="GetFormularioIDRowChanging" msprop:Generator_RowEvHandlerName="GetFormularioIDRowChangeEventHandler" msprop:Generator_RowDeletedName="GetFormularioIDRowDeleted" msprop:Generator_RowClassName="GetFormularioIDRow" msprop:Generator_UserTableName="GetFormularioID" msprop:Generator_RowEvArgName="GetFormularioIDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

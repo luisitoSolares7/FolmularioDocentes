@@ -18,6 +18,7 @@ public class InvitacionBRL
     public static void eliminarInvitacion(int id)
     {
         InvitacionTableAdapter adapter = new InvitacionTableAdapter();
+        adapter.EliminarInvitacion(id);
     }
 
     public static void verPedidos(int id)

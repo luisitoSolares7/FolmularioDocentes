@@ -24,7 +24,7 @@ using System.Web;
         public String apellidoM { get; set; }
         public String correo { get; set; }
         public int telefono { get; set; }
-
+        public int fkCuenta { get; set; }
 
     }
 }

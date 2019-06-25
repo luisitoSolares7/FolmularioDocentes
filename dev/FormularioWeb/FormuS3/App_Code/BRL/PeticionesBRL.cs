@@ -1,7 +1,11 @@
 ﻿using App.Model;
 using FormularioçTableAdapters;
 using InvitacionDSTableAdapters;
+using PeticionClasesDSTableAdapters;
 using PeticionesDSTableAdapters;
+using PeticionFotocopiaDSTableAdapters;
+using PeticionIncidenteDSTableAdapters;
+using PeticionReprogramacionDSTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,95 +20,81 @@ public class PeticionesBRL
     {
         
     }
-    public static List<Peticiones> GetPeticionesAll()
+   public static List<Incidente> GetPeticionesAll()
     {
-        PeticionesTableAdapter adapter = new PeticionesTableAdapter();
-        //añadir getPErsona ID para buscar
-        PeticionesDS.PeticionesDataTable table = adapter.GetPeticionesAll();
-        List<Peticiones> list = new List<Peticiones>();
+        PeticionesIncidentesTableAdapter adapter = new PeticionesIncidentesTableAdapter();
+        PeticionIncidenteDS.PeticionesIncidentesDataTable table = adapter.GetPeticionesIncidentes();
+        List<Incidente> list = new List<Incidente>();
         foreach (var row in table)
         {
-            String tipoForm = "";
-            if (row.tipo==1)
-            {
-                tipoForm = "Formulario Incidentes";
-            }
-            if (row.tipo ==2)
-            {
-                tipoForm = "Formulario Clases Fuera de Aula";
-            }
-            if (row.tipo == 3)
-            {
-                tipoForm = "Formulario Fotocopias";
-            }
-            if (row.tipo == 4)
-            {
-                tipoForm = "Reprogramacion de Clases";
-            }
-            list.Add(new Peticiones()
+            list.Add(new Incidente()
             {
                 id = row.id,
-                fkCuenta = row.fkCuenta,
-                estado = row.estado,
-                fkTbl = row.fkTbl,
-                nombreForm = tipoForm,
-                tipo = row.tipo,
-                nombre = row.nombre,
+                nombreForm=row.NombrePersona + " " + row.apellidoP + " " +row.apellidoM,
+                descripcion=row.descripcion
             });
         }
+
         return list;
     }
-    public static Formulario AceptarSolucitud(int id)
+    public static void aceptarPeticion(int id,int fkAdmin,int estado)
     {
-        if (id <= 0)
-        {
-            throw new ArgumentException("Error con la id");
-        }
-        GetFormularioIDTableAdapter adapter = new GetFormularioIDTableAdapter();
-        //añadir getPErsona ID para buscar
-        Formularioç.GetFormularioIDDataTable table = adapter.GetFormularioID(id);
-        Formulario obj = null;
-
-        if (table != null && table.Rows.Count == 1)
-        {
-            Formularioç.GetFormularioIDRow row = table[0];
-            obj = new Formulario()
-            {
-                id=row.id,
-                descripcion=row.descripcion,
-                fecha=row.fecha
-            };
-        }
-        return obj;
-    }
-    public static Formulario GetFormularioFk(int id)
-    {
-        if (id <= 0)
-        {
-            throw new ArgumentException("Error con la id");
-        }
         PeticionesTableAdapter adapter = new PeticionesTableAdapter();
-        //añadir getPErsona ID para buscar
-        PeticionesDS.PeticionesDataTable table = adapter.GetFormulariofk(id);
-        Formulario obj = null;
-
-        if (table != null && table.Rows.Count == 1)
+        adapter.AceptarPeticion(id,DateTime.Today,fkAdmin,estado);
+    }
+    public static List<ClasesFuera> GetClasesFuera()
+    {
+        GetClasesFueraTableAdapter adapter = new GetClasesFueraTableAdapter();
+        PeticionClasesDS.GetClasesFueraDataTable table = adapter.GetClasesFuera();
+        List<ClasesFuera> list = new List<ClasesFuera>();
+        foreach (var row in table)
         {
-            PeticionesDS.PeticionesRow row = table[0];
-            obj = new Formulario()
+            list.Add(new ClasesFuera()
             {
                 id = row.id,
-
-            };
+                nombreForm = row.Expr10 + " " + row.apellidoP + " " + row.apellidoM,
+                fechaEnvio = row.fechaActividad,
+                descripcion = row.descripActividad
+            });
         }
-        return obj;
-    }
 
-    public static void Aceptar(int id,int fk)
+        return list;
+    }
+    public static List<Reprogramacion> GetReprogramacion()
     {
-        PeticionesTableAdapter adapter = new PeticionesTableAdapter();
-        DateTime fecha= DateTime.Today;
+        GetReprogramacionTableAdapter adapter = new GetReprogramacionTableAdapter();
+        PeticionReprogramacionDS.GetReprogramacionDataTable table = adapter.GetReprogramacion();
+        List<Reprogramacion> list = new List<Reprogramacion>();
+        foreach (var row in table)
+        {
+            list.Add(new Reprogramacion()
+            {
+                id = row.id,
+                nombreForm = row.Expr10 + " " + row.apellidoP + " " + row.apellidoM,
+                fechaEnvio = row.fechaActividad,
+                descripcion = row.dias
+            });
+        }
 
-        adapter.AceptarPeticion(id,fecha, fk);
+        return list;
     }
+    public static List<Fotocopia> GetFotocopia()
+    {
+        GetFotocopiaTableAdapter adapter = new GetFotocopiaTableAdapter();
+        PeticionFotocopiaDS.GetFotocopiaDataTable table = adapter.GetFotocopia();
+        List<Fotocopia> list = new List<Fotocopia>();
+        foreach (var row in table)
+        {
+            list.Add(new Fotocopia()
+            {
+                id = row.id,
+                idPersona = row.Expr1,
+                nombreForm = row.Expr10 + " " + row.apellidoP + " " + row.apellidoM,
+                descripcion = "Cantidad"+row.cantidad 
+            });
+        }
+
+        return list;
+    }
+
 }
