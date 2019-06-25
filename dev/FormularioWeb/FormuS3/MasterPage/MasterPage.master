@@ -14,42 +14,34 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        
         <header>
-		<nav>
-			<ul>
-                <li id="primero"><a href="Index.aspx">INICIO</a></li>
-                <li id="segundo"><a href="#">HISTORIAL</a></li>
-                <li id="tercero"><a href="../ListaPeticiones.aspx">PETICIONES</a></li>
-                <li id="cuarto"><a href="../Invitar.aspx">REGISTRO DOCENTE</a></li>
-                <li id="quinto"><a href="#"></a> REGISTRO ADMIN.</li>
+		<nav >
+			<ul  class="navbar-nav mr-auto">
+                <li class="nav-item active"  id="primero"><a class="nav-link" href="Index.aspx">INICIO</a></li>
+                <li class="nav-item active" id="segundo"><a class="nav-link" href="#">HISTORIAL</a></li>
+                <li class="nav-item active" id="tercero"><a class="nav-link" href="../Peticiones.aspx">PETICIONES</a></li>
+                <li class="nav-item active" id="cuarto"><a class="nav-link" href="../Invitar.aspx">REGISTRO DOCENTE</a></li>
+                 <li class="nav-item active" id="quinto"><a class="nav-link" href="../RegistroAdmin.aspx">REGISTRO ADMIN</a></li>
 			</ul>
 		</nav>
 	</header>
+        <div>
+
+        </div>
     <div id="contenedor">
+
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
+        <footer>
+            <a>JoseelGP@gmail.com</a>
+        </footer>
     </form>
     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+
 </script>
 </body>
 </html>
